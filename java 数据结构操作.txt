@@ -1,0 +1,19 @@
+Map<Integer, Integer> map = new HashMap<>();
+map.getOrDefault(key,0) //
+map.put(key, value) 
+for(int key: map.keySet())
+
+List<Integer> list = new ArrayList<>()
+list.size()
+list.add(num) // 添加元素
+list.get(i) // 下标访问
+list.toArray(strArray); //把链表变为数组相关的内容进行遍历
+
+Queue<Integer> q = new LinkedList<>()
+q.poll() //弹出首部元素，取出值。
+q.offer() //添加元素
+peek() //取出首值，不弹出。
+
+Deque<Integer> mDeque = new ArrayDeque<Integer>();
+相比queue，就是在每个操作后面可以加上First或者Last。
+
