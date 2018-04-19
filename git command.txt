@@ -1,0 +1,5 @@
+git init
+git add .(1.py)
+git commit -m "<comment>"
+//git remote add origin [github_repository_url]£¬link the local and the one on github
+git push origin master
