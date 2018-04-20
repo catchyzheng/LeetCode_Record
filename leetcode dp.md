@@ -1,3 +1,25 @@
+[740. Delete and Earn](https://leetcode.com/problems/delete-and-earn/description/)<br>
+给定一数组，每当删除一个元素num，可以加num分，但同时也会删除所有num-1和num+1。求最多能得到多少分。<br>
+典型动规。先统计出每种值的个数，找出最大最小值。然后dp。和那个house robber很像。
+```
+public int deleteAndEarn(int[] nums) {
+    int [] cnt = new int[10000+1];
+    int len = nums.length;
+    int min_=1, max_=10000;
+    for(int i=0;i<len;i++){
+        cnt[nums[i]]++;
+        min_ = min_<nums[i] ? min_ : nums[i];
+        max_ = max_>nums[i] ? max_ : nums[i];
+    }
+    int [] dp = new int[10001];
+    dp[min_]=cnt[min_]*min_; dp[min_-1]=0;
+    for(int i=min_+1; i<=max_;i++){
+        dp[i] = cnt[i]*i+dp[i-2] > dp[i-1] ? cnt[i]*i+dp[i-2] : dp[i-1];
+    }
+    return dp[max_];
+}
+```
+
 [486. Predict the Winner](https://leetcode.com/problems/predict-the-winner/description/)<br>
 自己有动规，但是效率比较低。。看看别人的先[here](https://leetcode.com/problems/predict-the-winner/solution/)<br>
 
