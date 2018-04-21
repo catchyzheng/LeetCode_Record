@@ -1,3 +1,27 @@
+[96. Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/description/)<br>
+给出n值，欲存储1-n，有多少种BST的结构。<br>
+动规。
+```
+int len; int [] dp;
+public int numTrees(int n) {
+    if(n<=2) return n;
+    dp = new int[n+1];
+    dp[0] = dp[1]=1; dp[2]=2;
+    int ans=0;
+    return dfs(n);
+}
+int dfs(int n){
+    if(dp[n]>0) return dp[n];
+    int sum=0;
+    for(int i=1;i<=n;i++){
+        dp[i-1]=dfs(i-1);//dist:(i-1)-0
+        dp[n-i]=dfs(n-i);//dist:(n+1)-(i+1)
+        sum+=dp[i-1]*dp[n-i];
+    }
+    return sum;
+}
+```
+
 [740. Delete and Earn](https://leetcode.com/problems/delete-and-earn/description/)<br>
 给定一数组，每当删除一个元素num，可以加num分，但同时也会删除所有num-1和num+1。求最多能得到多少分。<br>
 典型动规。先统计出每种值的个数，找出最大最小值。然后dp。和那个house robber很像。
