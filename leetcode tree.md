@@ -21,9 +21,32 @@ public TreeNode dfs(TreeNode root){
 [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)<br>
 我自己也做出来啦！！然而是C++的BFS想了好久。。哭<br>
 好好学学人家的BFS怎么用java写。。。其实答案还没看懂。。<br>
+```
+public List<List<Integer>> levelOrder(TreeNode root) {
+    Queue<TreeNode> queue = new LinkedList<TreeNode>();
+    List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
+    //
+    if(root == null) return wrapList;
+    //
+    queue.offer(root);
+    while(!queue.isEmpty()){
+        int levelNum = queue.size();
+        List<Integer> subList = new LinkedList<Integer>();
+        for(int i=0; i<levelNum; i++) {
+            if(queue.peek().left != null) queue.offer(queue.peek().left);
+            if(queue.peek().right != null) queue.offer(queue.peek().right);
+            subList.add(queue.poll().val);
+        }
+        wrapList.add(subList);
+    }
+    return wrapList;
+}
+```
+
+
 有点无语啊，102是medium但是我觉得实现方法比107 easy还简单。<br>
 [103. Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/)<br>
-呃，其实不就是102的做法后将二维vector数组每层反转一下就行吗。。
+4.21更新：**还没做别瞎比比。**呃，其实不就是102的做法后将二维vector数组每层反转一下就行吗。。
 
 [508. Most Frequent Subtree Sum](https://leetcode.com/problems/most-frequent-subtree-sum/description/)<br>
 找出最频繁的子树和。子树和定义为一棵子树上所有节点的和。

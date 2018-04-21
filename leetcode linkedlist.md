@@ -43,6 +43,27 @@ public ListNode deleteDuplicates(ListNode head) {
 ```
 
 [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)<br>
+(self done)原址合并。iteratively。
+```
+public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    if(l1==null && l2==null) return null;
+    if(l1==null) return l2; if(l2==null) return l1;
+    ListNode start = new ListNode(0);
+    ListNode ans=start;
+    while(l1!=null || l2!=null){
+        if(l1==null){start.next=l2;l2=l2.next; }
+        else if(l2==null){start.next=l1;l1=l1.next;}
+        else{
+            if(l1.val<=l2.val){
+                start.next=l1; l1=l1.next;
+            }
+            else {start.next=l2; l2=l2.next; }
+        }
+        start=start.next;
+    }
+    return ans.next;
+}
+```
 (不是自己做的)合并两个链表。类似归并排序。 但可以是原址的。in-place.
 ```
 //recursively

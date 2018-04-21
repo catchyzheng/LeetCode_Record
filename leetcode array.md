@@ -1,3 +1,27 @@
+[88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/description/)<br>
+合并两个有序数组，要求合并后的结果存放在nums1中。
+想法不难，难就难在如何不新建辅助数组也能合并？下面的代码也许可以给你点启发。
+```
+public void merge(int[] nums1, int m, int[] nums2, int n) {
+    int i = m - 1;
+    int j = n - 1;
+    for (int k = m + n - 1; k >= 0; k--) {
+        if (i < 0) {
+            nums1[k] = nums2[j--];
+            continue;
+        }
+        if (j < 0) {
+            nums1[k] = nums1[i--];
+            continue;
+        }
+        if (nums1[i] >= nums2[j]) {
+            nums1[k] = nums1[i--];
+        } else {
+            nums1[k] = nums2[j--];
+        }
+    }
+}
+```
 [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/solution/)<br>
 一个n+1长的数列中，元素都来自1-n。找到重复的那个数。
 方法一：排序。Arrays.sort(nums); 复杂度nlogn。<br>
