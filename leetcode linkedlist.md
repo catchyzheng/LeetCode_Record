@@ -1,3 +1,31 @@
+[2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)<br>
+实现链表的加法。相同的思路，但别人有更简洁的代码。
+```
+public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    ListNode c1 = l1;
+    ListNode c2 = l2;
+    ListNode sentinel = new ListNode(0);
+    ListNode d = sentinel;
+    int sum = 0;
+    while (c1 != null || c2 != null) {
+        sum /= 10;
+        if (c1 != null) {
+            sum += c1.val;
+            c1 = c1.next;
+        }
+        if (c2 != null) {
+            sum += c2.val;
+            c2 = c2.next;
+        }
+        d.next = new ListNode(sum % 10);
+        d = d.next;
+    }
+    if (sum / 10 == 1)
+        d.next = new ListNode(1);
+    return sentinel.next;
+}
+```
+
 [83. Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/)<br>
 将链表中所有重复的移除。自己做出来的第一道链表题。。
 ```
