@@ -1,3 +1,6 @@
+[5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)<br>
+如何遍历，从后往前还是从前往后也是一门学问。在没有函数辅助dp情况下，要保证每个状态转移方程等式右边的每个状态都是已经计算过的。
+
 [96. Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/description/)<br>
 给出n值，欲存储1-n，有多少种BST的结构。<br>
 动规。
@@ -45,10 +48,32 @@ public int deleteAndEarn(int[] nums) {
 ```
 
 [486. Predict the Winner](https://leetcode.com/problems/predict-the-winner/description/)<br>
-自己有动规，但是效率比较低。。看看别人的先[here](https://leetcode.com/problems/predict-the-winner/solution/)<br>
+两人依次从一个数组两端取数字，一次取一个，A先取，最后总和最大者胜利。问理想状况下A会不会赢。<br>
+自己有动规，但是效率比较低。。看看别人的[here](https://leetcode.com/problems/predict-the-winner/solution/)<br>最后的目标是**判断ScoreA-ScoreB是否>=0，即if dp[0][len-1]>=0。**<br>
+确实，遍历的顺序有讲究。对于```dp[i,j]=max(nums[i]−dp[i+1][j],nums[j]−dp[i][j−1])```，i就要从大到小，j就要从小到大。
 
 [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)<br>
-入门级别动规<br>
+入门级别动规。给定一个二维数组长宽，求从左上角走到右下角的路径种类个数。<br>
+最直观的二维DP想法很简单，但是为何能够优化到一维呢？值得琢磨。
+```
+int uniquePaths(int m, int n) {
+    vector<vector<int> > path(m, vector<int> (n, 1));
+    for (int i = 1; i < m; i++)
+        for (int j = 1; j < n; j++)
+            path[i][j] = path[i - 1][j] + path[i][j - 1];
+    return path[m - 1][n - 1];
+}
+```
+```
+int uniquePaths(int m, int n) {
+    if (m > n) return uniquePaths(n, m);
+    vector<int> cur(m, 1);
+    for (int j = 1; j < n; j++)
+        for (int i = 1; i < m; i++)
+            cur[i] += cur[i - 1]; 
+    return cur[m - 1];
+}
+```
 [357. Count Numbers with Unique Digits](https://leetcode.com/problems/count-numbers-with-unique-digits/discription/)<br>
 感觉和动规没什么关系。。就是一数学题。<br>
 [392. isSubsequence](https://leetcode.com/problems/is-subsequence/description/)<br>
@@ -157,15 +182,13 @@ public int maxProfit(int[] p) {
 自己的解法：动规ans[i]=max(ans[i-1], nums[i]+max(ans[i-2], ans[i-3]))， 虽然没错但代码比较繁琐，具体见[这里](https://leetcode.com/problems/house-robber/submissions/1)<br>
 别人家的代码！简洁明了，确实思路非常巧妙啊。<br>
 ```
-class Solution {
-    public int rob(int[] nums){
-        int len = nums.length;
-        int a=0, b=0;
-        for(int i=0;i<len;i++){
-            if(i%2==0) a=Math.max(a+nums[i], b);
-            else b.Math.max(a, b+nums[i]);
-        }
-        return Math.max(a,b);
+public int rob(int[] nums){
+    int len = nums.length;
+    int a=0, b=0;
+    for(int i=0;i<len;i++){
+        if(i%2==0) a=Math.max(a+nums[i], b);
+        else b.Math.max(a, b+nums[i]);
     }
+    return Math.max(a,b);
 }
 ```
