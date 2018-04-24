@@ -1,6 +1,18 @@
 [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/description/)<br>
-找到两个链表的交叉处。
-
+找到两个链表的交叉处。惊为天人的双指针法！
+但实现细节要注意，也就是什么时候改变指针指向的位置。
+```
+public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+	if( null==headA || null==headB )
+		return null;
+	ListNode curA = headA, curB = headB;
+	while( curA!=curB){
+		curA = curA==null?headB:curA.next;
+		curB = curB==null?headA:curB.next;
+	}
+	return curA;
+}
+```
 [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/description/)<br>
 实现链表的加法。相同的思路，但别人有更简洁的代码。
 ```
