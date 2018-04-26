@@ -1,7 +1,26 @@
 [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/)<br>
-从链表中移除倒数第N个节点。进阶：如何能做到扫描一遍就做完？
-自己的做法扫两遍。一遍确定长度len，第二遍移除第len-N+1个节点。还没看解答。
-
+从链表中移除倒数第N个节点。进阶：如何能做到扫描一遍就做完？<br>
+自己的做法扫两遍。一遍确定长度len，第二遍移除第len-N+1个节点。<br>
+扫一遍的想法真的很奇妙！
+```
+public ListNode removeNthFromEnd(ListNode head, int n) {
+    ListNode dummy = new ListNode(0);
+    dummy.next = head;
+    ListNode first = dummy;
+    ListNode second = dummy;
+    // Advances first pointer so that the gap between first and second is n nodes apart
+    for (int i = 1; i <= n + 1; i++) {
+        first = first.next;
+    }
+    // Move first to the end, maintaining the gap
+    while (first != null) {
+        first = first.next;
+        second = second.next;
+    }
+    second.next = second.next.next;
+    return dummy.next;
+}
+```
 [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/description/)<br>
 找到两个链表的交叉处。惊为天人的双指针法！
 但实现细节要注意，也就是什么时候改变指针指向的位置。

@@ -1,3 +1,9 @@
+Êý×é²Ù×÷
+int[][] memo = new int[nums.length][2001];
+for (int[] row: memo)
+   Arrays.fill(row, Integer.MIN_VALUE);
+
+
 Map<Integer, Integer> map = new HashMap<>();
 map.getOrDefault(key,0) //
 map.put(key, value) 

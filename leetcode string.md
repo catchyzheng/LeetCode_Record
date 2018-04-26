@@ -1,6 +1,7 @@
 [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)<br>
-找到最长的且没有重复字母的子串。
-还没看解答。
+找到最长的且没有重复字母的子串。<br>
+我的解答，就是最优方法！哈哈哈哈<br>
+
 ```
 public int lengthOfLongestSubstring(String s) {
     Map<Character, Integer> map = new HashMap<>();
