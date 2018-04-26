@@ -1,3 +1,27 @@
+[3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)<br>
+找到最长的且没有重复字母的子串。
+还没看解答。
+```
+public int lengthOfLongestSubstring(String s) {
+    Map<Character, Integer> map = new HashMap<>();
+    int ans=0; // length of the temp string slide window. 
+    int max_=0;
+    int i=0;
+    for(int j=0; j<s.length(); j++){
+        if(map.containsKey(s.charAt(j))){
+            i= Math.max(i, map.get(s.charAt(j)));
+            ans=j-i;//sub_s=s.substring(i+1, j+1);
+        }
+        else{
+            ans++;
+        }
+        map.put(s.charAt(j), j);
+        max_ = max_>ans ? max_ : ans;
+    }
+    return max_;
+}
+```
+
 [17. Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/discuss/8064/My-java-solution-with-FIFO-queue)<br>
 回溯。给出一串数字，每个数字可以对应多个字母。列出所有字母组合。<br>
 下面是用queue做的。

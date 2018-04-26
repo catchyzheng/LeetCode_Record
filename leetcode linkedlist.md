@@ -1,3 +1,7 @@
+[19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/)<br>
+从链表中移除倒数第N个节点。进阶：如何能做到扫描一遍就做完？
+自己的做法扫两遍。一遍确定长度len，第二遍移除第len-N+1个节点。还没看解答。
+
 [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/description/)<br>
 找到两个链表的交叉处。惊为天人的双指针法！
 但实现细节要注意，也就是什么时候改变指针指向的位置。
