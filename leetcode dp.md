@@ -1,6 +1,6 @@
 [494. Target Sum](https://leetcode.com/problems/target-sum/solution/)<br>
 给定一个数组，要在每个数前放个符号，然后求和。问有多少种方法可以让和等于指定值。<br>
-又是耗时被吊打的一道题。。
+又是耗时被吊打的一道题。。fuck
 
 [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)<br>
 如何遍历，从后往前还是从前往后也是一门学问。在没有函数辅助dp情况下，要保证每个状态转移方程等式右边的每个状态都是已经计算过的。
