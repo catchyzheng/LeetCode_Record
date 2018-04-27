@@ -1,9 +1,8 @@
-[494. Target Sum](https://leetcode.com/problems/target-sum/solution/)<br>
+﻿[494. Target Sum](https://leetcode.com/problems/target-sum/solution/)<br>
 给定一个数组，要在每个数前放个符号，然后求和。问有多少种方法可以让和等于指定值。<br>
 又是耗时被吊打的一道题。。
 DP时候，从2D降到1D基本上都是有序迭代的维度，而且从下标从小到大迭代。
 ```
-public class Solution {
     public int findTargetSumWays(int[] nums, int S) {
         int[][] dp = new int[nums.length][2001];
         dp[0][nums[0] + 1000] = 1;
@@ -18,8 +17,6 @@ public class Solution {
         }
         return S > 1000 ? 0 : dp[nums.length - 1][S + 1000];
     }
-}
-public class Solution {
     public int findTargetSumWays(int[] nums, int S) {
         int[] dp = new int[2001];
         dp[nums[0] + 1000] = 1;
@@ -36,7 +33,6 @@ public class Solution {
         }
         return S > 1000 ? 0 : dp[S + 1000];
     }
-}
 ```
 discussion还有转化为寻找子集和的思路。
 ```
