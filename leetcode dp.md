@@ -1,6 +1,61 @@
 [494. Target Sum](https://leetcode.com/problems/target-sum/solution/)<br>
 给定一个数组，要在每个数前放个符号，然后求和。问有多少种方法可以让和等于指定值。<br>
 又是耗时被吊打的一道题。。
+DP时候，从2D降到1D基本上都是有序迭代的维度，而且从下标从小到大迭代。
+```
+public class Solution {
+    public int findTargetSumWays(int[] nums, int S) {
+        int[][] dp = new int[nums.length][2001];
+        dp[0][nums[0] + 1000] = 1;
+        dp[0][-nums[0] + 1000] += 1;
+        for (int i = 1; i < nums.length; i++) {
+            for (int sum = -1000; sum <= 1000; sum++) {
+                if (dp[i - 1][sum + 1000] > 0) {
+                    dp[i][sum + nums[i] + 1000] += dp[i - 1][sum + 1000];
+                    dp[i][sum - nums[i] + 1000] += dp[i - 1][sum + 1000];
+                }
+            }
+        }
+        return S > 1000 ? 0 : dp[nums.length - 1][S + 1000];
+    }
+}
+public class Solution {
+    public int findTargetSumWays(int[] nums, int S) {
+        int[] dp = new int[2001];
+        dp[nums[0] + 1000] = 1;
+        dp[-nums[0] + 1000] += 1;
+        for (int i = 1; i < nums.length; i++) {
+            int[] next = new int[2001];
+            for (int sum = -1000; sum <= 1000; sum++) {
+                if (dp[sum + 1000] > 0) {
+                    next[sum + nums[i] + 1000] += dp[sum + 1000];
+                    next[sum - nums[i] + 1000] += dp[sum + 1000];
+                }
+            }
+            dp = next;
+        }
+        return S > 1000 ? 0 : dp[S + 1000];
+    }
+}
+```
+discussion还有转化为寻找子集和的思路。
+```
+public int findTargetSumWays(int[] nums, int s) {
+        int sum = 0;
+        for (int n : nums)
+            sum += n;
+        return sum < s || (s + sum) % 2 > 0 ? 0 : subsetSum(nums, (s + sum) >>> 1); 
+    }   
+
+    public int subsetSum(int[] nums, int s) {
+        int[] dp = new int[s + 1]; 
+        dp[0] = 1;
+        for (int n : nums)
+            for (int i = s; i >= n; i--)
+                dp[i] += dp[i - n]; 
+        return dp[s];
+    } 
+```
 
 [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)<br>
 如何遍历，从后往前还是从前往后也是一门学问。在没有函数辅助dp情况下，要保证每个状态转移方程等式右边的每个状态都是已经计算过的。
