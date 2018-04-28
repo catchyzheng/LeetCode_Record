@@ -17,6 +17,8 @@ public int findTargetSumWays(int[] nums, int S) {
     }
     return S > 1000 ? 0 : dp[nums.length - 1][S + 1000];
 }
+```
+```
 public int findTargetSumWays(int[] nums, int S) {
     int[] dp = new int[2001];
     dp[nums[0] + 1000] = 1;
@@ -52,7 +54,6 @@ public int subsetSum(int[] nums, int s) {
     return dp[s];
 } 
 ```
->>>>>>> 4836d4b552f35e437fb33910f24f65b9e745902c
 
 [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)<br>
 如何遍历，从后往前还是从前往后也是一门学问。在没有函数辅助dp情况下，要保证每个状态转移方程等式右边的每个状态都是已经计算过的。
@@ -110,7 +111,7 @@ public int deleteAndEarn(int[] nums) {
 
 [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)<br>
 入门级别动规。给定一个二维数组长宽，求从左上角走到右下角的路径种类个数。<br>
-最直观的二维DP想法很简单，但是为何能够优化到一维呢？值得琢磨。
+最直观的二维DP想法很简单，但是为何能够优化到一维空间复杂度呢？值得琢磨。
 ```
 int uniquePaths(int m, int n) {
     vector<vector<int> > path(m, vector<int> (n, 1));

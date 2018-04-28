@@ -1,5 +1,13 @@
+首次创建仓库时，要把本地的东西放到云端：
 git init
 git add .(1.py)
 git commit -m "<comment>"
 //git remote add origin [github_repository_url]，link the local and the one on github
 git push origin master
+
+要把云端的东西clone下来作为本地仓库：
+git clone [url] //首次
+git pull [url] //更新云端的最新仓库到本地
+后面就是正常的add，commit push了。
+
+
