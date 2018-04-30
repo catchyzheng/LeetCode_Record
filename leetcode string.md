@@ -1,7 +1,6 @@
 [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)<br>
 找到最长的且没有重复字母的子串。<br>
-我的解答，就是最优方法！哈哈哈哈<br>
-
+我的解答，就是最优方法！哈哈哈哈。<br>
 ```
 public int lengthOfLongestSubstring(String s) {
     Map<Character, Integer> map = new HashMap<>();
@@ -22,10 +21,11 @@ public int lengthOfLongestSubstring(String s) {
     return max_;
 }
 ```
+其实就是双指针法。初始化i=0为目标ans串的头部下标。从头遍历字符串，如果扫描到出现过的字符，那就将i设置为当前下标和该字符上一个出现的下标这两者的较大值。也就是保证上一个该字符的下标在i后面，也就是i后面都是不重复的字符。
 
 [17. Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/discuss/8064/My-java-solution-with-FIFO-queue)<br>
-回溯。给出一串数字，每个数字可以对应多个字母。列出所有字母组合。<br>
-下面是用queue做的。
+手机九宫格按键，给出一串数字，每个数字可以对应多个字母。列出所有字母组合。<br>
+下面是用queue做的，回溯。怎么回溯？
 ```
 LinkedList<String> ans = new LinkedList<String>();
 if(digits.isEmpty()) return ans;
@@ -69,7 +69,7 @@ public String longestCommonPrefix(String[] strs) {
 
 [58. Length of Last Word](https://leetcode.com/problems/length-of-last-word/submissions/1)<br>
 **注意，输入的字符串末尾可以有空白。**
-自己的思路就是根据空格split然后返回最后一个str的长度。但其实不用split，只要从末尾往前扫描就可以统计出答案了。
+自己的思路就是根据空格split然后返回最后一个str的长度。但其实不用split，只要**从末尾往前扫描**就可以统计出答案了。
 ```
 public int lengthOfLastWord(String s) {
     int len=s.length(), lastLength=0;
