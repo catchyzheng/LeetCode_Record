@@ -102,24 +102,22 @@ public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
     return ans.next;
 }
 ```
-(不是自己做的)合并两个链表。类似归并排序。 但可以是原址的。in-place.
+(不是自己做的)合并两个链表。类似归并排序。 但可以是原址的。in-place.递归解法的思路倒是很独特啊，一般人想到的都是迭代式。
 ```
 //recursively
 ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
     if(l1 == NULL) return l2;
     if(l2 == NULL) return l1;
-    // ListNode mergehead;
     if(l1->val < l2->val) {
-        //mergehead = l1;//nextline: mergehead->next = ...
 		l1->next = mergeTwoLists(l1->next, l2);
         return l1;
     } else {
-		//mergehead = l2;
         l2->next = mergeTwoLists(l2->next, l1);
         return l2;
     }
-	//return mergehead;
 }
+```
+```
 //iteratively
 ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
     ListNode dummy(INT_MIN);
@@ -138,8 +136,6 @@ ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
     return dummy.next;
 }
 ```
-
-
 [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/description/)<br>
 三种解法。。iterative，recursive，以及用栈。然而我哪个都不会打。。
 ```
