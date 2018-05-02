@@ -25,22 +25,26 @@ public int lengthOfLongestSubstring(String s) {
 
 [17. Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/discuss/8064/My-java-solution-with-FIFO-queue)<br>
 手机九宫格按键，给出一串数字，每个数字可以对应多个字母。列出所有字母组合。<br>
-下面是用queue做的，回溯。怎么回溯？
+下面是用linkedlist做的，BFS,很强。
 ```
-LinkedList<String> ans = new LinkedList<String>();
-if(digits.isEmpty()) return ans;
-String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-ans.add("");
-for(int i =0; i<digits.length();i++){
-    int x = Character.getNumericValue(digits.charAt(i));
-    while(ans.peek().length()==i){
-        String t = ans.remove();
-        for(char s : mapping[x].toCharArray())
-            ans.add(t+s);
-    }
+public List<String> letterCombinations(String digits) {
+	LinkedList<String> ans = new LinkedList<String>();
+	if(digits.isEmpty()) return ans;
+	String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+	ans.add("");//initial
+	for(int i =0; i<digits.length();i++){
+	    int x = Character.getNumericValue(digits.charAt(i));
+	    while(ans.peek().length()==i){
+	        String t = ans.remove();//obtain the peek and then delete
+	        for(char s : mapping[x].toCharArray())
+	            ans.add(t+s);// equals to addLast
+	    }
+	}
+	return ans;
 }
-return ans;
 ```
+扫描数字串。每扫描到一个数字，就将对应的字母加在list头部的字符串元素末尾，组成新串，依次add到list中。然后下一个数字重复。直到扫描到数字串末尾。这是很新奇的思路！
+
 [13. Roman to Integer]()<br>
 罗马数字转十进制。
 一些让代码提速的小trick。比如用switch函数代替map，以及sync_with_stdio(false)。[了解一下](https://leetcode.com/submissions/detail/150864113/)
