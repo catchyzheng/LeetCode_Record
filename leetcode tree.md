@@ -1,6 +1,6 @@
 [814. Binary Tree Pruning](https://leetcode.com/problems/binary-tree-pruning/description/)<br>
 题意：自下往上，砍掉所有值为0的叶子节点。<br>
-**重点**：					不要光顾着砍掉目前的0值叶子。
+**重点**：不要光顾着砍掉目前的0值叶子。
 ```
 public TreeNode pruneTree(TreeNode root) {
     if(root==null) return null;
@@ -45,7 +45,24 @@ public List < Double > averageOfLevels(TreeNode root) {
 
 [107. Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/discuss/34981/My-DFS-and-BFS-java-solution)<br>
 给一个二叉树，返回自底向上的水平遍历。<br>
-
+BFS:和102的基本一致，只需将改成add(0, subList)在0下标处插入subList。
+DFS:看看，学习。
+```
+public List<List<Integer>> levelOrderBottom(TreeNode root) {
+    List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
+    levelMaker(wrapList, root, 0);
+    return wrapList;
+}
+public void levelMaker(List<List<Integer>> list, TreeNode root, int level) {
+    if(root == null) return;
+    if(level >= list.size()) {
+        list.add(0, new LinkedList<Integer>());
+    }
+    levelMaker(list, root.left, level+1);
+    levelMaker(list, root.right, level+1);
+    list.get(list.size()-level-1).add(root.val);
+}
+```
 [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)<br>
 给一个二叉树，返回从上到下的水平遍历。<br>
 我自己也做出来啦！！然而是C++的BFS想了好久。。哭<br>
