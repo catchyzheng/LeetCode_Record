@@ -1,5 +1,6 @@
 [814. Binary Tree Pruning](https://leetcode.com/problems/binary-tree-pruning/description/)<br>
-自下往上，砍掉所有值为0的叶子节点。<br>
+题意：自下往上，砍掉所有值为0的叶子节点。<br>
+**重点**：					不要光顾着砍掉目前的0值叶子。
 ```
 public TreeNode pruneTree(TreeNode root) {
     if(root==null) return null;
@@ -15,10 +16,38 @@ public TreeNode dfs(TreeNode root){
 ```
 
 [637. Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/solution/)<br>
-找到树每层节点的平均值。dfs或者bfs。这里的bfs可以有不记录层数的方法，即队列里只需要放入节点元素。参见solution代码。
+题意：找到树每层节点的平均值。<br>
+dfs或者bfs。这里的bfs可以有不记录层数的方法，即队列里只需要放入节点元素。参见以下solution代码。
+```
+public List < Double > averageOfLevels(TreeNode root) {
+    List < Double > res = new ArrayList < > ();
+    Queue < TreeNode > queue = new LinkedList < > ();
+    queue.add(root);
+    while (!queue.isEmpty()) {
+        long sum = 0, count = 0;
+        Queue < TreeNode > temp = new LinkedList < > ();
+        while (!queue.isEmpty()) {
+            TreeNode n = queue.remove();
+            sum += n.val;
+            count++;
+            if (n.left != null)
+                temp.add(n.left);
+            if (n.right != null)
+                temp.add(n.right);
+        }
+        queue = temp;
+        res.add(sum * 1.0 / count);
+    }
+    return res;
+}
+```
+如何知道队列中的元素是不是来自同一层呢？方法是用两个队列，将该层节点的子节点存入另一个队列中。之后在copy过来，继续。
 
 [107. Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/discuss/34981/My-DFS-and-BFS-java-solution)<br>
+给一个二叉树，返回自底向上的水平遍历。<br>
+
 [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)<br>
+给一个二叉树，返回从上到下的水平遍历。<br>
 我自己也做出来啦！！然而是C++的BFS想了好久。。哭<br>
 好好学学人家的BFS怎么用java写。。。其实答案还没看懂。。<br>
 ```
@@ -42,11 +71,8 @@ public List<List<Integer>> levelOrder(TreeNode root) {
     return wrapList;
 }
 ```
-
-
-有点无语啊，102是medium但是我觉得实现方法比107 easy还简单。<br>
 [103. Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/)<br>
-4.21更新：**还没做别瞎比比。**呃，其实不就是102的做法后将二维vector数组每层反转一下就行吗。。
+5.3更新：下次做一下。<br>4.21更新：**还没做别瞎比比。**呃，其实不就是102的做法后将二维vector数组每层反转一下就行吗。。
 
 [508. Most Frequent Subtree Sum](https://leetcode.com/problems/most-frequent-subtree-sum/description/)<br>
 找出最频繁的子树和。子树和定义为一棵子树上所有节点的和。

@@ -137,7 +137,7 @@ ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
 }
 ```
 [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/description/)<br>
-三种解法。。iterative，recursive，以及用栈。然而我哪个都不会打。。
+三种解法。。iterative，recursive，以及用栈。然而我当初哪个都不会打。。现在会迭代式了。基本想法就是先新建一个空节点，然后获取当前起始节点及其下个节点。然后一起往后依次移动。
 ```
 public ListNode reverseList(ListNode head) {
     /* iterative solution */

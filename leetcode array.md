@@ -26,10 +26,12 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
     }
 }
 ```
+其实基本思想就是，既然num1的前面都已经存放了元素，那就从最末尾考虑，从大到小归并。这样就算当前访问下标对应的num1位置有元素，那也已经是复制过了的。
+
 [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/solution/)<br>
 一个n+1长的数列中，元素都来自1-n。找到重复的那个数。
 方法一：排序。Arrays.sort(nums); 复杂度nlogn。<br>
-方法二：set。复杂度n。也可以map。大同小异。<br>
+方法二：set。复杂度n。也可以map。大同小异。**这个方法最适合我**。<br>
 其实题目要求是小于n^2时间复杂度，且空间复杂度O(1)。。。那是一个比较神奇的算法。<br>
 ```
 public int findDuplicate(int[] nums) {
@@ -58,6 +60,8 @@ class Solution {
 }
 ```
 [1. Two Sum](https://leetcode.com/problems/two-sum/description/)<br>
+给一个数组和一个目标值，尝试寻找两个数使得和等于目标值，返回两个数的下标。如果没有，返回空数组。<br>
+
 ```
 class Solution {
     public int[] twoSum(int[] nums, int target) {
