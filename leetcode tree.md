@@ -46,7 +46,7 @@ public List < Double > averageOfLevels(TreeNode root) {
 [107. Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/discuss/34981/My-DFS-and-BFS-java-solution)<br>
 给一个二叉树，返回自底向上的水平遍历。<br>
 BFS:和102的基本一致，只需将改成add(0, subList)在0下标处插入subList。
-DFS:看看，学习。
+DFS:下面是DFS代码，看看学习下。
 ```
 public List<List<Integer>> levelOrderBottom(TreeNode root) {
     List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
@@ -61,8 +61,12 @@ public void levelMaker(List<List<Integer>> list, TreeNode root, int level) {
     levelMaker(list, root.left, level+1);
     levelMaker(list, root.right, level+1);
     list.get(list.size()-level-1).add(root.val);
+	//这句有点难理解。。
 }
 ```
+每次在list头部插入新列表，之后。。。有点难理解。
+修改：如果把levelMaker函数中改成list.add(new ...)，把最后的list.get放在两个两句递归的前面，变成list.get(level).add，那么就变成了102，自顶向下的层次遍历。
+
 [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)<br>
 给一个二叉树，返回从上到下的水平遍历。<br>
 我自己也做出来啦！！然而是C++的BFS想了好久。。哭<br>
@@ -88,6 +92,8 @@ public List<List<Integer>> levelOrder(TreeNode root) {
     return wrapList;
 }
 ```
+同样也是可以用dfs做，参考107的dfs修改。
+
 [103. Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/)<br>
 5.3更新：下次做一下。<br>4.21更新：**还没做别瞎比比。**呃，其实不就是102的做法后将二维vector数组每层反转一下就行吗。。
 
@@ -118,6 +124,8 @@ class Solution {
     }
 }
 ```
+坑点在于，最频繁的项数也许出现不止一次。
+
 [572. Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/description/)<br>
 判断t是否是s的子树。注意子树可以是树本身。
 答案的做法，第一种是用后序遍历生成一个字符串，然后判断第二个字符串是否被第一个包含。<br>
@@ -139,7 +147,7 @@ public class Solution {
     }
 }
 ```
-第二种方法，自己的代码，很开心，美滋滋。
+第二种方法，自己的代码，很开心，美滋滋。不过做对还是有点运气尝试的成分。现在看来其实思路对的。
 ```
 class Solution {
     public boolean isSubtree(TreeNode s, TreeNode t) {
@@ -175,9 +183,9 @@ class Solution {
 ```
 
 [563. Binary Tree Tilt](https://leetcode.com/problems/binary-tree-tilt/description/)<br>
-题意：Given a binary tree, return the tilt of the whole tree.<br>
-The tilt of a tree node is defined as the absolute difference between the sum of all left subtree node values and the sum of all right subtree node values. Null node has tilt 0.<br>
-The tilt of the whole tree is defined as the sum of all nodes' tilt.<br>
+题意：给定一个二叉树，返回整棵树的tilt<br>
+一个节点的tilt定义为所有左子树节点值的和，与所有右子树节点值的和的绝对差。空节点的tilt是0。整棵树的tilt定为所有节点的tilt和。<br>
+dfs的同时加上每个节点的tilt。维护答案。
 ```
 class Solution {
     public int ans=0;
@@ -198,7 +206,17 @@ class Solution {
 把所有左叶子节点的值求和。
 
 [112. Path Sum](https://leetcode.com/problems/path-sum/description/)<br>
-题意：找到所有从根到叶子的路径，使得路径和等于指定值。路径集合用列表的列表存储。
+题意：判断是否从根到叶子存在一条路径，使得路径和等于指定值。
+直接dfs判断。简洁而强大的思路。
+```
+bool hasPathSum(TreeNode *root, int sum) {
+    if (root == NULL) return false;
+    if (root->val == sum && root->left ==  NULL && root->right == NULL) return true;
+    return hasPathSum(root->left, sum-root->val) || hasPathSum(root->right, sum-root->val);
+}
+```
+
+如果，想要存路径，那么路径集合用列表的列表存储。
 解法：1是可以每次递归时候传入sum-node->val的值。在叶子节点处判断sum是否等于node->val。<br>
 ```
 if(root==NULL) return;
@@ -206,7 +224,8 @@ pat.push_back(root->val);
 if(root->left==NULL && root->right==NULL){
     if(root->val==sum) ans.push_back(pat);
 }
-dfs(root->left, sum-root->val); dfs(root->right, sum-root->val);
+dfs(root->left, sum-root->val); 
+dfs(root->right, sum-root->val);
 pat.pop_back(); return ;
 ```
 第二种做法是可以用变量cal记录路径和。注意路径要用一个path存储。每次递归结束返回要pop，同时cal要减掉相应值。
@@ -224,15 +243,14 @@ return ;
 
 [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)<br>
 对每个树节点，交换左右分支。。。
+这个题的想法有点和其他tree题不太一样啊。
 ```
-class Solution {
-    public TreeNode invertTree(TreeNode root) {
-        if(root == null) return null;
-        TreeNode new_root = new TreeNode(root.val);
-        new_root.left = invertTree(root.right);
-        new_root.right = invertTree(root.left);
-        return new_root;
-    }
+public TreeNode invertTree(TreeNode root) {
+    if(root == null) return null;
+    TreeNode new_root = new TreeNode(root.val);
+    new_root.left = invertTree(root.right);
+    new_root.right = invertTree(root.left);
+    return new_root;
 }
 ```
 [538. Convert BST to Greater Tree](https://leetcode.com/problems/convert-bst-to-greater-tree/description/)<br>
