@@ -1,3 +1,6 @@
+字符串长度 s.length() 数组长度nums.length
+
+
 数组操作
 int[][] memo = new int[nums.length][2001];
 for (int[] row: memo)

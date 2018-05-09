@@ -1,3 +1,48 @@
+[120. Triangle](https://leetcode.com/problems/triangle/description/)<br>
+给定一个第n行有n个元素的三角形。问从顶端走到底部的最小路径和。<br>
+答案的解答。
+如何迭代。也就是如何构造子问题。很关键。
+```
+// assume triangle is ArrayList<ArrayList<Integer>>, so list.get(index) will be O(1) operation
+// 不要纠结 List 的 get 操作可能是 O(n) runtime; 既然是实现某项功能，使用正确的数据结构是很重要的；如果是该function是用来作 api 使用的，那么数据结构可能是json，需要做预处理。
+// 面试的时候，List 数据结构不同，所需要的runtime 也不同就可以了。
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int[] dp = new int[triangle.size() + 1];
+		//
+        for (int i = triangle.size() - 1; i >= 0; i--) {
+            List<Integer> list = triangle.get(i);
+            for (int j = 0; j < list.size(); j++) {
+                dp[j] = list.get(j) + Math.min(dp[j], dp[j + 1]);
+            }
+        }
+        return dp[0];
+    }
+}
+```
+自己的代码又长又臭。虽然也能做出。
+```
+public int minimumTotal(List<List<Integer>> triangle) {
+    int r = triangle.size(), c;
+    if(r==0) return 0;
+    else c = triangle.get(r-1).size();
+    if(r==1) return triangle.get(0).get(0);
+    int [][] dp = new int[r][c];
+    dp[0][0]=triangle.get(0).get(0);
+    int min_ = Integer.MAX_VALUE;
+    for(int i=1; i<r; i++){
+        for(int j=0; j<=i; j++){
+            if(j==0) dp[i][j]=triangle.get(i).get(j) + dp[i-1][j];
+            else if(j==i) dp[i][j]=triangle.get(i).get(j) + dp[i-1][j-1];
+            else dp[i][j]=triangle.get(i).get(j) + Math.min(dp[i-1][j-1], dp[i-1][j]);
+            if(i==r-1) min_ = min_ < dp[i][j] ? min_ : dp[i][j];
+            System.out.print(dp[i][j]+" ");
+        }
+        System.out.println();
+    }
+    return min_;
+}
+```
 [494. Target Sum](https://leetcode.com/problems/target-sum/solution/)<br>
 给定一个数组，要在每个数前放个符号，然后求和。问有多少种方法可以让和等于指定值。<br>
 又是耗时被吊打的一道题。。

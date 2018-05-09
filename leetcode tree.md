@@ -1,3 +1,24 @@
+[653. Two Sum IV - Input is a BST](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/)<br>
+
+```
+boolean exists = false;
+Set<Integer> set = new HashSet<>();
+public boolean findTarget(TreeNode root, int k) {
+    set.clear();
+    if(root!=null) dfs(root, k); return exists;
+}
+void dfs(TreeNode root, int k){
+    if(exists) return;
+    if(root.left!=null) dfs(root.left, k); 
+    set.add(k - root.val);
+    if(set.contains(root.val) && k != 2*root.val){
+        exists = true; return;
+    }
+    if(root.right!=null) dfs(root.right, k); 
+    return;
+}
+```
+
 [814. Binary Tree Pruning](https://leetcode.com/problems/binary-tree-pruning/description/)<br>
 题意：自下往上，砍掉所有值为0的叶子节点。<br>
 **重点**：不要光顾着砍掉目前的0值叶子。
@@ -255,63 +276,39 @@ public TreeNode invertTree(TreeNode root) {
 ```
 [538. Convert BST to Greater Tree](https://leetcode.com/problems/convert-bst-to-greater-tree/description/)<br>
 题意：给定一棵树，对所有元素，都加上比它大的元素。求最后树的模样。<br>
-思路：很简单，就是先序遍历一遍，排个序累加，然后重新遍历即可。用map帮助实现。坑爹之处在于一定要**判空**，即可能是个空树。<br>
-
-
+现在的正确思路：先右子树，然后中间，然后左子树。利用的就是二叉搜索树右子树所有元素都比树根大的结构。可以在遍历过程中从大到小遍历整棵树。因此用一个变量sum记录遍历过程的局部累加和，然后到了根节点加上sum就行。
+我的dfs写法。
 ```
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-class Solution {
-public:
-    map<int, int> Map;
-    vector<int> oldv, newv;
-    void preorder(TreeNode * root){
-        if(root == NULL) return;
-        else{
-            oldv.push_back(root->val);
-            preorder(root->left); preorder(root->right);
-            return;
-        }
-    }
-    void construct(){
-        sort(oldv.begin(), oldv.end());
-        int sum=0;
-        for(int i=0;i<oldv.size();i++) sum+=oldv[i];
-        newv.push_back(sum);
-        for(int i=0;i<oldv.size()-1;i++){
-            sum-=oldv[i];
-            newv.push_back(sum);
-        }
-        for(int i=0;i<oldv.size();i++){
-            Map[oldv[i]]=newv[i];
-        }
-    }
-    TreeNode* rebuildTree(TreeNode* root){
-        if(root==NULL) return NULL;
-        else{
-            int value = root->val;
-            TreeNode *p = new TreeNode(Map[value]);
-            p->left = rebuildTree(root->left);
-            p->right = rebuildTree(root->right);
-            return p;
-        }
-    }
-    TreeNode* convertBST(TreeNode* root) {
-        if(root==NULL) return NULL; // 奶奶的关键就在这里！要先判断，不然会出现
-                                //reference binding to null pointer of type 'value_type'
-        preorder(root); construct();
-        return rebuildTree(root);
-    }
-};
+int sum=0;
+public TreeNode convertBST(TreeNode root) {
+    if(root!=null) dfs(root);
+    return root;
+}
+public void dfs(TreeNode root){
+    if(root.right != null) dfs(root.right);
+    sum += root.val; 
+	root.val = sum;
+    if(root.left != null) dfs(root.left);
+    return;
+}
 ```
+标准dfs的写法：其实有返回值的函数也可以不指定等式左边的接收变量，直接写就是了。
+```
+int sum=0;
+public TreeNode convertBST(TreeNode root) {
+    if(root!=null){ 
+		convertBST(root.right);
+        sum += root.val; 
+		root.val = sum; 
+        convertBST(root.left);
+    }
+    return root;
+}
+```
+以前的思路：先序遍历一遍，排个序累加，找到各个元素对应的新值，然后重新建树即可。没利用到二叉搜索树的性质特点。一定要**判空**，即可能是个空树。<br>
+
 [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/)<br>
+简洁到震惊。
 ```
 class Solution {
     public int maxDepth(TreeNode root) {
@@ -321,7 +318,8 @@ class Solution {
 }
 ```
 [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/description/)<br>
-大神的思路：还没搞懂。。。<br>
+大神的思路：牛逼！最后return句的判断是针对那些无某一边子树的节点情况。毕竟，只要子树有一个节点，那就算是子树，就该参与到mindepth的比较中。<br>
+因此，如果没有某一边的子树，那就返回另一边的深度加1（自己）。否则，就返回左右子树的较小深度加1.<br>
 ```
 public class Solution {
     public int minDepth(TreeNode root) {
@@ -329,11 +327,10 @@ public class Solution {
         int left = minDepth(root.left);
         int right = minDepth(root.right);
         return (left == 0 || right == 0) ? left + right + 1: Math.min(left,right) + 1;
-       
     }
 }
 ```
-自己的思路：BFS,记录深度。不知道java怎么写只能用c++了。。注意一定要**pop！！**<br>
+自己的思路：BFS,记录深度。注意一定要**pop！！**<br>
 ```
 class Solution {
 public:
