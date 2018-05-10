@@ -1,3 +1,22 @@
+
+[91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)<br>
+令A-Z对应1-26，现在给出一个数字构成的字符串，问有多少种解析成字母串的方法？
+
+下面不是自己的代码。但很简洁，值得学习。要考虑两个问题，1如何设计子问题，2如何根据子问题的最优解构造原问题最优解。。
+```
+public int numDecodings(String s) {
+    int n = s.length();
+    if (n == 0) return 0;
+    int[] memo = new int[n+1];
+    memo[n]  = 1;
+    memo[n-1] = s.charAt(n-1) != '0' ? 1 : 0;
+    for (int i = n - 2; i >= 0; i--)
+        if (s.charAt(i) == '0') continue;
+        else memo[i] = (Integer.parseInt(s.substring(i,i+2))<=26) ? memo[i+1]+memo[i+2] : memo[i+1];
+    return memo[0];
+}
+```
+
 [120. Triangle](https://leetcode.com/problems/triangle/description/)<br>
 给定一个第n行有n个元素的三角形。问从顶端走到底部的最小路径和。<br>
 答案的解答。
