@@ -1,5 +1,122 @@
+[221. Maximal Square](https://leetcode.com/problems/maximal-square/solution/)<br>
+在一个01矩阵中找到最大的全1的正方形。<br>
+
+```
+public int maximalSquare(char[][] matrix) {
+    int rows = matrix.length, cols = rows > 0 ? matrix[0].length : 0;
+    int[][] dp = new int[rows + 1][cols + 1];
+    int maxsqlen = 0;
+    for (int i = 1; i <= rows; i++) {
+        for (int j = 1; j <= cols; j++) {
+            if (matrix[i-1][j-1] == '1'){
+                dp[i][j] = Math.min(Math.min(dp[i][j - 1], dp[i - 1][j]), dp[i - 1][j - 1]) + 1;
+                maxsqlen = Math.max(maxsqlen, dp[i][j]);
+            }
+        }
+    }
+    return maxsqlen * maxsqlen;
+}
+```
+
+[300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/description/)<br>
+找到最长的上升子序列。不一定要连续。
+动规。其实思路不难的。。。
+```
+public int lengthOfLIS(int[] nums) {
+    if (nums.length == 0) {
+        return 0;
+    }
+    int[] dp = new int[nums.length];
+    dp[0] = 1;
+    int maxans = 1;
+    for (int i = 1; i < dp.length; i++) {
+        int maxval = 0;
+        for (int j = 0; j < i; j++) {
+            if (nums[i] > nums[j]) {
+                maxval = Math.max(maxval, dp[j]);
+            }
+        }
+        dp[i] = maxval + 1;
+        maxans = Math.max(maxans, dp[i]);
+    }
+    return maxans;
+}
+```
+
+[264. Ugly Number II](https://leetcode.com/problems/ugly-number-ii/description/)<br>
+丑数定义为只能被2，3，5整除的数。要求在O(n)内找到第n个丑数。<br>
+新建一个数组k表示丑数序列，第一个为k[0] = 1.然后
+k[1] = min( k[0]x2, k[0]x3, k[0]x5). 答案是k[0]x2. 于是移动2的下标，增加1. 之后尝试:
+k[2] = min( k[1]x2, k[0]x3, k[0]x5). 等等. 注意，对于6这类数，应该对2和3的下标都增加 1.
+[code is here](https://leetcode.com/problems/ugly-number-ii/discuss/69364/My-16ms-C++-DP-solution-with-short-explanation)<br>
+
+[152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/)<br>
+寻找乘积最大的子序列。
+下面是投票最多的解法。很巧妙。
+```
+int maxProduct(int A[], int n) {
+    // store the result that is the max we have found so far
+    int r = A[0];
+    // imax/imin stores the max/min product of
+    // subarray that ends with the current number A[i]
+    for (int i = 1, imax = r, imin = r; i < n; i++) {
+        // multiplied by a negative makes big number smaller, small number bigger
+        // so we redefine the extremums by swapping them
+        if (A[i] < 0)
+            swap(imax, imin);
+        // max/min product for the current number is either the current number itself
+        // or the max/min by the previous number times the current one
+        imax = max(A[i], imax * A[i]);
+        imin = min(A[i], imin * A[i]);
+        // the newly computed max value is a candidate for our global result
+        r = max(r, imax);
+    }
+    return r;
+}
+```
+
 [646. Maximum Length of Pair Chain](https://leetcode.com/problems/maximum-length-of-pair-chain/description/)<br>
 有dp的做法，也有greedy的做法。[here](https://leetcode.com/problems/maximum-length-of-pair-chain/solution/)
+别人的贪心做法：
+这个Arrays.sort写得好！还有这个foreach循环真棒。
+```
+public int findLongestChain(int[][] pairs) {
+    Arrays.sort(pairs, (a, b) -> a[1] - b[1]);
+    int cur = Integer.MIN_VALUE, ans = 0;
+    for (int[] pair: pairs) {
+		if (cur < pair[0]) {
+	        cur = pair[1];
+	        ans++;
+	    }
+	}	
+    return ans;
+}
+```
+自己的贪心做法。
+```
+public int findLongestChain(int[][] p) {
+    if(p.length<=1) return p.length;
+    for(int i=0; i<p.length-1; i++){
+        for(int j=i+1; j<p.length; j++){
+            if(p[j][1]<p[i][1]){
+                int tmp1=p[i][0], tmp2=p[i][1];
+                p[i][0]=p[j][0]; p[i][1]=p[j][1];
+                p[j][0]=tmp1; p[j][1]=tmp2;
+            }
+        }
+    }
+    int cnt=1;
+    int end=p[0][1];
+    for(int s=1; s<p.length; s++){
+        if(p[s][0]>end){
+            cnt++;
+            end=p[s][1];
+        }
+    }
+    return cnt;
+}
+```
+
 
 [714. Best Time to Buy and Sell Stock with Transaction Fee](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solution/)<br>
 没怎么看懂，好难啊。。<br>
@@ -57,9 +174,9 @@ public boolean isSymmetric(TreeNode root) {
 public class Solution {
     public boolean hasPathSum(TreeNode root, int sum) {
         if(root == null) return false;
-        
+        //
         if(root.left == null && root.right == null && sum - root.val == 0) return true;
-    
+    	//
         return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
     }
 }
