@@ -1,3 +1,6 @@
+[343. Integer Break](https://leetcode.com/problems/integer-break/description/)<br>
+dp, or math approach.
+
 [221. Maximal Square](https://leetcode.com/problems/maximal-square/solution/)<br>
 在一个01矩阵中找到最大的全1的正方形。<br>
 
