@@ -1,3 +1,6 @@
+[258. Add Digits](https://leetcode.com/problems/add-digits/description/)<br>
+感觉数学题并不能体现编程能力orz。。。
+
 [9. Palindrome Number](https://leetcode.com/problems/palindrome-number/description/)<br>
 判断一个数是否回文。负数都不回文。除了0以外的10的倍数也不回文。<br>
 看具体算法的思路的耗时才靠谱，而不是看排行榜。有时同样的代码耗时也不一样。<br>
