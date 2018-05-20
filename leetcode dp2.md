@@ -1,3 +1,6 @@
+[Most-consistent-ways-of-dealing-with-the-series-of-stock-problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/Most-consistent-ways-of-dealing-with-the-series-of-stock-problems)<br>
+感觉，表示收益的T数组在初始化时候，如果手中没有股票就都是初始化为0，有股票就初始化为负无穷。
+
 [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/discuss/39038/kadanes-algorithm-since-no-one-has-mentioned-about-this-so-far-in-case-if-interviewer-twists-the-input)<br>
 一个121的变体：如果给出的数组不是每天的价格，而是当天价格减去前一天价格的差，那么要怎么求解？<br>
 虽然没听过kadane算法。。但这篇的思路还是挺不错的。确实类似最大子数组问题。
