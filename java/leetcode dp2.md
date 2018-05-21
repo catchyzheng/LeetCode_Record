@@ -1,6 +1,6 @@
 [Most-consistent-ways-of-dealing-with-the-series-of-stock-problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/Most-consistent-ways-of-dealing-with-the-series-of-stock-problems)<br>
-感觉，表示收益的T数组在初始化时候，如果手中没有股票就都是初始化为0，有股票就初始化为负无穷。
-
+这篇文章将所有有关股票交易的题目都放在了一个大的框架下阐述。事实证明，每道题其实都是由这个大框架衍生出来的一些特例或者变体。清晰明白，讲解透彻，学到了很多！<br>
+感觉，表示收益的T数组在初始化时候，如果手中没有股票就都是初始化为0，有股票就初始化为负无穷。<br>
 看完之后，受益匪浅！曾经看不懂的transaction with cool down，在作者的通用框架下只需小小的改动！非常佩服作者这样找到若干特殊问题背后的一般规律的人。仿佛统一了经典力学和量子力学。（好吧我是物理渣）
 
 [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/discuss/39038/kadanes-algorithm-since-no-one-has-mentioned-about-this-so-far-in-case-if-interviewer-twists-the-input)<br>
