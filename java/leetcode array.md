@@ -1,3 +1,30 @@
+[238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)<br>
+给定一数组，返回一个数组，每个元素都是除了本身以外的所有元素的乘积。
+不难。就是有些坑点。哪里有坑呢？想一想
+```
+public int[] productExceptSelf(int[] nums) {
+    int all = 1;
+    int cntZero=0;
+    for(int num: nums){
+        if(num!=0) all*=num;
+        else cntZero++;
+    }
+    int [] ans = new int[nums.length];
+    if(cntZero > 1) return ans;
+    else if(cntZero==1){
+        for(int i=0; i<nums.length; ++i){
+            if(nums[i]==0) ans[i]=all;
+        }
+    }
+    else{
+		for(int i=0; i<nums.length; ++i) 
+			ans[i] = all/nums[i];
+	}
+    return ans;
+}
+```
+坑点：1个0和2个以上0的情况。
+
 [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/)<br>
 给定一系列间隔为1的木板及其长度，任意选择两块木板，求可以达到的最大包围面积。|_|
 考虑一个问题：若已知两块木板位置，下一个时刻应该如何移动木板？
