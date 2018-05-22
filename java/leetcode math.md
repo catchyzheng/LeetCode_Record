@@ -1,5 +1,6 @@
-[258. Add Digits](https://leetcode.com/problems/add-digits/description/)<br>
-感觉数学题并不能体现编程能力orz。。。
+5/19 [258. Add Digits](https://leetcode.com/problems/add-digits/description/)<br>
+感觉数学题并不能体现编程能力orz。。。<br>
+Follow up:Could you do it without any loop/recursion in O(1) runtime?
 
 [9. Palindrome Number](https://leetcode.com/problems/palindrome-number/description/)<br>
 判断一个数是否回文。负数都不回文。除了0以外的10的倍数也不回文。<br>
