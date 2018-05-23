@@ -1,4 +1,9 @@
+5/23 [260. Single Number III](https://leetcode.com/problems/single-number-iii//description/)<br>
+题意：除了两个数仅有一次，其他每个数都出现了两次。找到那两个数。<br>
+其实一直没懂的是，为何取了全部数XOR后结果的最后一位后，就可以根据这个最后一位来分出两组数，每组数必定包含一个仅出现一次的数？
+
 5/20 [137. Single Number II](https://leetcode.com/problems/single-number-ii/description/)<br>
+题意：除了一个数仅有一次，其他每个数都出现了三次。找到那个数。
 其实就是参考下面的文章的做法。。
 
 [关于single number问题的解释和泛化。](https://leetcode.com/problems/single-number-ii/discuss/43295/Detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers)<br>
