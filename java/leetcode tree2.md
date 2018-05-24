@@ -1,3 +1,7 @@
+5.24 [94. Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/description/)<br>
+中序遍历一棵树。递归遍历很简单，但如何迭代地遍历呢？这才是follow up的难点。<br>
+还没看。。之后有机会看看。
+
 [108. Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/)<br>
 [109. Convert Sorted List to Binary Search Tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/description/) together<br>
 you should always notice the marginal condition. consider every special cases.
