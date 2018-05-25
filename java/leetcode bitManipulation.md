@@ -1,3 +1,17 @@
+5/24 [389. Find the Difference]()<br>
+这题。。其实是不允许使用任何java容器的，“XXX is not declared in this scope.”<br>
+日后自己想一想，怎么做才是最快的？<Br>
+其实有个隐含情况，那就是加的字母曾经出现在原字符串中。<br>
+这时候你还会想用set吗。
+```
+public char findTheDifference(String s, String t) {
+    int a=0;
+    for(char c: s.toCharArray()) a^=c-'a';
+    for(char d: t.toCharArray()) a^=d-'a';
+    return (char)(a+'a');
+}
+```
+
 5/23 [260. Single Number III](https://leetcode.com/problems/single-number-iii//description/)<br>
 题意：除了两个数仅有一次，其他每个数都出现了两次。找到那两个数。<br>
 其实一直没懂的是，为何取了全部数XOR后结果的最后一位后，就可以根据这个最后一位来分出两组数，每组数必定包含一个仅出现一次的数？
