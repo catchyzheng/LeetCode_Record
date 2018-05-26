@@ -1,4 +1,4 @@
-5/24 [389. Find the Difference]()<br>
+5/25 [389. Find the Difference](https://leetcode.com/problems/find-the-difference/description/)<br>
 这题。。其实是不允许使用任何java容器的，“XXX is not declared in this scope.”<br>
 日后自己想一想，怎么做才是最快的？<Br>
 其实有个隐含情况，那就是加的字母曾经出现在原字符串中。<br>
