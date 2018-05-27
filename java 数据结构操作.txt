@@ -8,6 +8,13 @@ int[][] memo = new int[nums.length][2001];
 for (int[] row: memo)
    Arrays.fill(row, Integer.MIN_VALUE);
 
+Stack<Integer> st = new Stack<Integer>()
+boolean empty() 
+Object peek( )
+Object pop( )
+Object push(Object element)
+int search(Object element) 返回对象在堆栈中的位置，以 1 为基数。
+
 
 Map<Integer, Integer> map = new HashMap<>();
 map.getOrDefault(key,0) //
