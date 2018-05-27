@@ -1,6 +1,8 @@
 From now on，I would start to record my coding daily. 
 For better look-up when reviewing in the future.<br>
-5/27 
+5/27<br>
+832. Flipping an Image 657. Judge Route Circle 
+
 
 5.26<br>
 [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/discuss/81635/3-Java-Solution-using-Array-MaxHeap-TreeMap)<br>
