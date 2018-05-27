@@ -1,4 +1,19 @@
-[238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)<br>
+5/27 [832. Flipping an Image](https://leetcode.com/problems/flipping-an-image/description/)<br>
+先横向翻转，然后再01逆。应该要能一次二重循环搞定！
+```
+public int[][] flipAndInvertImage(int[][] A) {
+    int C = A[0].length;
+    for (int[] row: A)
+        for (int i = 0; i < (C + 1) / 2; ++i) {
+            int tmp = row[i] ^ 1;
+            row[i] = row[C - 1 - i] ^ 1;
+            row[C - 1 - i] = tmp;
+        }
+    return A;
+}
+```
+
+5/22 [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)<br>
 给定一数组，返回一个数组，每个元素都是除了本身以外的所有元素的乘积。
 不难。就是有些坑点。哪里有坑呢？想一想
 ```
