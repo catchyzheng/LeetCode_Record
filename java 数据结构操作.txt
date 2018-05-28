@@ -4,6 +4,7 @@ char to int: c-'0'
 
 数组操作
 List<List<Integer>> ans = new ArrayList<>();
+当ans，list都是全局变量，ans.add(new ArrayList<>(list)) 快速拷贝。学到了。
 
 int[][] memo = new int[nums.length][2001];
 for (int[] row: memo)
