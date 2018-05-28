@@ -1,4 +1,29 @@
-5.24 [94. Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/description/)<br>
+5/28 [654. Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree/description/)<br>
+给定一数组，每次挑出最大元素作为根节点。然后从左边剩余部分挑最大作为左子节点，右边最大作为右子节点，循环下去。要求返回构建的树的根。<br>
+一看就知道要递归的。
+```
+public TreeNode constructMaximumBinaryTree(int[] nums) {
+    TreeNode root = div(nums, 0, nums.length-1);
+    return root;
+}
+TreeNode div(int [] nums, int i, int j){
+    if(i>j) return null;
+    if(i==j) return new TreeNode(nums[i]);
+    int max_=Integer.MIN_VALUE, index=0;
+    int k;
+    for(k=i; k<=j; ++k){
+        if(nums[k]>max_) {
+            max_=nums[k]; index=k; 
+        }
+    }
+    TreeNode node = new TreeNode(max_);
+    node.left = div(nums, i, index-1);
+    node.right = div(nums, index+1, j);
+    return node;
+}
+```
+
+5/24 [94. Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/description/)<br>
 中序遍历一棵树。递归遍历很简单，但如何迭代地遍历呢？这才是follow up的难点。<br>
 还没看。。之后有机会看看。
 
