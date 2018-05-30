@@ -1,5 +1,6 @@
 From now on，I would start to record my coding daily. 
 For better look-up when reviewing in the future.<br>
+5/30 35. Search Insert Position <br>
 5/29  <br>
 5/28 617. Merge Two Binary Trees 797. All Paths From Source to Target <br>
 5/27 
