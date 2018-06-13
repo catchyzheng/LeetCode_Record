@@ -1,3 +1,5 @@
+6/13 []()
+
 5/30 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)<br>
 超级简单的二分法练手。。
 ```
