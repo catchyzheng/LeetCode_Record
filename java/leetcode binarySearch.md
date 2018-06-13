@@ -1,6 +1,7 @@
-6/13 []()<br>
+6/13 [350. Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii/description/)<br>
 计算两个集合的交集，包含重复元素。可以有二分和非二分的做法。<br>
 非二分做法：先对两集合分别排序。用两个下标指针，依次比较两个下标指向的元素的大小，元素小的指针自增1.如果相等，就加入ans数组中。
+二分做法：对集合b的元素，依次在集合a中进行二分查找。
 
 5/30 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)<br>
 超级简单的二分法练手。。
