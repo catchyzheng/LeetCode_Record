@@ -1,4 +1,6 @@
-6/13 []()
+6/13 []()<br>
+计算两个集合的交集，包含重复元素。可以有二分和非二分的做法。<br>
+非二分做法：先对两集合分别排序。用两个下标指针，依次比较两个下标指向的元素的大小，元素小的指针自增1.如果相等，就加入ans数组中。
 
 5/30 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)<br>
 超级简单的二分法练手。。
