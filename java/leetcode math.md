@@ -1,3 +1,11 @@
+6/14 [441. Arranging Coins](https://leetcode.com/problems/arranging-coins/description/)<br>
+解方程：（k+1）*k/2 <= n，k是未知数。
+sqrt里面要用小数。。。好吧。
+```
+    public int arrangeCoins(int n) {
+        return (int)((Math.sqrt(1+8.0*n)-1)/2.0);
+    }
+```
 5/19 [258. Add Digits](https://leetcode.com/problems/add-digits/description/)<br>
 感觉数学题并不能体现编程能力orz。。。<br>
 Follow up:Could you do it without any loop/recursion in O(1) runtime?
