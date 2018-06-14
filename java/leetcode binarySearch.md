@@ -1,3 +1,19 @@
+6/14 [278. First Bad Version](https://leetcode.com/problems/first-bad-version/description/)<br>
+给定一系列程序版本的编号，找到最先错误的版本号。<br>
+```
+public int firstBadVersion(int n) {
+    if(isBadVersion(1)) return 1;
+    int low=1, high=n;
+    int mid;
+    while(low<high){
+        mid=low + (high - low)/2;
+        if(isBadVersion(mid)) high=mid;
+        else low=mid+1;
+    }
+    return low;
+}
+```
+
 6/13 [350. Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii/description/)<br>
 计算两个集合的交集，包含重复元素。可以有二分和非二分的做法。<br>
 非二分做法：先对两集合分别排序。用两个下标指针，依次比较两个下标指向的元素的大小，元素小的指针自增1.如果相等，就加入ans数组中。
