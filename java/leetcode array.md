@@ -1,5 +1,22 @@
-6/12 []()<br>
-今天开始继续。
+6/15 [724. Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)<br>
+找到一个主元素，使得左边元素和等于右边元素和，返回下标。如果没有，返回-1.<br>
+注意，要考虑主元素在两端的情况。
+```
+public int pivotIndex(int[] nums) {
+    int len = nums.length;
+    if(len==0) return -1; if(len==1) return 0;
+    int [] t = new int[len+1];
+    t[0]=0;
+    for(int i=1; i<=len; ++i){
+        t[i] = t[i-1] + nums[i-1];
+    }
+    int k; boolean find = false;
+    for(k=1; k<=len; ++k){
+        if(t[k-1] == t[len]-t[k]) {find = true; break; }
+    }
+    return find ? k-1 : -1;
+}
+```
 
 5/27 [832. Flipping an Image](https://leetcode.com/problems/flipping-an-image/description/)<br>
 先横向翻转，然后再01逆。应该要能一次二重循环搞定！
