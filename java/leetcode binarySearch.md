@@ -1,3 +1,34 @@
+
+6/15 [475. Heaters](https://leetcode.com/problems/heaters/description/)<br>
+给定一系列房子的一维位置和一系列火炉的位置，求要让火炉覆盖所有房子的最小半径。<br>
+简言之，要让所有等半径的圆覆盖所有点。
+<br>
+Arrays自带的binarySearch: <br>
+1、如果找到关键字，则返回关键字在数组中的位置，从0开始<br>
+2、如果没有找到关键字，返回负的插入点值.所谓插入点值就是第一个比关键字大的元素在数组中的位置索引，从1开始。<br>
+和答案思路一致，但是忘记了一个重要条件。
+别人家的代码总是没有让我失望过。。
+```
+public int findRadius(int[] houses, int[] heaters) {
+    Arrays.sort(heaters);
+    int result = Integer.MIN_VALUE;
+    
+    for (int house : houses) {
+        int index = Arrays.binarySearch(heaters, house);
+        if (index < 0) {
+    	index = -(index + 1); //return neg
+        }
+        int dist1 = index - 1 >= 0 ? house - heaters[index - 1] : Integer.MAX_VALUE;
+        int dist2 = index < heaters.length ? heaters[index] - house : Integer.MAX_VALUE;
+    
+        result = Math.max(result, Math.min(dist1, dist2));
+    }
+    
+    return result;
+}
+```
+重要条件：先要对火炉位置从小到大排序。
+
 6/15 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)<br>
 在一个数组中寻找目标值。如果找不到，就寻找应该被插入的下标位置。<br>
 基本二分法。照着模板就行啦====
