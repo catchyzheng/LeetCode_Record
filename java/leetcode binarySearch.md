@@ -1,4 +1,22 @@
-
+6/15 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)<br>
+在一个数组中寻找目标值。如果找不到，就寻找应该被插入的下标位置。<br>
+基本二分法。照着模板就行啦====
+```
+public int searchInsert(int[] nums, int target) {
+    if(target<nums[0]) return 0;
+    if(target>nums[nums.length-1]) return nums.length;
+    int low = 0, high = nums.length-1, mid;
+    while(low < high){
+        mid = low + (high - low)/2;
+        if(target==nums[mid]) {low = mid; break; }
+        if(nums[mid]>target) high = mid;
+        else low = mid+1;
+    }
+    return low;
+}
+```
+6/15 [69. Sqrt(x)](https://leetcode.com/playground/new)<br>
+二分法找平方根。注意x是非负整数！！<br>
 6/15 [374. Guess Number Higher or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/description/)<br>
 常规二分。依然是对low = mid + 1。
 ```
