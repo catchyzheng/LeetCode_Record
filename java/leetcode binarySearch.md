@@ -1,3 +1,40 @@
+
+6/15 [374. Guess Number Higher or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/description/)<br>
+常规二分。依然是对low = mid + 1。
+```
+public int guessNumber(int n) {
+    int low = 1, high = n, mid;
+    while(low<high){
+        mid = low + (high - low)/2;
+        if(guess(mid)==0) {low = mid; break; }
+        else if(guess(mid)==1) low=mid+1;
+        else high=mid;
+    }
+    return low;
+}
+```
+下一题：[375. Guess Number Higher or Lower II](https://leetcode.com/problems/guess-number-higher-or-lower-ii/description/)<br>
+题意不清。。。
+
+6/15 [367. Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square/description/)<br>
+判断一个数是否是平方数。<br>
+坑点1：要用long，不然会overflow。
+坑点2：特殊判断n=1. 这是自己考虑不周所致。
+```
+public boolean isPerfectSquare(int num) {
+    if(num==1) return true;
+    long low = 1, high = num, mid;
+    boolean can = false;
+    while(low < high){
+        mid = low + (high - low)/2;
+        if(mid*mid == num) { can=true; break; } 
+        else if(mid*mid < num) low = mid+1;
+        else high = mid;
+    }
+    return can;
+}
+```
+
 6/14 [278. First Bad Version](https://leetcode.com/problems/first-bad-version/description/)<br>
 给定一系列程序版本的编号，找到最先错误的版本号。<br>
 二分查找基本功。要注意low+（high-low）/2.否则会溢出。以及更新low和high时候只有一个需要+1.<br>
