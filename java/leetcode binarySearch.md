@@ -2,7 +2,24 @@
 [378. Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)<br>
 两道题好像，都是二分法。。
 
-6/16 [230. Kth Smallest Element in a BST]()<br>
+6/16 [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)<br>
+在一个BST中寻找第k大的元素。 还没想过看follow up如何解决。
+```
+public int kthSmallest(TreeNode root, int k) {
+    int count = countNodes(root.left);
+    if (k <= count) {
+        return kthSmallest(root.left, k);
+    }
+    else if (k > count + 1) {
+        return kthSmallest(root.right, k-1-count); // 1 is counted as current node
+    }
+    return root.val;
+}
+public int countNodes(TreeNode n) {
+    if (n == null) return 0;   
+    return 1 + countNodes(n.left) + countNodes(n.right);
+}
+```
 Follow up:
 What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?<br>
 
