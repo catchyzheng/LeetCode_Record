@@ -1,6 +1,19 @@
 [240. Search a 2D Matrix II]()<br>
-[378. Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)<br>
-两道题好像，都是二分法。。
+[74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)<br>
+
+```
+public boolean searchMatrix(int[][] matrix, int target) {
+    int r = matrix.length;
+    int c = (r==0 ? 0:matrix[0].length);
+    if(r==0||c==0) return false;
+    int p=0, q=0;
+    while(q<r && matrix[q][c-1]<target) ++q; // q is the row that 'target' exists.
+    if(q==r) --q; //if last row, should minus one. 
+    int index = Arrays.binarySearch(matrix[q], target);
+    return index<0 ? false : true;
+}
+```
+为什么总是不考虑边界情况啊。。。当到边界时候，真的要验证一遍自己的代码有没有错误啊。
 
 6/16 [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)<br>
 在一个BST中寻找第k大的元素。 还没想过看follow up如何解决。
