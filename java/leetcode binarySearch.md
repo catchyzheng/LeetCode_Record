@@ -1,3 +1,6 @@
+[230. Kth Smallest Element in a BST]()<br>
+Follow up:
+What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?
 
 6/15 [475. Heaters](https://leetcode.com/problems/heaters/description/)<br>
 给定一系列房子的一维位置和一系列火炉的位置，求要让火炉覆盖所有房子的最小半径。<br>
