@@ -17,6 +17,7 @@ public boolean searchMatrix(int[][] matrix, int target) {
 
 6/16 [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)<br>
 在一个BST中寻找第k大的元素。 还没想过看follow up如何解决。
+以下是二分dfs的方法。其实没看出和二分有啥关系。。就是一个dfs的做法啊。
 ```
 public int kthSmallest(TreeNode root, int k) {
     int count = countNodes(root.left);
@@ -35,6 +36,8 @@ public int countNodes(TreeNode n) {
 ```
 Follow up:
 What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?<br>
+
+详细解答看[here](https://leetcode.com/problems/kth-smallest-element-in-a-bst/discuss/63660/3-ways-implemented-in-JAVA-(Python):-Binary-Search-in-order-iterative-and-recursive)<br>
 
 intersection of two arrays 2 
 follow up:<br>
