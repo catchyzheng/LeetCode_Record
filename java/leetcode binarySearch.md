@@ -1,6 +1,16 @@
-[230. Kth Smallest Element in a BST]()<br>
+[240. Search a 2D Matrix II]()<br>
+[378. Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)<br>
+两道题好像，都是二分法。。
+
+6/16 [230. Kth Smallest Element in a BST]()<br>
 Follow up:
-What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?
+What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?<br>
+
+intersection of two arrays 2 
+follow up:<br>
+What if the given array is already sorted? How would you optimize your algorithm?<br>
+What if nums1's size is small compared to nums2's size? Which algorithm is better?<br>
+What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?<br>
 
 6/15 [475. Heaters](https://leetcode.com/problems/heaters/description/)<br>
 给定一系列房子的一维位置和一系列火炉的位置，求要让火炉覆盖所有房子的最小半径。<br>
