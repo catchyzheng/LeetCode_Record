@@ -48,35 +48,54 @@ public int[][] flipAndInvertImage(int[][] A) {
 ```
 
 5/22 [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)<br>
-给定一数组，返回一个数组，每个元素都是除了本身以外的所有元素的乘积。
-不难。就是有些坑点。哪里有坑呢？想一想
+给定一数组，返回一个数组，每个元素都是除了本身以外的所有元素的乘积。**要求：不要用除法。。**<br>
+最高票的答案，牛逼啊！正序求一遍累乘，逆序一遍累乘，乘起来就是最终答案！
 ```
 public int[] productExceptSelf(int[] nums) {
-    int all = 1;
-    int cntZero=0;
-    for(int num: nums){
-        if(num!=0) all*=num;
-        else cntZero++;
+    int n = nums.length;
+    int[] res = new int[n];
+    res[0] = 1;
+    for (int i = 1; i < n; i++) {
+        res[i] = res[i - 1] * nums[i - 1];
     }
-    int [] ans = new int[nums.length];
-    if(cntZero > 1) return ans;
-    else if(cntZero==1){
-        for(int i=0; i<nums.length; ++i){
-            if(nums[i]==0) ans[i]=all;
-        }
+    int right = 1;
+    for (int i = n - 1; i >= 0; i--) {
+        res[i] *= right;
+        right *= nums[i];
     }
-    else{
-		for(int i=0; i<nums.length; ++i) 
-			ans[i] = all/nums[i];
-	}
-    return ans;
+    return res;
 }
 ```
-坑点：1个0和2个以上0的情况。
+```
+    def productExceptSelf(self, nums):
+        p = 1
+        n = len(nums)
+        output = []
+        for i in range(0,n):
+            output.append(p)
+            p = p * nums[i]
+        p = 1
+        for i in range(n-1,-1,-1):
+            output[i] = output[i] * p
+            p = p * nums[i]
+        return output
+```
 
 [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/)<br>
 给定一系列间隔为1的木板及其长度，任意选择两块木板，求可以达到的最大包围面积。|_|
 考虑一个问题：若已知两块木板位置，下一个时刻应该如何移动木板？
+```
+    def maxArea(self, height):
+        l, r = 0, len(height) - 1
+        maxArea = 0
+        while l < r:
+            temp = (r-l) * min(height[l], height[r])
+            if temp > maxArea:
+                maxArea = temp
+            if height[l] > height[r]: r -= 1
+            else: l += 1
+        return maxArea
+```
 
 [88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/description/)<br>
 合并两个有序数组，要求合并后的结果存放在nums1中。
@@ -102,6 +121,7 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
     }
 }
 ```
+从后往前归并，强！
 ```
 def merge(self, nums1, m, nums2, n):
     while m > 0 and n > 0:
