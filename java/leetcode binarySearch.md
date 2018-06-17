@@ -1,6 +1,8 @@
 6/17 [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)<br>
-题意：
+题意：一个升序的数组，左边部分元素整体平移了。12345变成45123.搜索指定元素返回下标，否则返回-1.<br>
+
 二分法。但是总是忽略一些边界情况！！！
+不知道答案是怎么做的。
 ```
 public int search(int[] nums, int target) {
     int len = nums.length;
@@ -28,8 +30,10 @@ public int search(int[] nums, int target) {
 1空数组没判断！2末尾要判断是否是low还是low+1！！<br>
 
 6/17 [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)<br>
-题意：
+题意：寻找平移过的数组中的最小元素.<br>
 做题时候，先看看是否有空数组或者长度为1的特殊情况需要单独判断啊！！！
+答案怎么做？
+
 ```
 public int findMin(int[] nums) {
     int low = 0, high = nums.length-1, mid;
@@ -51,7 +55,25 @@ public int findMin(int[] nums) {
 
 6/16 [240. Search a 2D Matrix II](https://leetcode.com/problems/search-a-2d-matrix-ii/description/)<br>
 题意：
-其实不是自己的思路，但真的很棒。
+其实是答案的思路，但真的很棒。
+
+[74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)<br>
+题意：一个矩阵，每行从左到右升序，上一行最右的元素总小于下一行最左元素。搜索target值的元素，否则返回-1.<br>
+简单题。然鹅。。
+答案怎么做？
+```
+public boolean searchMatrix(int[][] matrix, int target) {
+    int r = matrix.length;
+    int c = (r==0 ? 0:matrix[0].length);
+    if(r==0||c==0) return false;
+    int p=0, q=0;
+    while(q<r && matrix[q][c-1]<target) ++q; // q is the row that 'target' exists.
+    if(q==r) --q; //if last row, should minus one. 
+    int index = Arrays.binarySearch(matrix[q], target);
+    return index<0 ? false : true;
+}
+```
+为什么总是不考虑边界情况啊。。。当到边界时候，真的要验证一遍自己的代码有没有错误啊。
 
 6/16 [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)<br>
 在一个BST中寻找第k大的元素。 还没想过看follow up如何解决。
