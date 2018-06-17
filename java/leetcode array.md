@@ -21,8 +21,6 @@ public int pivotIndex(int[] nums) {
 ```
 ```
 def pivotIndex(self, nums):
-    # Time: O(n)
-    # Space: O(1)
     left, right = 0, sum(nums)
     for index, num in enumerate(nums):
         right -= num
@@ -45,6 +43,14 @@ public int[][] flipAndInvertImage(int[][] A) {
         }
     return A;
 }
+```
+```
+def flipAndInvertImage(self, A):
+    n = len(A[0])
+    for row in A:
+        for i in range(int((n + 1) / 2)):
+            row[i], row[~i] = row[~i] ^ 1, row[i] ^ 1
+    return A
 ```
 
 5/22 [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)<br>
