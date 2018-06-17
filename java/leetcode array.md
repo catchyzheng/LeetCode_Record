@@ -102,6 +102,18 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
     }
 }
 ```
+```
+def merge(self, nums1, m, nums2, n):
+    while m > 0 and n > 0:
+        if nums1[m-1] >= nums2[n-1]:
+            nums1[m+n-1] = nums1[m-1]
+            m -= 1
+        else:
+            nums1[m+n-1] = nums2[n-1]
+            n -= 1
+    if n > 0:
+        nums1[:n] = nums2[:n]
+```
 其实基本思想就是，既然num1的前面都已经存放了元素，那就从最末尾考虑，从大到小归并。这样就算当前访问下标对应的num1位置有元素，那也已经是复制过了的。
 
 [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/solution/)<br>
@@ -119,6 +131,15 @@ public int findDuplicate(int[] nums) {
     return -1;
 }
 ```
+sorting
+```
+def findDuplicate(self, nums):
+    nums.sort()
+    for i in range(1, len(nums)):
+        if nums[i] == nums[i-1]:
+            return nums[i]
+```
+
 [167. Two Sum II - Input array is sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/)<br>
 一个升序列，给定一个值，找到和为这个值的两个元素的下标。
 ```
@@ -135,6 +156,19 @@ class Solution {
     }
 }
 ```
+```
+def twoSum1(self, numbers, target):
+    l, r = 0, len(numbers)-1
+    while l < r:
+        s = numbers[l] + numbers[r]
+        if s == target:
+            return [l+1, r+1]
+        elif s < target:
+            l += 1
+        else:
+            r -= 1
+```
+
 [1. Two Sum](https://leetcode.com/problems/two-sum/description/)<br>
 给一个数组和一个目标值，尝试寻找两个数使得和等于目标值，返回两个数的下标。如果没有，返回空数组。<br>
 
@@ -163,7 +197,8 @@ def twoSum(self, nums, target):
         return False
     buff_dict = {}
     for i in range(len(nums)):
-        if nums[i] in buff_dict:
+        if nums[i] in buff_dict: 
+		#found nums[i] as a key
             return [buff_dict[nums[i]], i]
         else:
             buff_dict[target - nums[i]] = i

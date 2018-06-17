@@ -1,16 +1,6 @@
-6/17 
+6/17 [1. Two Sum](https://leetcode.com/problems/two-sum/description/)<br>
 
-```
-def twoSum(self, nums, target):
-    if len(nums) <= 1:
-        return False
-    buff_dict = {}
-    for i in range(len(nums)):
-        if nums[i] in buff_dict:
-            return [buff_dict[nums[i]], i]
-        else:
-            buff_dict[target - nums[i]] = i
-```
+
 
 6/15 [561. Array Partition I](https://leetcode.com/problems/array-partition-i/description/)<br>
 partition 2n number into n pairs, maximum the sum of the smaller one of each pair.<br>
@@ -25,16 +15,5 @@ def arrayPairSum(self, nums):
 
 [724. Find Pivot Index]()<br>
 
-```
-def pivotIndex(self, nums):
-    # Time: O(n)
-    # Space: O(1)
-    left, right = 0, sum(nums)
-    for index, num in enumerate(nums):
-        right -= num
-        if left == right:
-            return index
-        left += num
-    return -1
-```
+
 
