@@ -31,9 +31,8 @@ public int search(int[] nums, int target) {
 
 6/17 [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)<br>
 题意：寻找平移过的数组中的最小元素.<br>
-做题时候，先看看是否有空数组或者长度为1的特殊情况需要单独判断啊！！！
-答案怎么做？
-
+做题时候，先看看是否有空数组或者长度为1的特殊情况需要单独判断啊！！！<br>
+以下是我的做法：
 ```
 public int findMin(int[] nums) {
     int low = 0, high = nums.length-1, mid;
@@ -52,10 +51,48 @@ public int findMin(int[] nums) {
     else return Math.min(nums[low], nums[low+1]);
 }
 ```
+以下是最高票答案的做法：<br>
+当num[low]比num[high]小的时候，直接返回low，因为在一定区间内，相对大小不改变。厉害啊。
+```
+public int findMin(int[] nums) {
+    int low = 0, high = nums.length-1, mid;
+    if(low==high) return nums[low];
+    while(low<high){
+		//brilliant code!!
+        if(nums[low] < nums[high]) return nums[low];
+        mid = low + (high - low)/2;
+        if(nums[mid] >= nums[low]){
+            low = mid+1;
+        }
+        else{
+            high = mid;
+        }
+    }
+    return nums[low];
+}
+```
 
 6/16 [240. Search a 2D Matrix II](https://leetcode.com/problems/search-a-2d-matrix-ii/description/)<br>
-题意：
-其实是答案的思路，但真的很棒。
+题意：一个二维矩阵，每一行从左到右升序，每一列从上到下升序。在这个矩阵中寻找指定元素，返回下标，否则返回-1.<br>
+其实是答案的思路，但真的很棒。日后看看能否想起来？
+```
+public boolean searchMatrix(int[][] matrix, int target) {
+    if(matrix == null || matrix.length < 1 || matrix[0].length <1) {
+        return false;
+    }
+    int r = matrix.length;
+    int c = matrix[0].length;
+    int i=0, j=c-1;
+    boolean find=false;
+    while(i<r&&j>=0){
+        if(matrix[i][j]==target) {find=true; break; }
+        else if(matrix[i][j]<target) ++i;
+        else if(matrix[i][j]>target) --j;
+    }
+    return find;
+}
+```
+从右上方开始搜索，然后根据目标值往左往右移动搜索。
 
 [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)<br>
 题意：一个矩阵，每行从左到右升序，上一行最右的元素总小于下一行最左元素。搜索target值的元素，否则返回-1.<br>

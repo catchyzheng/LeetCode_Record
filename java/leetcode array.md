@@ -19,6 +19,18 @@ public int pivotIndex(int[] nums) {
     return find ? k-1 : -1;
 }
 ```
+```
+def pivotIndex(self, nums):
+    # Time: O(n)
+    # Space: O(1)
+    left, right = 0, sum(nums)
+    for index, num in enumerate(nums):
+        right -= num
+        if left == right:
+            return index
+        left += num
+    return -1
+```
 
 5/27 [832. Flipping an Image](https://leetcode.com/problems/flipping-an-image/description/)<br>
 先横向翻转，然后再01逆。应该要能一次二重循环搞定！
@@ -144,6 +156,17 @@ class Solution {
         return new int [2];
     }
 }
+```
+```
+def twoSum(self, nums, target):
+    if len(nums) <= 1:
+        return False
+    buff_dict = {}
+    for i in range(len(nums)):
+        if nums[i] in buff_dict:
+            return [buff_dict[nums[i]], i]
+        else:
+            buff_dict[target - nums[i]] = i
 ```
 附，后台主函数程序代码，值得读读看。
 ```
