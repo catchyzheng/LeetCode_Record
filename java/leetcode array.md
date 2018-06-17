@@ -1,3 +1,18 @@
+[74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)<br>
+```
+public boolean searchMatrix(int[][] matrix, int target) {
+    int r = matrix.length;
+    int c = (r==0 ? 0:matrix[0].length);
+    if(r==0||c==0) return false;
+    int p=0, q=0;
+    while(q<r && matrix[q][c-1]<target) ++q; // q is the row that 'target' exists.
+    if(q==r) --q; //if last row, should minus one. 
+    int index = Arrays.binarySearch(matrix[q], target);
+    return index<0 ? false : true;
+}
+```
+为什么总是不考虑边界情况啊。。。当到边界时候，真的要验证一遍自己的代码有没有错误啊。
+
 6/15 [724. Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)<br>
 找到一个主元素，使得左边元素和等于右边元素和，返回下标。如果没有，返回-1.<br>
 注意，要考虑主元素在两端的情况。
