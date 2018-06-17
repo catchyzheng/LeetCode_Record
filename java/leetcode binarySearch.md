@@ -1,19 +1,57 @@
-[240. Search a 2D Matrix II](https://leetcode.com/problems/search-a-2d-matrix-ii/description/)<br>
-[74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)<br>
-
+6/17 [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)<br>
+题意：
+二分法。但是总是忽略一些边界情况！！！
 ```
-public boolean searchMatrix(int[][] matrix, int target) {
-    int r = matrix.length;
-    int c = (r==0 ? 0:matrix[0].length);
-    if(r==0||c==0) return false;
-    int p=0, q=0;
-    while(q<r && matrix[q][c-1]<target) ++q; // q is the row that 'target' exists.
-    if(q==r) --q; //if last row, should minus one. 
-    int index = Arrays.binarySearch(matrix[q], target);
-    return index<0 ? false : true;
+public int search(int[] nums, int target) {
+    int len = nums.length;
+    if(len==0) return -1;
+    int low = 0, high = len-1, mid;
+    while(low<high){
+        mid = low + (high - low)/2;
+        if(nums[mid] > nums[low]){
+            if(nums[low] <= target && target <= nums[mid]) {high = mid; }
+            else low = mid+1;
+        }
+        else {
+            if(nums[mid] < target && target <= nums[high]) {low = mid+1; }
+            else high = mid;
+        }
+    }
+    if(low==len-1) return nums[low]==target ? low : -1;
+    else{
+        if(nums[low]==target) return low;
+        else if(nums[low+1]==target) return low+1;
+        else return -1;
+    }
 }
 ```
-为什么总是不考虑边界情况啊。。。当到边界时候，真的要验证一遍自己的代码有没有错误啊。
+1空数组没判断！2末尾要判断是否是low还是low+1！！<br>
+
+6/17 [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)<br>
+题意：
+做题时候，先看看是否有空数组或者长度为1的特殊情况需要单独判断啊！！！
+```
+public int findMin(int[] nums) {
+    int low = 0, high = nums.length-1, mid;
+    if(low==high) return nums[low];
+    while(low<high){
+        mid = low + (high - low)/2;
+        if(nums[mid] > nums[low]){
+            if(nums[mid] < nums[high]) high = mid;
+            else low = mid+1;
+        }
+        else{
+            high = mid;
+        }
+    }
+    if(low==nums.length-1) return nums[low];
+    else return Math.min(nums[low], nums[low+1]);
+}
+```
+
+6/16 [240. Search a 2D Matrix II](https://leetcode.com/problems/search-a-2d-matrix-ii/description/)<br>
+题意：
+其实不是自己的思路，但真的很棒。
 
 6/16 [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)<br>
 在一个BST中寻找第k大的元素。 还没想过看follow up如何解决。
