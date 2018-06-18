@@ -1,3 +1,19 @@
+6/18 [434. Number of Segments in a String](https://leetcode.com/problems/number-of-segments-in-a-string/description/)<br>
+按照空格分割，问能分割出多少个字符串（块）。<br>
+直接统计，前一个字符非空格后一个字符为空格的出现次数就行。。。easy啊
+```
+public int countSegments(String s) {
+    int res=0;
+    for(int i=0; i<s.length(); i++)
+        if(s.charAt(i)!=' ' && (i==0 || s.charAt(i-1)==' '))
+            res++;        
+    return res;
+}
+```
+6/18 [6. ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/solution/)<br>
+将字符串变成z形。
+
+
 [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)<br>
 找到最长的且没有重复字母的子串。<br>
 我的解答，就是最优方法！哈哈哈哈。<br>
