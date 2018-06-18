@@ -1,4 +1,41 @@
-
+6/18 [15. 3Sum](https://leetcode.com/problems/3sum/description/)<br>
+在一个数组中找出若干不相同的三元组，使得和为零。<br>
+总体思想就是，在twoSum-input is sorted基础上加一层循环。但有些细节要注意。比如重复元素怎么处理。
+```
+public List<List<Integer>> threeSum(int[] nums) {
+    Arrays.sort(nums);
+    List<List<Integer>> ans = new ArrayList<List<Integer>>();
+    for(int i=0; i<nums.length-2;  ++i){
+        if (i != 0 && nums[i] == nums[i - 1]) {
+            continue;
+        }
+        int target = -nums[i];
+        twoSum(ans, nums, i, i+1, nums.length-1, target);
+    }
+    return ans;
+}
+public void twoSum(List<List<Integer>> ans, int[] nums, int pivot, int l, int r, int target){
+    int p=l, q=r;
+    while(p<q){
+        if(nums[p]+nums[q]>target) --q;
+        else if(nums[p]+nums[q]<target) ++p;
+        else{
+            List<Integer> tmp = new ArrayList<>();
+            tmp.add(nums[pivot]); tmp.add(nums[p]); tmp.add(nums[q]);
+            ans.add(tmp);
+            //ans.add(Arrays.asList(nums[pivot], nums[p], nums[q])); 
+            --q; ++p;
+            while (p < q && nums[p] == nums[p - 1]) {
+                p++;
+            }
+            while (p < q && nums[q] == nums[q + 1]) {
+                q--;
+            }
+        }
+    }
+    return;
+}
+```
 
 6/15 [724. Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)<br>
 找到一个主元素，使得左边元素和等于右边元素和，返回下标。如果没有，返回-1.<br>
