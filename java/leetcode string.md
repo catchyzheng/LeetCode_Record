@@ -1,3 +1,19 @@
+6/18 [28. Implement strStr()](https://leetcode.com/problems/implement-strstr/description/)<br>
+返回在haystack中needle串第一次出现的下标，否则-1.<br>
+```
+public int strStr(String haystack, String needle) {
+    if(haystack=="" || needle=="") return 0;
+    int hlen = haystack.length(), nlen = needle.length();
+    for(int i=0; i<=hlen-nlen; ++i){
+        if (haystack.substring(i,i+nlen).equals(needle)) {
+            return i;
+        }
+    }
+    return -1;
+}
+```
+特殊情况：双空串，一空一菲空，长度不一。
+
 6/18 [434. Number of Segments in a String](https://leetcode.com/problems/number-of-segments-in-a-string/description/)<br>
 按照空格分割，问能分割出多少个字符串（块）。<br>
 直接统计，前一个字符非空格后一个字符为空格的出现次数就行。。。easy啊

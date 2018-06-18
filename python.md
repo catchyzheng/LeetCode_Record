@@ -1,3 +1,14 @@
+6/18 [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/description/)<br>
+牛逼的不行。。。
+```
+def groupAnagrams(self, strs):
+    d = {}
+    for w in sorted(strs):
+        key = tuple(sorted(w))
+        d[key] = d.get(key, []) + [w]
+    return d.values()
+```
+
 6/18 [720. Longest Word in Dictionary]()<br>
 
 ```
