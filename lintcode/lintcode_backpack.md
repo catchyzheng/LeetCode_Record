@@ -1,9 +1,29 @@
+6/19 [563. Backpack V](https://www.lintcode.com/problem/backpack-v/description)<br>
+给定n个物品的体积，每种物品用一次，装满指定体积m有多少种方法。<br>
+惊呆了，为什么可以直接累加。。
+```
+public int backPackV(int[] A, int m) {
+    int n = A.length;
+    int [] f = new int[m + 1];
+    int i, j;
+    f[0] = 1;
+    for (i = 1; i <= n; ++i) {
+        for (j = m; j >= A[i -1]; --j) {
+            f[j] += f[j - A[i - 1]];
+        }
+    }
+    return f[m]; 
+}
+```
+
 [92. Backpack](https://www.lintcode.com/problem/backpack/description)<br>
+给定n个物品的体积，一个背包体积m，求最多能装多少。<br>
 [125. Backpack II](https://www.lintcode.com/problem/backpack-ii/description)<br>
-第一题的物品没有价值，直接把费用当做价值考虑就行。。<br>
+给定n个物品的体积和价值，一个背包体积m，求最多能装的价值。<br>
+92题的物品没有价值，直接把费用当做价值考虑就行<br>
 几个要注意的点：<br>
-1 这是01背包，故dp数组的v要从<背包容量值>往0遍历。<br>
-2 因为待选物品的的价值和费用并不按照顺序排列，因此需要从m遍历到0才行。
+1 这是01背包，故dp数组的v要从<背包容量值>m往0遍历。<br>
+2 因为待选物品的的价值和费用并不按照顺序排列，因此dp需要从<背包容量值>m遍历到0才行。
 ```
 public int backPack(int m, int[] A, int[] V) {
     int len = A.length;
