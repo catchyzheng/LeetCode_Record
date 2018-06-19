@@ -1,3 +1,27 @@
+二分法做题的若干细节，无需言传，意会便知：<br>
+1 mid = low + (high - low)/2;<br>
+2 low = mid+1;<br>
+3 int long的越界问题。<br>
+
+6/18 [367. Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square/description/)<br>
+题意：判断一个数是否是完全平方。<br>
+把low high mid都改成long再试试看。通过了。<br>
+以及，试试low high 只对一个加减1看看。事实证明，只能对low加1。
+```
+public boolean isPerfectSquare(int num) {
+    if(num==1) return true;
+    long low = 1, high = num, mid;
+    boolean can = false;
+    while(low < high){
+        mid = low + (high - low)/2;
+        if(mid*mid == num) { can=true; break; } 
+        else if(mid*mid < num) low = mid+1;
+        else high = mid;
+    }
+    return can;
+}
+```
+
 6/17 [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)<br>
 题意：一个升序的数组，左边部分元素整体平移了。12345变成45123.搜索指定元素返回下标，否则返回-1.<br>
 

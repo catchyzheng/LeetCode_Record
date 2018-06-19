@@ -1,3 +1,23 @@
+6/19 [564. Combination Sum IV](https://www.lintcode.com/problem/combination-sum-iv/description)<br>
+题意：给定不重复的一系列物品体积，问有多少种方法可以组成指定target值。 112，121算不同方法。
+可是。。。为啥是先loop背包体积啊。。。
+```
+public int backPackVI(int[] nums, int target) {
+    int[] comb = new int[target + 1];//len = target
+    comb[0] = 1;
+    for (int i = 1; i < comb.length; i++) { 
+	//first loop the backpack volume
+        for (int j = 0; j < nums.length; j++) { 
+		//then the item index
+            if (i - nums[j] >= 0) {
+                comb[i] += comb[i - nums[j]];
+            }
+        }
+    }
+    return comb[target];//*/
+}
+```
+
 6/19 [563. Backpack V](https://www.lintcode.com/problem/backpack-v/description)<br>
 给定n个物品的体积，每种物品用一次，装满指定体积m有多少种方法。<br>
 惊呆了，为什么可以直接累加。。
