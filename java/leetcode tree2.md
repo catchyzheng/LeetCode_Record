@@ -1,6 +1,22 @@
 5/28 [654. Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree/description/)<br>
 给定一数组，每次挑出最大元素作为根节点。然后从左边剩余部分挑最大作为左子节点，右边最大作为右子节点，循环下去。要求返回构建的树的根。<br>
-一看就知道要递归的。
+递归容易，难就在于迭代式。。在lintcode上只能用迭代。因为递归溢出。<br>
+```
+public TreeNode maxTree(int[] nums) {
+    Deque<TreeNode> stack = new LinkedList<>();
+    for(int i = 0; i < nums.length; i++) {
+        TreeNode curr = new TreeNode(nums[i]);
+        while(!stack.isEmpty() && stack.peek().val < nums[i]) {
+            curr.left = stack.pop();
+        }
+        if(!stack.isEmpty()) {
+            stack.peek().right = curr;
+        }
+        stack.push(curr);
+    }
+    return stack.isEmpty() ? null : stack.removeLast();
+}
+```
 ```
 public TreeNode constructMaximumBinaryTree(int[] nums) {
     TreeNode root = div(nums, 0, nums.length-1);

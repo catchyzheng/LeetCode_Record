@@ -1,3 +1,16 @@
+6/18 [climbing stairs]
+```
+def climbStairs2(self, n):
+    # write your code here
+    if(n==0||n==1): return 1
+    if(n==2): return 2
+    if(n==3): return 4
+    p = [1,2,4]
+    for i in range(3,n):
+        p.append(p[-1]+p[-2]+p[-3]) //hao hao!!
+    return p[-1]
+```
+
 6/18 [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/description/)<br>
 牛逼的不行。。。
 ```
