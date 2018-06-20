@@ -1,0 +1,101 @@
+#	Title	Solution	Acceptance	Difficulty	Frequency  
+4	
+Median of Two Sorted Arrays    		23.1%	Hard	
+20	
+Valid Parentheses    		34.0%	Easy	
+535	
+Encode and Decode TinyURL    		73.8%	Medium	
+66	
+Plus One    		39.8%	Easy	
+146	
+LRU Cache    		19.9%	Hard	
+155	
+Min Stack    		31.3%	Easy	
+23	
+Merge k Sorted Lists    		28.2%	Hard	
+42	
+Trapping Rain Water    		37.7%	Hard	
+10	
+Regular Expression Matching    		24.3%	Hard	
+388	
+Longest Absolute File Path    		37.5%	Medium	
+17	
+Letter Combinations of a Phone Number    		36.6%	Medium	
+22	
+Generate Parentheses    		48.2%	Medium	
+50	
+Pow(x, n)    		26.1%	Medium	
+56	
+Merge Intervals    		32.1%	Medium	
+200	
+Number of Islands    		36.7%	Medium	
+657	
+Judge Route Circle    		68.5%	Easy	
+139	
+Word Break    		31.6%	Medium	
+463	
+Island Perimeter    		57.9%	Easy	
+760	
+Find Anagram Mappings    		75.7%	Easy	
+173	
+Binary Search Tree Iterator    		43.6%	Medium	
+326	
+Power of Three    		40.8%	Easy	
+54	
+Spiral Matrix    		27.3%	Medium	
+128	
+Longest Consecutive Sequence    		38.3%	Hard	
+406	
+Queue Reconstruction by Height    		56.4%	Medium	
+228	
+Summary Ranges    		32.2%	Medium	
+448	
+Find All Numbers Disappeared in an Array    		51.1%	Easy	
+279	
+Perfect Squares    		37.8%	Medium	
+387	
+First Unique Character in a String    		47.1%	Easy	
+316	
+Remove Duplicate Letters    		30.5%	Hard	
+31	
+Next Permutation    		29.1%	Medium	
+231	
+Power of Two    		40.8%	Easy	
+289	
+Game of Life    		37.2%	Medium	
+336	
+Palindrome Pairs    		27.2%	Hard	
+345	
+Reverse Vowels of a String    		39.3%	Easy	
+240	
+Search a 2D Matrix II    		39.1%	Medium	
+218	
+The Skyline Problem    		29.1%	Hard	
+312	
+Burst Balloons    		43.7%	Hard	
+421	
+Maximum XOR of Two Numbers in an Array    		48.0%	Medium	
+140	
+Word Break II    		24.6%	Hard	
+224	
+Basic Calculator    		28.8%	Hard	
+162	
+Find Peak Element    		39.0%	Medium	
+297	
+Serialize and Deserialize Binary Tree    		35.2%	Hard	
+341	
+Flatten Nested List Iterator    		43.2%	Medium	
+208	
+Implement Trie (Prefix Tree)    		31.0%	Medium	
+280	
+Wiggle Sort    		58.7%	Medium	
+374	
+Guess Number Higher or Lower    		36.8%	Easy	
+166	
+Fraction to Recurring Decimal    		18.1%	Medium	
+315	
+Count of Smaller Numbers After Self    		35.0%	Hard	
+253	
+Meeting Rooms II    		39.4%	Medium	
+214	
+Shortest Palindrome    		25.2%	Hard

@@ -1,0 +1,63 @@
+#	Title	Acceptance	Difficulty	Frequency
+380	
+Insert Delete GetRandom O(1)	39.9%	Medium	
+636	
+Exclusive Time of Functions	44.5%	Medium	
+262	
+Trips and Users	19.7%	Hard	
+291	
+Word Pattern II
+38.5%	Hard	
+36	
+Valid Sudoku	37.7%	Medium	
+699	
+Falling Squares	37.4%	Hard	
+254	
+Factor Combinations
+44.0%	Medium	
+297	
+Serialize and Deserialize Binary Tree	35.2%	Hard	
+146	
+LRU Cache	19.9%	Hard	
+49	
+Group Anagrams	38.7%	Medium	
+139	
+Word Break	31.6%	Medium	
+432	
+All O`one Data Structure	28.0%	Hard	
+17	
+Letter Combinations of a Phone Number	36.6%	Medium	
+22	
+Generate Parentheses	48.2%	Medium	
+692	
+Top K Frequent Words	41.2%	Medium	
+249	
+Group Shifted Strings
+44.4%	Medium	
+133	
+Clone Graph	25.2%	Medium	
+450	
+Delete Node in a BST	37.8%	Medium	
+54	
+Spiral Matrix	27.3%	Medium	
+208	
+Implement Trie (Prefix Tree)	31.0%	Medium	
+648	
+Replace Words	47.9%	Medium	
+10	
+Regular Expression Matching	24.3%	Hard	
+290	
+Word Pattern	33.5%	Easy	
+13	
+Roman to Integer	48.1%	Easy	
+186	
+Reverse Words in a String II
+30.4%	Medium	
+535	
+Encode and Decode TinyURL	73.8%	Medium	
+23	
+Merge k Sorted Lists	28.2%	Hard	
+37	
+Sudoku Solver	32.2%	Hard	
+140	
+Word Break II	24.6%	Hard	

@@ -1,0 +1,80 @@
+ 	#	Title	Acceptance	Difficulty	Frequency
+445	
+Add Two Numbers II	46.2%	Medium	
+138	
+Copy List with Random Pointer	25.8%	Medium	
+582	
+Kill Process
+50.9%	Medium	
+121	
+Best Time to Buy and Sell Stock	43.0%	Easy	
+283	
+Move Zeroes	51.6%	Easy	
+387	
+First Unique Character in a String	47.1%	Easy	
+20	
+Valid Parentheses	34.0%	Easy	
+692	
+Top K Frequent Words	41.2%	Medium	
+117	
+Populating Next Right Pointers in Each Node II	33.9%	Medium	
+155	
+Min Stack	31.3%	Easy	
+1	
+Two Sum	38.1%	Easy	
+146	
+LRU Cache	19.9%	Hard	
+56	
+Merge Intervals	32.1%	Medium	
+42	
+Trapping Rain Water	37.7%	Hard	
+62	
+Unique Paths	42.9%	Medium	
+206	
+Reverse Linked List	46.8%	Easy	
+443	
+String Compression	36.0%	Easy	
+98	
+Validate Binary Search Tree	24.1%	Medium	
+50	
+Pow(x, n)	26.1%	Medium	
+2	
+Add Two Numbers	28.7%	Medium	
+122	
+Best Time to Buy and Sell Stock II	47.8%	Easy	
+69	
+Sqrt(x)	28.9%	Easy	
+160	
+Intersection of Two Linked Lists	30.9%	Easy	
+268	
+Missing Number	45.2%	Easy	
+53	
+Maximum Subarray	40.3%	Easy	
+714	
+Best Time to Buy and Sell Stock with Transaction Fee	45.8%	Medium	
+49	
+Group Anagrams	38.7%	Medium	
+287	
+Find the Duplicate Number	44.3%	Medium	
+102	
+Binary Tree Level Order Traversal	42.7%	Medium	
+7	
+Reverse Integer	24.4%	Easy	
+78	
+Subsets	45.0%	Medium	
+232	
+Implement Queue using Stacks	38.2%	Easy	
+215	
+Kth Largest Element in an Array	40.7%	Medium	
+208	
+Implement Trie (Prefix Tree)	31.0%	Medium	
+151	
+Reverse Words in a String	15.6%	Medium	
+88	
+Merge Sorted Array	32.2%	Easy	
+3	
+Longest Substring Without Repeating Characters	24.7%	Medium	
+139	
+Word Break	31.6%	Medium	
+230	
+Kth Smallest Element in a BST

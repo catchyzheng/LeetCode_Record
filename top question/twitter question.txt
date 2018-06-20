@@ -1,0 +1,43 @@
+ 	#	Title	Acceptance	Difficulty	Frequency
+433	
+Minimum Genetic Mutation	35.0%	Medium	
+608	
+Tree Node
+54.2%	Medium	
+585	
+Investments in 2016
+45.1%	Medium	
+580	
+Count Student Number in Departments
+39.2%	Medium	
+296	
+Best Meeting Point
+52.3%	Hard	
+468	
+Validate IP Address	20.6%	Medium	
+586	
+Customer Placing the Largest Number of Orders
+60.5%	Easy	
+341	
+Flatten Nested List Iterator	43.2%	Medium	
+269	
+Alien Dictionary
+26.4%	Hard	
+355	
+Design Twitter	25.8%	Medium	
+251	
+Flatten 2D Vector
+41.5%	Medium	
+12	
+Integer to Roman	46.3%	Medium	
+20	
+Valid Parentheses	34.0%	Easy	
+146	
+LRU Cache	19.9%	Hard	
+218	
+The Skyline Problem	29.1%	Hard	
+161	
+One Edit Distance
+31.6%	Medium	
+42	
+Trapping Rain Water	37.7%	Hard	

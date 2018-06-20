@@ -1,0 +1,100 @@
+1	
+Two Sum    		38.1%	Easy	
+13	
+Roman to Integer    		48.1%	Easy	
+461	
+Hamming Distance    		69.5%	Easy	
+20	
+Valid Parentheses    		34.0%	Easy	
+535	
+Encode and Decode TinyURL    		73.8%	Medium	
+206	
+Reverse Linked List    		46.8%	Easy	
+146	
+LRU Cache    		19.9%	Hard	
+23	
+Merge k Sorted Lists    		28.2%	Hard	
+38	
+Count and Say    		36.8%	Easy	
+283	
+Move Zeroes    		51.6%	Easy	
+121	
+Best Time to Buy and Sell Stock    		43.0%	Easy	
+15	
+3Sum    		21.8%	Medium	
+10	
+Regular Expression Matching    		24.3%	Hard	
+17	
+Letter Combinations of a Phone Number    		36.6%	Medium	
+88	
+Merge Sorted Array    		32.1%	Easy	
+238	
+Product of Array Except Self    		50.3%	Medium	
+26	
+Remove Duplicates from Sorted Array    		36.5%	Easy	
+67	
+Add Binary    		34.1%	Easy	
+50	
+Pow(x, n)    		26.1%	Medium	
+56	
+Merge Intervals    		32.1%	Medium	
+49	
+Group Anagrams    		38.7%	Medium	
+200	
+Number of Islands    		36.7%	Medium	
+139	
+Word Break    		31.6%	Medium	
+234	
+Palindrome Linked List    		33.5%	Easy	
+33	
+Search in Rotated Sorted Array    		31.9%	Medium	
+85	
+Maximal Rectangle    		29.7%	Hard	
+28	
+Implement strStr()    		29.0%	Easy	
+173	
+Binary Search Tree Iterator    		43.6%	Medium	
+128	
+Longest Consecutive Sequence    		38.3%	Hard	
+273	
+Integer to English Words    		22.8%	Hard	
+235	
+Lowest Common Ancestor of a Binary Search Tree    		39.8%	Easy	
+268	
+Missing Number    		45.2%	Easy	
+43	
+Multiply Strings    		28.0%	Medium	
+69	
+Sqrt(x)    		28.9%	Easy	
+79	
+Word Search    		28.2%	Medium	
+218	
+The Skyline Problem    		29.1%	Hard	
+236	
+Lowest Common Ancestor of a Binary Tree    		29.9%	Medium	
+76	
+Minimum Window Substring    		26.9%	Hard	
+127	
+Word Ladder    		20.1%	Medium	
+125	
+Valid Palindrome    		27.1%	Easy	
+78	
+Subsets    		45.0%	Medium	
+301	
+Remove Invalid Parentheses    		35.9%	Hard	
+168	
+Excel Sheet Column Title    		27.3%	Easy	
+297	
+Serialize and Deserialize Binary Tree    		35.2%	Hard	
+215	
+Kth Largest Element in an Array    		40.7%	Medium	
+102	
+Binary Tree Level Order Traversal    		42.7%	Medium	
+647	
+Palindromic Substrings    		54.6%	Medium	
+341	
+Flatten Nested List Iterator    		43.2%	Medium	
+208	
+Implement Trie (Prefix Tree)    		31.0%	Medium	
+75	
+Sort Colors    		39.0%	Medium

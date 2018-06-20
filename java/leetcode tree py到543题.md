@@ -222,10 +222,32 @@ class Solution {
     }
 }
 ```
-
+```
+sum = 0
+def findTilt(self, root):
+    self.dfs(root)
+    return self.sum
+def dfs(self, root):
+    if(root is None): return 0
+    ltree = self.dfs(root.left)
+    rtree = self.dfs(root.right)
+    self.sum += abs(ltree-rtree)
+    return root.val + ltree + rtree
+```
 [404. Sum of Left Leaves](https://leetcode.com/problems/sum-of-left-leaves/description/)<br>
 把所有左叶子节点的值求和。
-
+```
+sum = 0
+def sumOfLeftLeaves(self, root):
+    if(root!=None): self.dfs(root)
+    return self.sum
+def dfs(self, root):
+    if(root.left is not None): 
+        if(root.left.left is None and root.left.right is None): self.sum+=root.left.val
+        self.dfs(root.left)
+    if(root.right != None):
+        self.dfs(root.right)
+```
 [112. Path Sum](https://leetcode.com/problems/path-sum/description/)<br>
 题意：判断是否从根到叶子存在一条路径，使得路径和等于指定值。
 直接dfs判断。简洁而强大的思路。
@@ -236,7 +258,15 @@ bool hasPathSum(TreeNode *root, int sum) {
     return hasPathSum(root->left, sum-root->val) || hasPathSum(root->right, sum-root->val);
 }
 ```
-
+py版本：
+```
+def hasPathSum(self, root, sum):
+    if(root is None): return False
+    if(root.left == None and root.right == None): 
+        if(root.val==sum): return True
+        else: return False
+    return self.hasPathSum(root.left, sum-root.val) or self.hasPathSum(root.right, sum-root.val)
+```
 如果，想要存路径，那么路径集合用列表的列表存储。
 解法：1是可以每次递归时候传入sum-node->val的值。在叶子节点处判断sum是否等于node->val。<br>
 ```
@@ -301,6 +331,7 @@ public void dfs(TreeNode root){
     return;
 }
 ```
+python写法，注意self.num的使用。
 ```
 sum = 0
 def convertBST(self, root):
