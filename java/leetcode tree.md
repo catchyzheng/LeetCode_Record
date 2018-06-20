@@ -274,6 +274,15 @@ public TreeNode invertTree(TreeNode root) {
     return new_root;
 }
 ```
+```
+def invertTree(self, root):
+    if not root: return None
+    new_root = TreeNode(root.val)
+    new_root.left = self.invertTree(root.right)
+    new_root.right = self.invertTree(root.left)
+    return new_root
+```
+
 [538. Convert BST to Greater Tree](https://leetcode.com/problems/convert-bst-to-greater-tree/description/)<br>
 题意：给定一棵树，对所有元素，都加上比它大的元素。求最后树的模样。<br>
 现在的正确思路：先右子树，然后中间，然后左子树。利用的就是二叉搜索树右子树所有元素都比树根大的结构。可以在遍历过程中从大到小遍历整棵树。因此用一个变量sum记录遍历过程的局部累加和，然后到了根节点加上sum就行。
@@ -291,6 +300,16 @@ public void dfs(TreeNode root){
     if(root.left != null) dfs(root.left);
     return;
 }
+```
+```
+sum = 0
+def convertBST(self, root):
+    if(root is None): return None
+    if(root.right): self.convertBST(root.right)
+    self.sum += root.val
+    root.val = self.sum
+    if(root.left): self.convertBST(root.left)
+    return root
 ```
 标准dfs的写法：其实有返回值的函数也可以不指定等式左边的接收变量，直接写就是了。
 ```
@@ -316,6 +335,12 @@ class Solution {
         else return 1 + Math.max(maxDepth(root.left), maxDepth(root.right) );
     }
 }
+```
+```
+def maxDepth(self, root):
+    if not root:
+        return 0
+    return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 ```
 [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/description/)<br>
 大神的思路：牛逼！最后return句的判断是针对那些无某一边子树的节点情况。毕竟，只要子树有一个节点，那就算是子树，就该参与到mindepth的比较中。<br>
@@ -373,4 +398,30 @@ class Solution {
         }
     }
 }
+```
+以下，是讨论区的python解答。
+```
+def isBalanced(self, root):
+    """
+    :type root: TreeNode
+    :rtype: bool
+    """
+    return self.dfs(root)[1]
+def dfs(self, root):
+    if root is None: 
+        return 0, True
+    ltree, leftBal = self.dfs(root.left)
+    rtree, rightBal = self.dfs(root.right)
+    curBal = abs(ltree - rtree) <=1
+    return 1 + max(rtree, ltree), leftBal and rightBal and curBal
+```
+```
+    def isBalanced(self, root):
+        if not root:
+            return True
+        return abs(self.dfs(root.left) - self.dfs(root.right)) < 2 and self.isBalanced(root.left) and self.isBalanced(root.right)
+    def dfs(self, root): # get height
+        if not root:
+            return 0
+        return 1 + max(self.dfs(root.left), self.dfs(root.right))
 ```
