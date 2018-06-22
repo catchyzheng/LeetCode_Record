@@ -1,3 +1,10 @@
+6/21 [242. Valid Anagram]()<br>
+return sorted(s) == sorted(t)<br>
+Follow up:<br>
+What if the inputs contain unicode characters? How would you adapt your solution to such case?<br>
+Answer:<br>
+Use a hash table instead of a fixed size counter. Imagine allocating a large size array to fit the entire range of unicode characters, which could go up to more than 1 million. A hash table is a more generic solution and could adapt to any range of characters.
+
 6/18 [28. Implement strStr()](https://leetcode.com/problems/implement-strstr/description/)<br>
 返回在haystack中needle串第一次出现的下标，否则-1.<br>
 ```
