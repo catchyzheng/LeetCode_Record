@@ -126,3 +126,44 @@ public int lengthOfLastWord(String s) {
     return lastLength;
 }
 ```
+[806. Number of Lines To Write String](https://leetcode.com/problems/number-of-lines-to-write-string/description/)<br>
+给定widths数组，声明了a-z所有字母的占位宽度。现在要求每行只有100宽度。给定S字符串，问需要多少行写得下S，以及最后一行占位宽度多少。<br>
+看懂题意后，果然简单题。。。
+```
+class Solution {
+    public int[] numberOfLines(int[] widths, String S) {
+        int row=1; int cnt=0;
+        for(char c: S.toCharArray()){
+            if(cnt + widths[c-'a'] > 100){
+                row++; cnt= widths[c-'a'];
+            }
+            else cnt+= widths[c-'a'];
+        }
+        return new int[]{row, cnt};
+    }
+}
+```
+[804. Unique Morse Code Words](https://leetcode.com/problems/unique-morse-code-words/description/)<br>
+主要是熟悉java几个数据结构。<br>
+StringBuilder可以用于要不断往后加字符的情况。。<br>
+toCharArray可以把string直接转换成char数组。<br>
+往Set中添加元素用add。<br>
+toString可以把数值转换成String。
+```
+class Solution {
+    public int uniqueMorseRepresentations(String[] words) {
+        String[] MORSE = new String[]{".-","-...","-.-.","-..",".","..-.","--.",
+                        "....","..",".---","-.-",".-..","--","-.",
+                        "---",".--.","--.-",".-.","...","-","..-",
+                        "...-",".--","-..-","-.--","--.."};
+        Set<String> seen = new HashSet();
+        for (String word: words) {
+            StringBuilder code = new StringBuilder();
+            for (char c: word.toCharArray())
+                code.append(MORSE[c - 'a']);
+            seen.add(code.toString());
+        }
+        return seen.size();
+    }
+}
+```

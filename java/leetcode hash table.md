@@ -1,3 +1,42 @@
+6/22 [290. Word Pattern](https://leetcode.com/problems/word-pattern/description/)<br>
+规则类似isomorphic string，只不过将其中一个字符数组改成字符串数组。
+
+原来for循环中循环变量Integer和int有差别啊。。。
+```
+public boolean wordPattern(String pattern, String str) {
+    String[] words = str.split(" ");
+    if (words.length != pattern.length())
+        return false;
+    Map index = new HashMap<>();
+    for (Integer i=0; i<words.length; ++i)
+        if (index.put(pattern.charAt(i), i) != index.put(words[i], i))
+            return false;
+    return true;
+}
+```
+```
+public boolean wordPattern(String pattern, String str) {
+    String[] arr= str.split(" ");
+    HashMap<Character, String> map = new HashMap<Character, String>();
+    if(arr.length!= pattern.length())
+        return false;
+    for(int i=0; i<arr.length; i++){
+        char c = pattern.charAt(i);
+        if(map.containsKey(c)){
+            if(!map.get(c).equals(arr[i]))
+                return false;
+        }else{
+            if(map.containsValue(arr[i]))
+                return false;
+            map.put(c, arr[i]);
+        }    
+    }
+    return true;
+}
+```
+
+py解答，日后看这里[here](https://leetcode.com/problems/word-pattern/discuss/73433/Short-in-Python)<br>
+
 6/22 [205. Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/description/)<br>
 题目：判断两个单词是否有一样的相对结构，即1213，对应2324或者1215。一个字符可以映射到自己本身。<br>
 感觉，字符串题目还是c++写起来方便啊。。
