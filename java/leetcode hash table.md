@@ -1,6 +1,49 @@
-6/24 [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/description/)<br>
+6/24 [204. Count Primes](https://leetcode.com/problems/count-primes/description/)<br>
+题意：求小于n的质数的个数。注意，1不是质数，2是。
+素数筛选法就行。
 
-efficiency is not good, only 29%.
+6/24 [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/description/)<br>
+给出一组字符串，将它们聚集成几个组，每个组的每个字符串都是由相同数量和种类的字母构成。<br>
+经典样例解答：就是对每个字符串排序后，添加到指定list中。主要是以下代码的map结构用的好。
+```
+public List<List<String>> groupAnagrams(String[] strs) {
+    if (strs == null || strs.length == 0) return new ArrayList<List<String>>();
+    Map<String, List<String>> map = new HashMap<String, List<String>>();
+    for (String s : strs) {
+        char[] ca = s.toCharArray();
+        Arrays.sort(ca);
+        String keyStr = String.valueOf(ca);
+        if (!map.containsKey(keyStr)) map.put(keyStr, new ArrayList<String>());
+        map.get(keyStr).add(s);
+    }
+    return new ArrayList<List<String>>(map.values());
+}
+```
+神一般的用质数。。基本规律就是，若两个字符串不属于同一组，那么它们转化成的质数乘积也必然不一样。
+```
+public static List<List<String>> groupAnagrams(String[] strs) { 
+   int[] prime = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103};//最多10609个z
+    List<List<String>> res = new ArrayList<>();
+    HashMap<Integer, Integer> map = new HashMap<>();
+    for (String s : strs) {
+        int key = 1;
+        for (char c : s.toCharArray()) {
+            key *= prime[c - 'a'];
+        }
+        List<String> t;
+        if (map.containsKey(key)) {
+            t = res.get(map.get(key));
+        } else {
+            t = new ArrayList<>();
+            res.add(t);
+            map.put(key, res.size() - 1);
+        }
+        t.add(s);
+    }
+    return res;
+}
+```
+my code's efficiency is not good, only 29%.
 ```
 public List<List<String>> groupAnagrams(String[] strs) {
     Map<String, String> map = new HashMap<>();

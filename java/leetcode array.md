@@ -1,3 +1,6 @@
+[18. 4Sum](https://leetcode.com/problems/4sum/discuss/8547/7ms-java-code-win-over-100)<br>
+重点看通用解法！
+
 6/18 [15. 3Sum](https://leetcode.com/problems/3sum/description/)<br>
 在一个数组中找出若干不相同的三元组，使得和为零。<br>
 总体思想就是，在twoSum-input is sorted基础上加一层循环。但有些细节要注意。比如重复元素怎么处理。
