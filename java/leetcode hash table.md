@@ -1,3 +1,51 @@
+6/24 [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/description/)<br>
+
+efficiency is not good, only 29%.
+```
+public List<List<String>> groupAnagrams(String[] strs) {
+    Map<String, String> map = new HashMap<>();
+    Set<String> set = new HashSet<>();
+    //
+    for(String str: strs){
+        char [] chars = str.toCharArray();
+        Arrays.sort(chars);
+        String sorted = new String(chars);
+        map.put(str, sorted);
+        set.add(sorted);
+    }
+    //
+    List<List<String>> res = new ArrayList<>();
+    Map<String, Integer> s2i = new HashMap<>();
+    int i=0;
+    for(String s: set){
+        List<String> temp = new ArrayList<>();
+        //temp.add(s);
+        res.add(temp); s2i.put(s, i++);
+    }
+    for(String str: strs){
+        res.get(s2i.get(map.get(str))).add(str);
+    }
+    return res;
+}
+```
+
+follow up:
+[217. Contains Duplicate]() [220. Contains Duplicate III](https://leetcode.com/problems/contains-duplicate-iii/description/)
+6/23 [219. Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/description/)<br>
+题意：给定一数组和一个k，问是否能找到两个不同下标，使得对应的元素值相同，且下标差距不超过k。<br>
+```
+public boolean containsNearbyDuplicate(int[] nums, int k) {
+    Map<Integer, Integer> map = new HashMap();
+    for(int i=0; i<nums.length; ++i){
+        if(map.containsKey(nums[i]) && map.get(nums[i])>0 && (i+1-map.get(nums[i])) <= k) return true;
+        map.put(nums[i], i+1);
+    }
+    return false;
+}
+```
+解法，用一个hashmap遍历整个数组，每次的存储以访问元素为键，下标+1为值。判断当前下标和哈希表中的对应键值是否差小于k。
+
+
 6/22 [290. Word Pattern](https://leetcode.com/problems/word-pattern/description/)<br>
 规则类似isomorphic string，只不过将其中一个字符数组改成字符串数组。
 
