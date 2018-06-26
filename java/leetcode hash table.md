@@ -1,3 +1,5 @@
+6/26 [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/description/)<br>
+
 6/24 [204. Count Primes](https://leetcode.com/problems/count-primes/description/)<br>
 题意：求小于n的质数的个数。注意，1不是质数，2是。
 素数筛选法就行。
