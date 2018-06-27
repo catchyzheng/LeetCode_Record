@@ -5,7 +5,7 @@
 素数筛选法就行。
 
 6/24 [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/description/)<br>
-给出一组字符串，将它们聚集成几个组，每个组的每个字符串都是由相同数量和种类的字母构成。<br>
+题意：给出一组字符串，将它们聚集成几个组，每个组的每个字符串都是由相同数量和种类的字母构成。<br>
 经典样例解答：就是对每个字符串排序后，添加到指定list中。主要是以下代码的map结构用的好。
 ```
 public List<List<String>> groupAnagrams(String[] strs) {

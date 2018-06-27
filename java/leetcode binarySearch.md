@@ -3,6 +3,24 @@
 2 low = mid+1;<br>
 3 int long的越界问题。<br>
 
+6/27 [162. Find Peak Element](https://leetcode.com/problems/find-peak-element/description/)<br>
+题意：山峰元素都定义是，比相邻的元素都大。现在给定一个数组，可能存在多个山峰元素。找到一个并返回。<br>
+典型二分。但思路稍微要转换下。
+```
+public int findPeakElement(int[] nums) {
+    int l = 0, r = nums.length - 1; // left, right
+    while (l < r) {
+        int mid = (l + r) / 2;
+        if (nums[mid] > nums[mid + 1])
+            r = mid;
+        else
+            l = mid + 1;
+    }
+    return l;
+}
+```
+每次取中位数假定为山峰，然后**判断mid和mid+1的大小**.之所以**不用判断i和i-1**，是因为在上一个i(i')的判断过程中，已经判断了i'和i'+1。只有当i'+1元素大于i'时，才能走到下一步i,因此只需往前+1判断。
+
 6/18 [367. Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square/description/)<br>
 题意：判断一个数是否是完全平方。<br>
 把low high mid都改成long再试试看。通过了。<br>
