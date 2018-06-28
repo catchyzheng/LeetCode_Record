@@ -1,3 +1,6 @@
+6/28 [95. Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/discuss/31494/A-simple-recursive-solution)<br>
+完美地实现了我的设想。
+
 5/28 [654. Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree/description/)<br>
 给定一数组，每次挑出最大元素作为根节点。然后从左边剩余部分挑最大作为左子节点，右边最大作为右子节点，循环下去。要求返回构建的树的根。<br>
 递归容易，难就在于迭代式。。在lintcode上只能用迭代。因为递归溢出。<br>
