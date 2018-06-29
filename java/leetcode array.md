@@ -50,7 +50,8 @@ public void twoSum(List<List<Integer>> ans, int[] nums, int pivot, int l, int r,
 ```
 
 
-6/29 [840. Magic Squares In Grid]()
+6/29 [840. Magic Squares In Grid]()<br>
+没什么意思。。就是一个二维数组，元素在1-15间，问存在多少个3*3格子，满足(1)元素在1-9之间，(2)每行每列两对角线元素和相同。
 
 6/15 [724. Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)<br>
 找到一个主元素，使得左边元素和等于右边元素和，返回下标。如果没有，返回-1.<br>
