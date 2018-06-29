@@ -1,3 +1,23 @@
+6/29 [187. Repeated DNA Sequences](https://leetcode.com/problems/repeated-dna-sequences/description/)<br>
+其实也没什么，就是直接放进去map。
+```
+public List<String> findRepeatedDnaSequences(String s) {
+    if(s.length()<10) return new ArrayList<String>();
+    Map<String, Integer> map = new HashMap();
+    List<String> res = new ArrayList<String>();
+    for(int i=0; i<=s.length()-10; ++i){
+        map.put(s.substring(i, i+10), map.getOrDefault(s.substring(i, i+10), 0) + 1);
+        if(map.get(s.substring(i, i+10))>1){
+            if(!res.contains(s.substring(i, i+10))) res.add(s.substring(i, i+10));
+        }
+    }
+    return res;
+}
+```
+
+6/29 [36. Valid Sudoku]()<br>
+判断数独一行一列一九宫是否有重复数字。
+
 6/26 [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/description/)<br>
 
 6/24 [204. Count Primes](https://leetcode.com/problems/count-primes/description/)<br>
