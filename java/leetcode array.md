@@ -1,3 +1,5 @@
+
+
 [18. 4Sum]()<br>
 [代码1](https://leetcode.com/problems/4sum/discuss/8547/7ms-java-code-win-over-100)
 利用2sum和3sum的子函数解决4sum。考虑的条件很多很细致。<br>
@@ -46,6 +48,9 @@ public void twoSum(List<List<Integer>> ans, int[] nums, int pivot, int l, int r,
     return;
 }
 ```
+
+
+6/29 [840. Magic Squares In Grid]()
 
 6/15 [724. Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)<br>
 找到一个主元素，使得左边元素和等于右边元素和，返回下标。如果没有，返回-1.<br>
