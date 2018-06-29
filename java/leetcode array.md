@@ -1,5 +1,12 @@
-[18. 4Sum](https://leetcode.com/problems/4sum/discuss/8547/7ms-java-code-win-over-100)<br>
-重点看通用解法！
+[18. 4Sum]()<br>
+[代码1](https://leetcode.com/problems/4sum/discuss/8547/7ms-java-code-win-over-100)
+利用2sum和3sum的子函数解决4sum。考虑的条件很多很细致。<br>
+[代码2](https://leetcode.com/problems/4sum/discuss/8575/Clean-accepted-java-O(n3)-solution-based-on-3sum)
+三重for循环，java。<br>
+[代码3](https://leetcode.com/problems/4sum/discuss/8714/4Sum-C++-solution-with-explanation-and-comparison-with-3Sum-problem.-Easy-to-understand.)
+同样是三重循环，但其实真正有必要单独考虑的特殊情况只有duplicate的时候。其他极大或者极小，都可以在循环条件不满足时跳出。<br>
+[代码4](https://leetcode.com/problems/4sum/discuss/8545/Python-140ms-beats-100-and-works-for-N-sum-(Ngreater2))
+python版本，可以推广到Nsum。
 
 6/18 [15. 3Sum](https://leetcode.com/problems/3sum/description/)<br>
 在一个数组中找出若干不相同的三元组，使得和为零。<br>
