@@ -1,3 +1,37 @@
+7/1 [139. Word Break](https://leetcode.com/problems/word-break/description/)<br>
+题意：给定一个长字符串和一系列短串，问长串是否能由短串构成。短串可以使用无限次。<br>
+想想看，什么思想什么解法？
+```
+public boolean wordBreak(String s, Set<String> dict) {
+    boolean[] f = new boolean[s.length() + 1];
+    f[0] = true;
+    /*//First DP
+    for(int i = 1; i <= s.length(); i++){
+        for(String str: dict){
+            if(str.length() <= i){
+                if(f[i - str.length()]){
+                    if(s.substring(i-str.length(), i).equals(str)){
+                        f[i] = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }//*/
+    //Second DP
+    for(int i=1; i <= s.length(); i++){
+        for(int j=0; j < i; j++){
+            if(f[j] && dict.contains(s.substring(j, i))){
+                f[i] = true;
+                break;
+            }
+        }
+    }//*/
+    return f[s.length()];
+}
+```
+
+
 6/19 [514. Paint Fence](https://www.lintcode.com/problem/paint-fence/description)<br>
 lintcode：用k个颜色给n个并排的桩着色，最多只能连续两个同色。求方法个数。<br>
 ```
