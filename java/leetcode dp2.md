@@ -1,8 +1,12 @@
 6/19 [514. Paint Fence](https://www.lintcode.com/problem/paint-fence/description)<br>
-lintcode：用k个颜色给n个并排的桩着色，最多只能连续两个同色。求方法个数。
+lintcode：用k个颜色给n个并排的桩着色，最多只能连续两个同色。求方法个数。<br>
 ```
-```<br>
+```
+[详细讲解链接](http://yuanhsh.iteye.com/blog/2219891)
+![image](http://m.qpic.cn/psb?/V13hu9k31D6BsB/h2fPxNVtSg.4zygk0nvtca6QSIRL1sikkXl4ihg6f9s!/b/dFkAAAAAAAAA&bo=dgO5AQAAAAARF.0!&rf=viewer_4&t=5)
+第i根柱子要么和i-1颜色不一样，要么和i-1颜色相同但和i-2颜色不一样。不一样的颜色选择有k-1种。
 p[i] = (p[i-1]+p[i-2])*(k-1);
+
 
 [Most-consistent-ways-of-dealing-with-the-series-of-stock-problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/Most-consistent-ways-of-dealing-with-the-series-of-stock-problems)<br>
 5.26再次研读感想：<br>

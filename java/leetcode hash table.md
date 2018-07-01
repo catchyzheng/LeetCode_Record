@@ -1,19 +1,43 @@
-6/29 [187. Repeated DNA Sequences](https://leetcode.com/problems/repeated-dna-sequences/description/)<br>
-其实也没什么，就是直接放进去map。
+6/30 [274. H-Index]()<br>
+桶排序的思想其实并不难。。
 ```
-public List<String> findRepeatedDnaSequences(String s) {
-    if(s.length()<10) return new ArrayList<String>();
-    Map<String, Integer> map = new HashMap();
-    List<String> res = new ArrayList<String>();
-    for(int i=0; i<=s.length()-10; ++i){
-        map.put(s.substring(i, i+10), map.getOrDefault(s.substring(i, i+10), 0) + 1);
-        if(map.get(s.substring(i, i+10))>1){
-            if(!res.contains(s.substring(i, i+10))) res.add(s.substring(i, i+10));
+public int hIndex(int[] citations) {
+    int n = citations.length;
+    int[] buckets = new int[n+1];
+    for(int c : citations) {
+        if(c >= n) {
+            buckets[n]++;
+        } else {
+            buckets[c]++;
         }
     }
-    return res;
+    int count = 0;
+    for(int i = n; i >= 0; i--) {
+        count += buckets[i];
+        if(count >= i) {
+            return i;
+        }
+    }
+    return 0;
 }
 ```
+
+6/29 [187. Repeated DNA Sequences](https://leetcode.com/problems/repeated-dna-sequences/description/)<br>
+题意：找出一个DNA串中重复出现的子串。<br>
+别人家的答案。。下面这个hashset用的妙啊。其实如果只是要判断是否重复出现而不关心出现次数的话，用set更好。
+```
+public List<String> findRepeatedDnaSequences(String s) {
+    Set seen = new LinkedHashSet(), repeated = new LinkedHashSet();
+    for (int i = 0; i + 9 < s.length(); i++) {
+        String ten = s.substring(i, i + 10);
+        if (!seen.add(ten))
+            repeated.add(ten);
+    }
+    return new ArrayList(repeated);
+}
+```
+据说，用LinkedHashSet可以保证以相对出现顺序存放元素。<br>
+add操作成功后返回true，否则false。
 
 6/29 [36. Valid Sudoku]()<br>
 判断数独一行一列一九宫是否有重复数字。
