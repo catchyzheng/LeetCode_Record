@@ -1,3 +1,39 @@
+7/2 [368. Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset/description/)<br>
+题意：给定一序列不相同的正整数，求最大的子集，使得任意两个数字都是倍数关系。<br>
+
+```
+public List<Integer> largestDivisibleSubset(int[] nums) {
+    int n = nums.length;
+    int[] count = new int[n];
+    int[] pre = new int[n];
+    Arrays.sort(nums);
+    int max = 0, index = -1;
+    for (int i = 0; i < n; i++) {
+        count[i] = 1;
+        pre[i] = -1;
+        for (int j = i - 1; j >= 0; j--) {
+            if (nums[i] % nums[j] == 0) {
+                if (1 + count[j] > count[i]) {
+                    count[i] = count[j] + 1;
+                    pre[i] = j;
+                }
+            }
+        }
+        if (count[i] > max) {
+            max = count[i];
+            index = i;
+        }
+    }
+    List<Integer> res = new ArrayList<>();
+    while (index != -1) {
+        res.add(nums[index]);
+        index = pre[index];
+    }
+    return res;
+}
+```
+思路不难动规，但1要输出路径，因此采用pre数组记录上一个下标。2
+
 7/1 [139. Word Break](https://leetcode.com/problems/word-break/description/)<br>
 题意：给定一个长字符串和一系列短串，问长串是否能由短串构成。短串可以使用无限次。<br>
 想想看，什么思想什么解法？
@@ -76,7 +112,7 @@ public int maxProfit(int[] prices) {
 [213. House Robber II](https://leetcode.com/problems/house-robber-ii)<br>
 版本一是房子成一条线，版本二是房子围成圆圈。其他要求不变，不能抢劫相邻房子。
 
-其实，假设房子总数为n，那么就分别对1~(n-1)和2~n的房子看做直线排列看待。
+其实，假设房子总数为n，那么就分别对1至(n-1)和2至n的房子看做直线排列看待。
 
 [322. Coin Change](https://leetcode.com/problems/coin-change/description/)<br>
 给定一序列硬币面值和一个目标值，求组成目标值需要的最少硬币个数。硬币可以拿无限个。<br>
