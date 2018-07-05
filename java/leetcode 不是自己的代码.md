@@ -120,20 +120,6 @@ public int findLongestChain(int[][] p) {
 }
 ```
 
-
-[714. Best Time to Buy and Sell Stock with Transaction Fee](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solution/)<br>
-没怎么看懂，好难啊。。<br>
-```
-public int maxProfit(int[] prices, int fee) {
-    int cash = 0, hold = -prices[0];
-    for (int i = 1; i < prices.length; i++) {
-        cash = Math.max(cash, hold + prices[i] - fee);
-        hold = Math.max(hold, cash - prices[i]);
-    }
-    return cash;
-}
-```
-
 [101. Symmetric Tree](https://leetcode.com/problems/symmetric-tree/solution/)<br>
 判断一棵树是否是轴对称。<br>
 recursive

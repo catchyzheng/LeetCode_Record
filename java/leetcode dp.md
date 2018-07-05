@@ -2,6 +2,22 @@
 [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)<br>
 令A-Z对应1-26，现在给出一个数字构成的字符串，问有多少种解析成字母串的方法？
 
+自己的代码。一个月后重做的。。
+```
+public int numDecodings(String s) {
+    int len = s.length();
+    if(len==0) return 0;
+    if(len==1) return s.charAt(0)=='0' ? 0 : 1;
+    int [] dp = new int[len+1];
+    dp[0] = 1;
+    dp[1] = s.charAt(0)=='0' ? 0 : 1;
+    for(int i=2; i<=len; ++i){
+        if(s.charAt(i-1)!='0') dp[i] += dp[i-1];
+        if(s.charAt(i-2)=='1' || (s.charAt(i-2)=='2' && (s.charAt(i-1)>='0' && s.charAt(i-1)<='6') ) ) dp[i] += dp[i-2];
+    }
+    return dp[len];
+}
+```
 下面不是自己的代码。但很简洁，值得学习。要考虑两个问题，1如何设计子问题，2如何根据子问题的最优解构造原问题最优解。。
 ```
 public int numDecodings(String s) {

@@ -1,3 +1,23 @@
+7/4 [376. Wiggle Subsequence](https://leetcode.com/problems/wiggle-subsequence/description/)<br>
+题意：给定一个序列，求最长的子序列，使得相邻元素的差呈正负交替。序列不一定要连续，但元素相对位置要相同。<br>
+解法，典型动规，用两个数组表示以当前下标结尾的最长子序列。
+```
+public class Solution {
+    public int wiggleMaxLength(int[] nums) {
+        if (nums.length < 2)
+            return nums.length;
+        int down = 1, up = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[i - 1])
+                up = down + 1;
+            else if (nums[i] < nums[i - 1])
+                down = up + 1;
+        }
+        return Math.max(down, up);
+    }
+}
+```
+
 7/2 [368. Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset/description/)<br>
 题意：给定一序列不相同的正整数，求最大的子集，使得任意两个数字都是倍数关系。<br>
 
