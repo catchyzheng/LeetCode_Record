@@ -1,0 +1,145 @@
+每天中午洗面奶洗脸。
+
+每天github提交多次，刷绿点。
+
+每天刷至少一道高质量leetcode题。
+
+每天登陆云音乐和云笔记，每天收藏一篇文章到云笔记。。
+
+#每天领英加人。。。
+
+树的迭代式遍历？怎么设计
+【刷题汇报】/ 题 
+https://github.com/catchyzheng/LeetCode_Record
+
+看，4sum的通用解法。在array文件里。
+Ksum的题目和combination sum的题目有什么区别联系？？
+17. Letter Combinations of a Phone Number 还不会敲呢。。
+
+
+
+【刷题汇报】7/5 1题
+376. Wiggle Subsequence 
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】7/3 2题 
+152. Maximum Product Subarray
+91. Decode Ways
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】7/1 2题 
+139. Word Break
+274. H-Index
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】6/29 6题 
+77. Combinations
+40. Combination Sum II
+840. Magic Squares In Grid
+216. Combination Sum III
+187. Repeated DNA Sequences 
+36. Valid Sudoku
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】6/24 3题
+202. Happy Number
+204. Count Primes
+49. Group Anagrams
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】6/23 4题
+219. Contains Duplicate II
+290. Word Pattern
+806. Number of Lines To Write String
+202. Happy Number
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】6/22 2题
+205. Isomorphic Strings
+598. Range Addition II
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】6/21 9题
+566. Reshape the Matrix
+530. Minimum Absolute Difference in BST
+783. Minimum Distance Between BST Nodes
+762. Prime Number of Set Bits in Binary Representation
+387. First Unique Character in a String
+66. Plus One
+162. Find Peak Element dixiao 
+242. Valid Anagram
+852. Peak Index in a Mountain Array
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】6/20 10题 
+95. Unique Binary Search Trees II
+207. Course Schedule
+563. Binary Tree Tilt
+404. Sum of Left Leaves
+112. Path Sum
+538. Convert BST to Greater Tree
+226. Invert Binary Tree
+111. Minimum Depth of Binary Tree
+110. Balanced Binary Tree
+104. Maximum Depth of Binary Tree
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】6/19 9题
+440. Backpack III
+700. Cutting a Rod
+367. Valid Perfect Square
+564. Combination Sum IV
+563. Backpack V
+225. Find Node in Linked List
+272. Climbing Stairs II 
+126. Max Tree
+https://github.com/catchyzheng/LeetCode_Record
+
+----从明天起，越后做的题目，写在越前面。
+
+【刷题汇报】6/18 7题 
+724. Find Pivot Index 
+15. 3Sum 
+6. ZigZag Conversion 
+434. Number of Segments in a String 
+20. Valid Parentheses 
+28. Implement strStr() 
+13. Roman to Integer
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】6/17 8题 
+561. Array Partition I 
+1. Two Sum 
+167. Two Sum II 
+287. Find the Duplicate Number 
+88. Merge Sorted Array 
+11. Container With Most Water 
+238. Product of Array Except Self 
+832. Flipping an Image 
+https://github.com/catchyzheng/LeetCode_Record
+ 
+【刷题汇报】6/16 5题 
+240. Search a 2D Matrix II
+ 33. Search in Rotated Sorted Array 
+153. Find Minimum in Rotated Sorted Array 
+240. Search a 2D Matrix II 
+230. Kth Smallest Element in a BST
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】6.15 7题 
+561. Array Partition I
+724. Find Pivot Index 
+35. Search Insert Position 
+69. Sqrt(x) 
+374. Guess Number Higher or Lower 
+367. Valid Perfect Square 
+475. Heaters
+
+https://github.com/catchyzheng/LeetCode_Record
+
+【刷题汇报】 6.14 3题 
+350. Intersection of Two Arrays II 
+278. First Bad Version 
+441. Arranging Coins 
+
+https://github.com/catchyzheng/LeetCode_Record
