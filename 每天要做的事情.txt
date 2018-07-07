@@ -9,14 +9,18 @@
 #每天领英加人。。。
 
 树的迭代式遍历？怎么设计
-【刷题汇报】/ 题 
-https://github.com/catchyzheng/LeetCode_Record
+
 
 看，4sum的通用解法。在array文件里。
 Ksum的题目和combination sum的题目有什么区别联系？？
 17. Letter Combinations of a Phone Number 还不会敲呢。。
 
-
+【刷题汇报】7/7 题 
+416. Partition Equal Subset Sum 还没写笔记
+811. Subdomain Visit Count
+152. Maximum Product Subarray
+91. Decode Ways
+https://github.com/catchyzheng/LeetCode_Record
 
 【刷题汇报】7/5 1题
 376. Wiggle Subsequence 
