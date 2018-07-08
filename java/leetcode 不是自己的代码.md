@@ -1,6 +1,31 @@
-[811. Subdomain Visit Count](https://leetcode.com/problems/subdomain-visit-count/discuss/121738/C++JavaPython-Easy-Understood-Solution)<br>
-py强大啊。。。
+7/8 [378. Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)<br>
+题意：给定一个矩阵，找到第k大元素。矩阵从左到右，从上到下都是升序。<br>
+相关题目：k-th各种。Find K Pairs with Smallest Sums
+```
+public int kthSmallest(int[][] matrix, int k) {
+    int r = matrix.length;
+    int c = (r==0 ? 0 : matrix[0].length);
+    if(r==1&&c==1) return matrix[0][0];
+    int low = 0, high = matrix[r-1][c-1] , mid;
+    while(low < high){
+        mid = low + (high-low)/2;
+        int i=0, j = c-1;
+        int cnt = 0;
+        for(i=0; i<r; ++i){
+            while(j>=0 && matrix[i][j] > mid) j--;
+            cnt += j+1;
+        }
+        if(cnt < k) low = mid+1;
+        else high = mid;
+    }
+    return low;
+}
+```
+还有一个做法，用[heap](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/discuss/85173/Share-my-thoughts-and-Clean-Java-Code)
 
+7/6 [811. Subdomain Visit Count](https://leetcode.com/problems/subdomain-visit-count/discuss/121738/C++JavaPython-Easy-Understood-Solution)<br>
+题意：给定一系列域名和对应的访问次数，求所有域名子域名的访问次数。例如["900 discuss.baidu.com", "50 fake.com"],那么应该返回 ["900 discuss.baidu.com", "900 baidu.com", "50 fake.com", "950 com"].<br>
+py强大啊。。。
 ```
 def subdomainVisits(self, cpdomains):
     ans = collections.Counter()
