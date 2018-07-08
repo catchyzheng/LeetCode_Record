@@ -15,7 +15,7 @@
 Ksum的题目和combination sum的题目有什么区别联系？？
 17. Letter Combinations of a Phone Number 还不会敲呢。。
 
-【刷题汇报】7/7 题 
+【刷题汇报】7/7 4题 
 416. Partition Equal Subset Sum 还没写笔记
 811. Subdomain Visit Count
 152. Maximum Product Subarray

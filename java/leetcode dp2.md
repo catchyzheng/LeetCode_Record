@@ -1,6 +1,26 @@
+7/7 [416. Partition Equal Subset Sum](https://leetcode.com/problems/longest-valid-parentheses/description/)<br>
+题意：给定一个非空的正整数组，问是否能够分成两块，使得和相同。<br>
+其实嘛。。很简单的动规模板题。看看你能不能回想起来用什么模板了。
+```
+public boolean canPartition(int[] nums) {
+    int len = nums.length;
+    int total = 0;
+    for(int num: nums) total += num;
+    if(total % 2!=0) return false;
+    int [] dp = new int[total/2+1];
+    for(int i=0; i<len; ++i){
+        for(int j=total/2; j>=0; --j){
+            if(j >= nums[i]) dp[j] = Math.max(dp[j], dp[j - nums[i]] + nums[i]);
+        }
+    }
+    return dp[total/2] == total/2 ? true: false;
+}
+```
+
 7/4 [376. Wiggle Subsequence](https://leetcode.com/problems/wiggle-subsequence/description/)<br>
 题意：给定一个序列，求最长的子序列，使得相邻元素的差呈正负交替。序列不一定要连续，但元素相对位置要相同。<br>
 解法，典型动规，用两个数组表示以当前下标结尾的最长子序列。
+妈的。。好多次WA。。。
 ```
 public class Solution {
     public int wiggleMaxLength(int[] nums) {
@@ -17,6 +37,7 @@ public class Solution {
     }
 }
 ```
+特殊情况：【3，3，3，2，2，5，5】
 
 7/2 [368. Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset/description/)<br>
 题意：给定一序列不相同的正整数，求最大的子集，使得任意两个数字都是倍数关系。<br>
