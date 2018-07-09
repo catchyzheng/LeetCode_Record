@@ -1,4 +1,5 @@
-首次创建仓库时，要把本地的东西放到云端：
+首次创建仓库时，应该先再github上手动创建repo：
+然后，把本地的东西放到云端：
 git init
 git add .(1.py)
 git commit -m "<comment>"

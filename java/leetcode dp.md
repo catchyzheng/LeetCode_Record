@@ -96,7 +96,7 @@ public int findTargetSumWays(int[] nums, int S) {
 }
 ```
 dp[i][j]表示，用i+1个数经过处理后，值等于j的方法数。<br>
-7/9 中午，复习标记。
+
 discussion还有转化为寻找子集和的思路。然而。。
 ```
 public int findTargetSumWays(int[] nums, int s) {
@@ -115,8 +115,9 @@ public int subsetSum(int[] nums, int s) {
 } 
 ```
 ？？并没有看懂。。
+7/9 复习标记。
 
-[5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)<br>
+重要 [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)<br>
 如何遍历，从后往前还是从前往后也是一门学问。在没有函数辅助dp情况下，要保证每个状态转移方程等式右边的每个状态都是已经计算过的。
 
 [96. Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/description/)<br>
