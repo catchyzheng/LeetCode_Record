@@ -1,3 +1,4 @@
+7/9复习：起点<br>
 7/7 [416. Partition Equal Subset Sum](https://leetcode.com/problems/longest-valid-parentheses/description/)<br>
 题意：给定一个非空的正整数组，问是否能够分成两块，使得和相同。<br>
 其实嘛。。很简单的动规模板题。看看你能不能回想起来用什么模板了。
@@ -76,7 +77,7 @@ public List<Integer> largestDivisibleSubset(int[] nums) {
 思路不难动规，但1要输出路径，因此采用pre数组记录上一个下标。2
 
 7/1 [139. Word Break](https://leetcode.com/problems/word-break/description/)<br>
-题意：给定一个长字符串和一系列短串，问长串是否能由短串构成。短串可以使用无限次。<br>
+题意：给定一个长字符串s和一个集合dict的短串，问长串是否能由短串构成。短串可以使用无限次。<br>
 想想看，什么思想什么解法？
 ```
 public boolean wordBreak(String s, Set<String> dict) {
@@ -85,12 +86,10 @@ public boolean wordBreak(String s, Set<String> dict) {
     /*//First DP
     for(int i = 1; i <= s.length(); i++){
         for(String str: dict){
-            if(str.length() <= i){
-                if(f[i - str.length()]){
-                    if(s.substring(i-str.length(), i).equals(str)){
-                        f[i] = true;
-                        break;
-                    }
+            if(str.length() <= i && f[i - str.length()]){
+                if(s.substring(i-str.length(), i).equals(str)){
+                    f[i] = true;
+                    break;
                 }
             }
         }
@@ -107,7 +106,7 @@ public boolean wordBreak(String s, Set<String> dict) {
     return f[s.length()];
 }
 ```
-
+令f[i]表示s从开头到i的字串能否表示。然后对于所有j<i,判断f[j]以及substring(j,i)是否在dict内。
 
 6/19 [514. Paint Fence](https://www.lintcode.com/problem/paint-fence/description)<br>
 lintcode：用k个颜色给n个并排的桩着色，最多只能连续两个同色。求方法个数。<br>
@@ -115,8 +114,10 @@ lintcode：用k个颜色给n个并排的桩着色，最多只能连续两个同�
 ```
 [详细讲解链接](http://yuanhsh.iteye.com/blog/2219891)
 ![image](http://m.qpic.cn/psb?/V13hu9k31D6BsB/h2fPxNVtSg.4zygk0nvtca6QSIRL1sikkXl4ihg6f9s!/b/dFkAAAAAAAAA&bo=dgO5AQAAAAARF.0!&rf=viewer_4&t=5)
+p[i]为前i个柱子的总染色方法数，s[i]为第i根柱子和i-1颜色不一样的方法数，d[i]为第i根柱子和i-1颜色一样的方法数。<br>
+s[i] = p[i-1] * (k-1), d[i] = p[i-2] * (k-1)
 第i根柱子要么和i-1颜色不一样，要么和i-1颜色相同但和i-2颜色不一样。不一样的颜色选择有k-1种。
-p[i] = (p[i-1]+p[i-2])*(k-1);
+因此p[i] = s[i] + d[i] = (p[i-1]+p[i-2])*(k-1);
 
 
 [Most-consistent-ways-of-dealing-with-the-series-of-stock-problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/Most-consistent-ways-of-dealing-with-the-series-of-stock-problems)<br>
@@ -173,4 +174,5 @@ public int coinChange(int[] coins, int amount) {
     else return dp[amount];
 }
 ```
-答案中，是把dp数组全部初始化为amount+1，以及dp[0]=0。
+答案中，是把dp数组全部初始化为amount+1，以及dp[0]=0。<br>
+7/9复习结束。

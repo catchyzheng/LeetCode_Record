@@ -1,4 +1,4 @@
-
+7/9复习起点<br>
 [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)<br>
 令A-Z对应1-26，现在给出一个数字构成的字符串，问有多少种解析成字母串的方法？
 
@@ -38,24 +38,19 @@ public int numDecodings(String s) {
 答案的解答。
 如何迭代。也就是如何构造子问题。很关键。
 ```
-// assume triangle is ArrayList<ArrayList<Integer>>, so list.get(index) will be O(1) operation
-// 不要纠结 List 的 get 操作可能是 O(n) runtime; 既然是实现某项功能，使用正确的数据结构是很重要的；如果是该function是用来作 api 使用的，那么数据结构可能是json，需要做预处理。
-// 面试的时候，List 数据结构不同，所需要的runtime 也不同就可以了。
-class Solution {
-    public int minimumTotal(List<List<Integer>> triangle) {
-        int[] dp = new int[triangle.size() + 1];
-		//
-        for (int i = triangle.size() - 1; i >= 0; i--) {
-            List<Integer> list = triangle.get(i);
-            for (int j = 0; j < list.size(); j++) {
-                dp[j] = list.get(j) + Math.min(dp[j], dp[j + 1]);
-            }
+public int minimumTotal(List<List<Integer>> triangle) {
+    int[] dp = new int[triangle.size() + 1];
+	//
+    for (int i = triangle.size() - 1; i >= 0; i--) {
+        List<Integer> list = triangle.get(i);
+        for (int j = 0; j < list.size(); j++) {
+            dp[j] = list.get(j) + Math.min(dp[j], dp[j + 1]);
         }
-        return dp[0];
     }
+    return dp[0];
 }
 ```
-自己的代码又长又臭。虽然也能做出。
+自己的代码,符合自己的思路，清晰明了，也能做出。
 ```
 public int minimumTotal(List<List<Integer>> triangle) {
     int r = triangle.size(), c;
@@ -67,9 +62,12 @@ public int minimumTotal(List<List<Integer>> triangle) {
     int min_ = Integer.MAX_VALUE;
     for(int i=1; i<r; i++){
         for(int j=0; j<=i; j++){
-            if(j==0) dp[i][j]=triangle.get(i).get(j) + dp[i-1][j];
-            else if(j==i) dp[i][j]=triangle.get(i).get(j) + dp[i-1][j-1];
-            else dp[i][j]=triangle.get(i).get(j) + Math.min(dp[i-1][j-1], dp[i-1][j]);
+            if(j==0) 
+				dp[i][j]=triangle.get(i).get(j) + dp[i-1][j];
+            else if(j==i) 
+				dp[i][j]=triangle.get(i).get(j) + dp[i-1][j-1];
+            else 
+				dp[i][j]=triangle.get(i).get(j) + Math.min(dp[i-1][j-1], dp[i-1][j]);
             if(i==r-1) min_ = min_ < dp[i][j] ? min_ : dp[i][j];
             System.out.print(dp[i][j]+" ");
         }
@@ -80,7 +78,6 @@ public int minimumTotal(List<List<Integer>> triangle) {
 ```
 [494. Target Sum](https://leetcode.com/problems/target-sum/solution/)<br>
 给定一个数组，要在每个数前放个符号，然后求和。问有多少种方法可以让和等于指定值。<br>
-又是耗时被吊打的一道题。。
 DP时候，从2D降到1D基本上都是有序迭代的维度，而且下标从小到大迭代。
 ```
 public int findTargetSumWays(int[] nums, int S) {
@@ -98,33 +95,16 @@ public int findTargetSumWays(int[] nums, int S) {
     return S > 1000 ? 0 : dp[nums.length - 1][S + 1000];
 }
 ```
-```
-public int findTargetSumWays(int[] nums, int S) {
-    int[] dp = new int[2001];
-    dp[nums[0] + 1000] = 1;
-    dp[-nums[0] + 1000] += 1;
-    for (int i = 1; i < nums.length; i++) {
-        int[] next = new int[2001];
-        for (int sum = -1000; sum <= 1000; sum++) {
-            if (dp[sum + 1000] > 0) {
-                next[sum + nums[i] + 1000] += dp[sum + 1000];
-                next[sum - nums[i] + 1000] += dp[sum + 1000];
-            }
-        }
-        dp = next;
-    }
-    return S > 1000 ? 0 : dp[S + 1000];
-}
-```
-discussion还有转化为寻找子集和的思路。
+dp[i][j]表示，用i+1个数经过处理后，值等于j的方法数。<br>
+7/9 中午，复习标记。
+discussion还有转化为寻找子集和的思路。然而。。
 ```
 public int findTargetSumWays(int[] nums, int s) {
     int sum = 0;
     for (int n : nums)
         sum += n;
     return sum < s || (s + sum) % 2 > 0 ? 0 : subsetSum(nums, (s + sum) >>> 1); 
-}   
-
+}
 public int subsetSum(int[] nums, int s) {
     int[] dp = new int[s + 1]; 
     dp[0] = 1;
@@ -134,6 +114,7 @@ public int subsetSum(int[] nums, int s) {
     return dp[s];
 } 
 ```
+？？并没有看懂。。
 
 [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)<br>
 如何遍历，从后往前还是从前往后也是一门学问。在没有函数辅助dp情况下，要保证每个状态转移方程等式右边的每个状态都是已经计算过的。

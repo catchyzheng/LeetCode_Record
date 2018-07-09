@@ -1,5 +1,8 @@
-[653. Two Sum IV - Input is a BST](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/)<br>
+[103. Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/)<br>
+5.3更新：下次做一下。<br>4.21更新：**还没做别瞎比比。**呃，其实不就是102的做法后将二维vector数组每层反转一下就行吗。。
 
+[653. Two Sum IV - Input is a BST](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/)<br>
+题意：输入一个BST，问能否找到两个元素，使得和等于指定值。
 ```
 boolean exists = false;
 Set<Integer> set = new HashSet<>();
@@ -91,7 +94,7 @@ public void levelMaker(List<List<Integer>> list, TreeNode root, int level) {
 [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)<br>
 给一个二叉树，返回从上到下的水平遍历。<br>
 我自己也做出来啦！！然而是C++的BFS想了好久。。哭<br>
-好好学学人家的BFS怎么用java写。。。其实答案还没看懂。。<br>
+好好学学人家的BFS怎么用java写。。。。<br>
 ```
 public List<List<Integer>> levelOrder(TreeNode root) {
     Queue<TreeNode> queue = new LinkedList<TreeNode>();
@@ -114,9 +117,6 @@ public List<List<Integer>> levelOrder(TreeNode root) {
 }
 ```
 同样也是可以用dfs做，参考107的dfs修改。
-
-[103. Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/)<br>
-5.3更新：下次做一下。<br>4.21更新：**还没做别瞎比比。**呃，其实不就是102的做法后将二维vector数组每层反转一下就行吗。。
 
 [508. Most Frequent Subtree Sum](https://leetcode.com/problems/most-frequent-subtree-sum/description/)<br>
 找出最频繁的子树和。子树和定义为一棵子树上所有节点的和。

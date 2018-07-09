@@ -16,3 +16,6 @@ git diff temp
 对比区别之后，如果觉得没有问题，可以使用如下命令进行代码合并：
 
 git merge temp
+
+不想对比的话，直接git fetch origin master 
+git merge origin/master
