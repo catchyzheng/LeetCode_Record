@@ -1,4 +1,6 @@
-
+7/9 [849. Maximize Distance to Closest Person](https://leetcode.com/problems/maximize-distance-to-closest-person/description/)<br>
+题意：给定一个座位数组，1表示有人坐，0没人坐。现在要再坐一个，求离最近人的最大距离。<br>
+注意处理左端没人和右端没人的情况就行。
 
 [18. 4Sum]()<br>
 [代码1](https://leetcode.com/problems/4sum/discuss/8547/7ms-java-code-win-over-100)

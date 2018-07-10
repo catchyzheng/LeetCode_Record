@@ -18,10 +18,18 @@ Ksum的题目和combination sum的题目有什么区别联系？？
 17. Letter Combinations of a Phone Number 还不会敲呢。。
 
 ----------------------------------------
-【刷题汇报】7/8 题
-378. Kth Smallest Element in a Sorted Matrix
+【刷题汇报】7/10 题
+129. Sum Root to Leaf Numbers
 https://github.com/catchyzheng/LeetCode_Record
 
+【刷题汇报】7/9 3题
+309 Best Time to Buy and Sell Stock with Cooldown
+714 Best Time to Buy and Sell Stock with Transaction Fee
+849. Maximize Distance to Closest Person
+
+【刷题汇报】7/8 1题
+378. Kth Smallest Element in a Sorted Matrix
+https://github.com/catchyzheng/LeetCode_Record
 
 【刷题汇报】7/7 4题 
 416. Partition Equal Subset Sum

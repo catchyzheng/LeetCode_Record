@@ -1,7 +1,33 @@
+[C++ template for ALL Combination Problem Set](https://leetcode.com/problems/combination-sum-iv/discuss/85120/C++-template-for-ALL-Combination-Problem-Set)<br>
 
-6/29 [77. Combinations]()是一个类似的题目。<br>
+6/29 [77. Combinations]()给定n和k，返回1-n中所有k个不同数的组合。<br》
+是一个类似的题目。<br>
+6/29 [216. Combination Sum III](https://leetcode.com/problems/combination-sum-iii/description/)<br>
+从1-9中找出k个不相同的数，使得和为n。
+```
+List<List<Integer>> res = new  ArrayList<List<Integer>>();
+int len;
+List<Integer> list = new ArrayList<>();
+public List<List<Integer>> combinationSum3(int k, int n) {
+    dfs(1, k, n);
+    return res;
+}
+public void dfs(int index, int cnt, int sum){//index equals element
+    if(cnt==0 && sum==0) {
+        List<Integer> tmp = new ArrayList<>(list);
+        res.add(tmp); return;
+    }
+    for(int i=index; i<=9; ++i){
+        list.add(i);
+        if(cnt-1>=0 && sum-i>=0) dfs(i+1, cnt-1, sum-i);
+        list.remove(list.size()-1);
+    }
+    return;
+}
+```
+
 6/29 [40. Combination Sum II](https://leetcode.com/problems/combination-sum-ii/description/)<br>
-从给定数组中找出能组合成指定值的组合方式。7=[1,1,5]=[3,4]
+给定一个包含重复元素的数组，找出能组合成指定值的相异的组合方式。不重复7=[1,1,5]=[3,4]
 ```
 List<List<Integer>> ans = new ArrayList<>();
 List<Integer> list = new ArrayList<>();
@@ -32,35 +58,8 @@ public void dfs(int [] c, int sum, int index){
 }
 ```
 
-6/29 [216. Combination Sum III]()<br>
-从1-9中找出k个不相同的数，使得和为n。
-```
-List<List<Integer>> res = new  ArrayList<List<Integer>>();
-int len;
-List<Integer> list = new ArrayList<>();
-public List<List<Integer>> combinationSum3(int k, int n) {
-    int [] arr = new int[]{1,2,3,4,5,6,7,8,9};
-    len = arr.length;
-    dfs(0, k, n, arr);
-    return res;
-}
-public void dfs(int index, int cnt, int sum, int[] arr){
-    if(cnt==0 && sum==0) {
-        List<Integer> tmp = new ArrayList<>(list);
-        res.add(tmp); return;
-    }
-    for(int i=index; i<len; ++i){
-        if(cnt==0 || sum-arr[i]<0) return;
-        list.add(arr[i]);
-        dfs(i+1, cnt-1, sum-arr[i], arr);
-        list.remove(list.size()-1);
-    }
-    return;
-}
-```
-
 5/27 [39. Combination Sum](https://leetcode.com/problems/combination-sum/description/)<br>
-给定一个元素互不相同的数组以及一个目标值，要求返回一个list<list<>>，存放着所有不同的排列方式。元素可重复使用。112和121算不同排列。
+给定一个元素互不相同的数组以及一个目标值，要求返回一个list<list<>>，存放着所有不同的组合方式。元素可重复使用多次。112和121算相同组合。
 ```
 List<List<Integer>> ans = new ArrayList<>();
 List<Integer> list = new ArrayList<>();
@@ -101,11 +100,8 @@ void dfs(String s, int l, int r){
         ans.add(s); return;
     }
     if(l>0) dfs(s+'(', l-1, r); 
-    if(r>0&&l<r) dfs(s+')', l, r-1);
+    if(l<r) dfs(s+')', l, r-1);
     return;
 }
 ```
 减到0为止。
-
-
-
