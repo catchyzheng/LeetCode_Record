@@ -1,3 +1,26 @@
+7/11 [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/)<br>
+题意：给出一个由(,)构成的串，找到最长的合法串。<br>
+第一道hard题目。。纯粹看答案咯。。<br>
+```
+public int longestValidParentheses(String s) {
+    int len = s.length();
+    int [] dp = new int[len];
+    int max_ = 0;
+    for(int i=1; i<len; ++i){
+        if(s.charAt(i)==')'){
+            if(s.charAt(i-1)=='(') dp[i] = (i-2>=0 ? dp[i-2] : 0) + 2;
+            else{
+                if(i-1-dp[i-1] >=0 && s.charAt(i-1-dp[i-1]) == '('){
+                    dp[i] = dp[i-1] + (i-1-dp[i-1]-1 >= 0 ? dp[i-2-dp[i-1]] : 0) + 2;
+                }
+            }
+        }
+        max_ = Math.max(max_, dp[i]);
+    }
+    return max_;
+}
+```
+
 7/8 [378. Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/)<br>
 题意：给定一个矩阵，找到第k大元素。矩阵从左到右，从上到下都是升序。<br>
 相关题目：k-th各种。Find K Pairs with Smallest Sums

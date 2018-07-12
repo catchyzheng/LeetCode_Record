@@ -1,5 +1,22 @@
 当物品可以用多次，而且不一定要求装满背包时，除了V[0]=0外，其他初始化为负无穷。最终结果要取体积0~M中的最大价值。
 
+7/12 [798. Backpack VII-solution](https://www.jiuzhang.com/solution/backpack-vii/#tag-highlight)<br>
+题意：给定n元，以及一系列物品的价格，重量，数量，问最多能买多重。
+看九章解答啦。。。迷之j变量，没用到。
+```
+def backPackVII(self, n, prices, weight, amounts):
+    # write your code here
+    f = [0 for x in range(n + 1)]
+    m = len(prices)
+    for i in range(m):
+        for j in range(1, amounts[i] + 1):
+            for k in range(n + 1)[::-1]:
+                if k >= prices[i]:
+                    f[k] = max(f[k], f[k - prices[i]] + weight[i])
+    return f[n]
+```
+
+
 6/19 [564. Combination Sum IV](https://www.lintcode.com/problem/combination-sum-iv/description)<br>
 题意：给定不重复的一系列物品体积，问有多少种排列方法可以组成指定target值。 112，121算不同方法。
 可是。。。为啥是先loop背包体积啊。。。
