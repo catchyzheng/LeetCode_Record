@@ -1,3 +1,31 @@
+7/14 [859. Buddy Strings](https://leetcode.com/problems/buddy-strings/description/)<br>
+题意：给定两个字符串，问是否能够通过交换两个位置的字符，让它们变成相同串。<br>
+思路不难。重点是学习python的语言表达。
+```
+def buddyStrings(self, A, B):
+    if len(A) != len(B): return False
+    if A == B:
+        seen = set()
+        for a in A:
+            if a in seen:
+                return True
+            seen.add(a)
+        return False
+    else:
+        list = []
+        for i in range(len(A)):
+            if A[i] != B[i]: list.append(i)
+        return len(list) == 2 and (A[list[0]] == B[list[1]] and A[list[1]] == B[list[0]])
+        '''
+        pairs = []
+        for a, b in itertools.izip(A, B):
+            if a != b:
+                pairs.append((a, b))
+            if len(pairs) >= 3: return False
+        return len(pairs) == 2 and pairs[0] == pairs[1][::-1]
+		```
+```
+
 7/11 [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/)<br>
 题意：给出一个由(,)构成的串，找到最长的合法串。<br>
 第一道hard题目。。纯粹看答案咯。。<br>

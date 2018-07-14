@@ -18,7 +18,17 @@ Ksum的题目和combination sum的题目有什么区别联系？？
 17. Letter Combinations of a Phone Number 还不会敲呢。。
 
 ----------------------------------------
+【刷题汇报】7/12-7/14 题
+860. Lemonade Change
+859. Buddy Strings
+718. Maximum Length of Repeated Subarray
+709. To Lower Case
+189. Rotate Array
+48. Rotate Image
+867. Transpose Matrix
 
+
+-----------上面的还没记录-------------
 【刷题汇报】7/11 1题
 32. Longest Valid Parentheses
 
