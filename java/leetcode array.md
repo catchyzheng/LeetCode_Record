@@ -1,3 +1,10 @@
+7/15 [868. Binary Gap](https://leetcode.com/problems/binary-gap/description/)<br>
+题意：给定一个数N，若其二进制表示中有超过1个的1，那么返回最长的1之间的间隔。否则返回0.
+```
+boolean [] vis = new boolean[(int)(Math.log(N)/Math.log(2)+2)];
+```
+方法不难，直接用数组表示第几个数位上有1.记得N最高有10^9，而且间隔必须位于两个1之间。
+
 7/12 [48. Rotate Image](https://leetcode.com/problems/rotate-image/description/)<br>
 题意：给定一个n*n的矩阵，要求顺时针旋转90度，且要in place。 废话少说，上代码吧！
 

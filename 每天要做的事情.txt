@@ -18,6 +18,12 @@ Ksum的题目和combination sum的题目有什么区别联系？？
 17. Letter Combinations of a Phone Number 还不会敲呢。。
 
 ----------------------------------------
+【刷题汇报】7/15 3题
+868. Binary Gap
+700. Search in a Binary Search Tree
+701. Insert into a Binary Search Tree
+
+
 【刷题汇报】7/12-7/14 题
 860. Lemonade Change
 859. Buddy Strings
@@ -29,7 +35,7 @@ Ksum的题目和combination sum的题目有什么区别联系？？
 
 798. Backpack VII-solution
 
------------上面的还没记录-------------
+
 【刷题汇报】7/11 1题
 32. Longest Valid Parentheses
 

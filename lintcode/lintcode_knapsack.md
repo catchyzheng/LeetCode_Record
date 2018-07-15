@@ -1,11 +1,10 @@
 当物品可以用多次，而且不一定要求装满背包时，除了V[0]=0外，其他初始化为负无穷。最终结果要取体积0~M中的最大价值。
 
 7/12 [798. Backpack VII-solution](https://www.jiuzhang.com/solution/backpack-vii/#tag-highlight)<br>
-题意：给定n元，以及一系列物品的价格，重量，数量，问最多能买多重。
+题意：给定n元，以及一系列物品的价格price，重量weight，数量amounts，问最多能买多重。
 看九章解答啦。。。迷之j变量，没用到。
 ```
 def backPackVII(self, n, prices, weight, amounts):
-    # write your code here
     f = [0 for x in range(n + 1)]
     m = len(prices)
     for i in range(m):
@@ -48,7 +47,7 @@ public int backPackV(int[] A, int m) {
     int i, j;
     f[0] = 1;
     for (i = 1; i <= n; ++i) {
-        for (j = m; j >= A[i -1]; --j) {
+        for (j = m; j >= A[i-1]; --j) {
             f[j] += f[j - A[i - 1]];
         }
     }
