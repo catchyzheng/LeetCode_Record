@@ -18,8 +18,10 @@ Ksum的题目和combination sum的题目有什么区别联系？？
 17. Letter Combinations of a Phone Number 还不会敲呢。。
 
 ----------------------------------------
-学了下树状数组。。明后天继续看吧。。一晚上都在看UIUC相关了。
+【刷题汇报】7/20 题
+476. Number Complement
 
+学了下树状数组。。明后天继续看吧。。一晚上都在看UIUC相关了。
 
 【刷题汇报】7/17 1题
 123. Best Time to Buy and Sell Stock III
