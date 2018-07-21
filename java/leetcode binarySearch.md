@@ -172,6 +172,21 @@ public boolean searchMatrix(int[][] matrix, int target) {
     return index<0 ? false : true;
 }
 ```
+```
+bool searchMatrix(vector<vector<int> > &matrix, int target) {
+    int n = matrix.size();
+    int m = matrix[0].size();
+    int l = 0, r = m * n - 1;
+    while (l != r){
+        int mid = (l + r - 1) >> 1;
+        if (matrix[mid / m][mid % m] < target)
+            l = mid + 1;
+        else 
+            r = mid;
+    }
+    return matrix[r / m][r % m] == target;
+}
+```
 为什么总是不考虑边界情况啊。。。当到边界时候，真的要验证一遍自己的代码有没有错误啊。
 
 6/16 [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)<br>
