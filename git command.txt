@@ -8,6 +8,7 @@ git push origin master
 
 要把云端的东西clone下来作为本地仓库：
 git clone [url] //首次
+Git init // 在指定文件夹初始化,产生.git文件夹。。
 git pull [url] //更新云端的最新仓库到本地
 后面就是正常的add，commit push了。
 
