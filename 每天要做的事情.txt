@@ -18,6 +18,9 @@ Ksum的题目和combination sum的题目有什么区别联系？？
 17. Letter Combinations of a Phone Number 还不会敲呢。。
 
 ----------------------------------------
+【刷题汇报】7/25 1题
+872. Leaf-Similar Trees
+
 【刷题汇报】7/20 1题
 476. Number Complement
 
