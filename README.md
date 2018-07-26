@@ -1,1 +1,1 @@
-Record the solved problem by genre.
+Record the solved problems by genre.
