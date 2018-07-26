@@ -15,5 +15,5 @@ rem pause>null
 echo on
 
 git add .
-git commit -m input
+git commit -m %input%
 git push origin master
