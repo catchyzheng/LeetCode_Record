@@ -3,6 +3,7 @@
 2 离线在线。
 
 7/26 [544. 前K大数](https://www.lintcode.com/problem/top-k-largest-numbers/description)<br>
+用优先队列实现最小堆，已经默认小的元素优先级高。容量k，插入O(K),取出前K个O(KlogK)。
 ```
 int max_size;
 public int[] topk(int[] nums, int k) {
