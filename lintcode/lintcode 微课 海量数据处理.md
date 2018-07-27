@@ -2,6 +2,13 @@
 1 是否要精确
 2 离线在线。
 
+7/27 [556. Standard Bloom Filter](https://www.lintcode.com/problem/standard-bloom-filter/description)<br>
+
+
+7/27 [128. Hash Function](https://www.lintcode.com/problem/hash-function/description)<br>
+为后面布隆过滤准备的。
+python，ord(c)可以返回字符的ASCII码
+
 7/26 [544. 前K大数](https://www.lintcode.com/problem/top-k-largest-numbers/description)<br>
 用优先队列实现最小堆，已经默认小的元素优先级高。容量k，插入O(K),取出前K个O(KlogK)。
 ```
