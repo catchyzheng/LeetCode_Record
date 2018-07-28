@@ -1,11 +1,12 @@
 二分法做题的若干细节，无需言传，意会便知：<br>
+
 1 mid = low + (high - low)/2;<br>
 2 low = mid+1;<br>
 3 int long的越界问题。<br>
 4 注意搜索空间是值范围还是下标范围。
-7/8 [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/discuss/72844/Two-Solutions-(with-explanation):-O(nlog(n))-and-O(n)-time-O(1)-space-without-changing-the-input-array)<br>
-用二分也是可以做的。注意，这里的搜索空间是值范围而不是下标空间。
-```
+7/8 [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/discuss/72844/Two-Solutions-(with-explanation):-O(nlog(n))-and-O(n)-time-O(1)-space-without-changing-the-input-array)<br>用二分也是可以做的。注意，这里的搜索空间是值范围而不是下标空间。
+
+```python
 def findDuplicate(self, nums):
     low = 1
     high = len(nums)-1
