@@ -2,6 +2,12 @@
 1 是否要精确
 2 离线在线。
 
+容器排序：Collections.sort() 
+
+StringTokenizer(), hasMoreTokens, nextToken
+
+7/30 
+
 7/30 [549. 最常使用的k个单词(Map Reduce) ](https://www.lintcode.com/problem/top-k-frequent-words-map-reduce/description)<br>
 
 用分布式实现topK。
@@ -106,7 +112,7 @@ public class TopKFrequentWords {
 
 {"This":[1,2],"content":[1,2],"document1":[1],"document2":[2],"is":[1,2],"of":[1,2],"the":[1,2]}
 
-有几个坑人之处：1 间隔可以多个空格 2 同一句话出现相同单词只能算一次。
+**有几个坑人之处**：1 间隔可以多个空格 2 同一句话出现相同单词只能算一次。
 
 ```java
 /**

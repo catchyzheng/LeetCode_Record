@@ -1,6 +1,8 @@
 int to char: (char)(num+'0')
 char to int: c-'0'
 字符串长度 s.length() 数组长度nums.length
+S = String.valueOf(i)
+I = Integer.parseInt(s)
 
 数组操作
 List<List<Integer>> ans = new ArrayList<>();
