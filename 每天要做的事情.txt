@@ -20,7 +20,7 @@ Ksum的题目和combination sum的题目有什么区别联系？？
 ----------------------------------------
 347. Top K Frequent Elements how to use quick select?
 
-【刷题汇报】7/30 题
+【刷题汇报】7/30 2题
 876. Middle of the Linked List
 874. Walking Robot Simulation
 

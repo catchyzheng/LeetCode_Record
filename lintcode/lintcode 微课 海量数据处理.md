@@ -2,11 +2,158 @@
 1 是否要精确
 2 离线在线。
 
+8/1 [577. 合并K个排序间隔列表 ](https://www.lintcode.com/problem/merge-k-sorted-interval-lists/description)<br> 还没做，日后看看。。。
+
 容器排序：Collections.sort() 
 
 StringTokenizer(), hasMoreTokens, nextToken
 
-7/30 
+private Comparator<Pair> PairComparator = new Comparator<Pair>()
+
+7/30 [486. Merge K Sorted Arrays ](https://www.lintcode.com/problem/merge-k-sorted-arrays/description)<br>
+
+外排序。链表和数组大同小异，关键点都在于比较器的写法，以及最小堆的操作。python牛逼。。比较函数都省了。以下代码来自LeetCode解答。
+
+```python
+from Queue import PriorityQueue
+
+class Solution(object):
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        head = point = ListNode(0)
+        q = PriorityQueue()
+        for l in lists:
+            if l:
+                q.put((l.val, l))
+        while not q.empty():
+            val, node = q.get()
+            point.next = ListNode(val)
+            point = point.next
+            node = node.next
+            if node:
+                q.put((node.val, node))
+        return head.next
+```
+
+
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public class Pair{
+        ListNode node; int id;
+        public Pair(ListNode n, int i){
+            node = n; id = i;
+        }
+    }
+    private Comparator<Pair> PairComparator = new Comparator<Pair>(){
+        public int compare(Pair a, Pair b){
+            return a.node.val!=b.node.val ? a.node.val - b.node.val : a.id - b.id;
+        }
+    };
+    public ListNode mergeKLists(ListNode[] lists) { // not List<ListNode>
+        int size = lists.length; //int size = lists.size();
+        Queue<Pair> min_heap = new PriorityQueue<Pair>(PairComparator);
+        
+        ListNode [] index = new ListNode[size];
+        for(int i=0; i<size; ++i){
+            index[i] = lists[i];
+        }
+        for(int i=0; i<size; ++i){
+            if(index[i]!=null){
+                min_heap.offer(new Pair(index[i], i));
+                index[i] = index[i].next;
+            }
+        }
+        ListNode res = null, pre = new ListNode(0);
+        while(!min_heap.isEmpty()){
+            Pair top = min_heap.peek();
+            int id = top.id;
+            if(res == null) res = top.node;
+            pre.next = top.node; pre = pre.next;
+            min_heap.poll();
+            if(index[id] != null) {
+                min_heap.offer(new Pair(index[id], id));
+                index[id] = index[id].next;
+            }
+        }
+        return res;
+    }
+}
+```
+
+7/31 [550. 最常使用K个单词2](https://www.lintcode.com/problem/top-k-frequent-words-ii/description)<br>
+
+数据流。要实现add和topK两个函数。为什么微课里面的HashHeap用不了呢。。。
+
+```java
+public class TopK {
+    private Map<String, Integer> words = null;
+    private NavigableSet<String> topk = null;
+    private int k;
+    
+    private Comparator<String> myComparator = new Comparator<String>() {
+        public int compare(String left, String right) {
+            if (left.equals(right))
+                return 0;
+    
+            int left_count = words.get(left);
+            int right_count = words.get(right);
+            if (left_count != right_count) {
+                return right_count - left_count;
+            }
+            return left.compareTo(right);
+        }
+    };
+    
+    public TopK(int k) {
+        // initialize your data structure here
+        this.k = k;
+        words = new HashMap<String, Integer>();
+        topk = new TreeSet<String>(myComparator);
+    }
+    
+    public void add(String word) {
+        // Write your code here
+        if (words.containsKey(word)) {
+            if (topk.contains(word))
+                topk.remove(word);
+            words.put(word, words.get(word) + 1);
+        } else {
+            words.put(word, 1);
+        }
+    
+        topk.add(word);
+        if (topk.size() > k) {
+            topk.pollLast();
+        }
+    }
+    
+    public List<String> topk() {
+        // Write your code here
+        List<String> results = new ArrayList<String>();
+        Iterator it = topk.iterator();
+        while(it.hasNext()) {
+             String str = (String)it.next();
+             results.add(str);
+        }
+        Collections.sort(results, myComparator);
+        return results;
+    }
+}
+```
+
+其他方法参见[leetcode 离线版topKwords](https://leetcode.com/problems/top-k-frequent-words/discuss/)
 
 7/30 [549. 最常使用的k个单词(Map Reduce) ](https://www.lintcode.com/problem/top-k-frequent-words-map-reduce/description)<br>
 
