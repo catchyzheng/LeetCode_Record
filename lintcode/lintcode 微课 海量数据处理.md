@@ -94,7 +94,7 @@ public class Solution {
 
 7/31 [550. 最常使用K个单词2](https://www.lintcode.com/problem/top-k-frequent-words-ii/description)<br>
 
-数据流。要实现add和topK两个函数。为什么微课里面的HashHeap用不了呢。。。
+数据流。要实现add和topK两个函数。为什么微课里面的HashHeap用不了呢。。。python要怎么实现？
 
 ```java
 public class TopK {
