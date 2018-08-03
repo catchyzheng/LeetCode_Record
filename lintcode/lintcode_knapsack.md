@@ -2,8 +2,27 @@
 
 7/12 [798. Backpack VII-solution](https://www.jiuzhang.com/solution/backpack-vii/#tag-highlight)<br>
 题意：给定n元，以及一系列物品的价格price，重量weight，数量amounts，问最多能买多重。
-看九章解答啦。。。迷之j变量，没用到。
+
+二维伪代码如下：
+
+```java
+for (int i = 1; i <= N; ++i) {
+    for (int j = 0; j <= V; ++j) {
+        backpack[i][j] = backpack[i - 1][j];
+        for (int k = 1; k <= num[i]; ++k) {
+            if (j >= k * cap[i]) {
+                backpack[i][j] = Math.max(backpack[i][j], backpack[i - 1][j - k * cap[i]] + k * val[i]);
+            }
+        }
+    }
+}
 ```
+
+这是一维版本。f[j] = f[j - cap[i]] + val[i] = f[j - 2 * cap[i]] + val[i] + val[i] = .....因此循环语句可以不出现枚举个数的变量。
+
+以下是九章解答。
+
+```python
 def backPackVII(self, n, prices, weight, amounts):
     f = [0 for x in range(n + 1)]
     m = len(prices)
@@ -15,32 +34,36 @@ def backPackVII(self, n, prices, weight, amounts):
     return f[n]
 ```
 
+**0-1 backpack**
 
 6/19 [564. Combination Sum IV](https://www.lintcode.com/problem/combination-sum-iv/description)<br>
 题意：给定不重复的一系列物品体积，问有多少种排列方法可以组成指定target值。 112，121算不同方法。
-可是。。。为啥是先loop背包体积啊。。。
-```
+为啥是先loop背包体积：题目要求排列数，所以应当在一个固定体积下遍历过所有背包的组合情况后，再进入下一个体积。
+
+```Java
 public int backPackVI(int[] nums, int m) {
     int[] dp = new int[m + 1];//len = target
     dp[0] = 1;
-    for (int i = 1; i < dp.length; i++) { 
+    for (int j = 1; j < dp.length; j++) { 
 	//first loop the backpack volume
-        for (int j = 0; j < nums.length; j++) { 
+        for (int i = 0; i < nums.length; i++) { 
 		//then the item index
-            if (i - nums[j] >= 0) {
-                dp[i] += dp[i - nums[j]];
+            if (j - nums[i] >= 0) {
+                dp[j] += dp[j - nums[i]];
             }
         }
     }
     return dp[m];
 }
 ```
-如果要求方法的不同组合数，那就交换循环次序,先index再volume。
+如果要求方法的不同组合数，像563，那就交换循环次序,先index再volume。
 
 6/19 [563. Backpack V](https://www.lintcode.com/problem/backpack-v/description)<br>
 给定n个物品的体积，每种物品用一次，装满指定体积m有多少种方法。<br>
-惊呆了，为什么可以直接累加。。
-```
+
+也是01.惊呆了，为什么可以直接累加。。
+
+```java
 public int backPackV(int[] A, int m) {
     int n = A.length;
     int [] f = new int[m + 1];
@@ -59,11 +82,13 @@ public int backPackV(int[] A, int m) {
 给定n个物品的体积，一个背包体积m，求最多能装多少。<br>
 [125. Backpack II](https://www.lintcode.com/problem/backpack-ii/description)<br>
 给定n个物品的体积和价值，一个背包体积m，求最多能装的价值。<br>
-92题的物品没有价值，直接把费用当做价值考虑就行<br>
+
+125和92都是01背包。92题的物品没有价值，直接把费用当做价值考虑就行<br>
 几个要注意的点：<br>
 1 这是01背包，故dp数组的v要从<背包容量值>m往0遍历。<br>
 2 因为待选物品的的价值和费用并不按照顺序排列，因此dp需要从<背包容量值>m遍历到0才行。
-```
+
+```java
 public int backPack(int m, int[] A, int[] V) {
     int len = A.length;
     int [] dp = new int[m+1];
@@ -75,7 +100,7 @@ public int backPack(int m, int[] A, int[] V) {
     return dp[m];
 }
 ```
-01背包，v逆序遍历。完全背包，v顺序遍历。多重背包，转化为C*2^k,V*2^k，O(lgn)。希望日后你还能看懂现在的笔记。。。。
+01背包，v逆序遍历。完全背包，v顺序遍历。希望日后你还能看懂现在的笔记。。。。
 
 如果不要求完全放满背包，那么可以初始化dp都为0。否则，如果要求完全放满，那么只能初始化dp[0]=0,其余为dp[i]=负无穷。
 
