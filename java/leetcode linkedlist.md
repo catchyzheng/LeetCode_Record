@@ -1,7 +1,40 @@
+8/2 [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/description/)
+
+```python
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution(object):
+    def detectCycle(self, head):
+        if head is None: return None
+        p1, p2 = head, head
+        cnt = 0
+        while p2 != None and p1.next != None and p2.next != None:
+            p1 = p1.next; p2 = p2.next.next
+            cnt += 1
+            if p1 == p2: break
+        if p2 == None or p2.next == None: return None
+        tmp = cnt
+        p1 = head; p2 = head
+        while cnt > 0:
+            cnt -= 1; p2 = p2.next
+            
+        while p1 != p2:
+            p1 = p1.next; p2 = p2.next
+            
+        return p1
+        
+```
+
+
+
 [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/)<br>
 从链表中移除倒数第N个节点。进阶：如何能做到扫描一遍就做完？<br>
 自己的做法扫两遍。一遍确定长度len，第二遍移除第len-N+1个节点。<br>
 下面是扫一遍的想法，真的很奇妙！
+
 ```
 public ListNode removeNthFromEnd(ListNode head, int n) {
     ListNode dummy = new ListNode(0);

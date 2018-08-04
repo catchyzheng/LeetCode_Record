@@ -1,5 +1,32 @@
 当物品可以用多次，而且不一定要求装满背包时，除了V[0]=0外，其他初始化为负无穷。最终结果要取体积0~M中的最大价值。
 
+
+
+8/3 [799. Backpack VIII ](https://www.lintcode.com/problem/backpack-viii/description)<br>
+
+给定一系列硬币的面值和数量，问1~n有多少数额能被组成？
+
+为什么啊。。没懂啊
+
+```python
+    def backPackVIII(self, n, value, amount):
+        # write your code here
+        dp = [False for i in range(n + 1)]
+        dp[0] = True
+        res = 0
+        m = len(value)
+        for i in range(m):
+            cnt = [0 for x in range(n + 1)]
+            for j in range(value[i], n + 1):
+                if dp[j] == False and dp[j - value[i]] and cnt[j - value[i]] < amount[i]:
+                    dp[j] = True
+                    res = res + 1
+                    cnt[j] = cnt[j - value[i]] + 1         
+        return res
+```
+
+
+
 7/12 [798. Backpack VII-solution](https://www.jiuzhang.com/solution/backpack-vii/#tag-highlight)<br>
 题意：给定n元，以及一系列物品的价格price，重量weight，数量amounts，问最多能买多重。
 
@@ -28,7 +55,7 @@ def backPackVII(self, n, prices, weight, amounts):
     m = len(prices)
     for i in range(m):
         for j in range(1, amounts[i] + 1):
-            for k in range(n + 1)[::-1]:
+            for k in range(n + 1)[::-1]:# n yuans
                 if k >= prices[i]:
                     f[k] = max(f[k], f[k - prices[i]] + weight[i])
     return f[n]

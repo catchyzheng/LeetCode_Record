@@ -19,8 +19,10 @@ Ksum的题目和combination sum的题目有什么区别联系？？
 
 ----------------------------------------
 347. Top K Frequent Elements how to use quick select?
+【刷题汇报】8/4 1题
+31. Next Permutation
 
-【刷题汇报】8/2 题
+【刷题汇报】8/2 1题
 142. Linked List Cycle II
 
 【刷题汇报】7/30 2题
