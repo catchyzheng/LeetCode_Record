@@ -1,7 +1,16 @@
+7/20 [72. Edit Distance](https://leetcode.com/problems/edit-distance/description)<br>
+
+题意：给定两个字符串S,T，可以进行修改，插入，删除字符操作。问至少要多少次操作才能让S变成T。
+
+动规题。答案解释在[这里](https://leetcode.com/problems/edit-distance/discuss/25846/20ms-Detailed-Explained-C++-Solutions-(O(n)-Space)<br>
+
+
+
 7/14 [859. Buddy Strings](https://leetcode.com/problems/buddy-strings/description/)<br>
 题意：给定两个字符串，问是否能够通过交换两个位置的字符，让它们变成相同串。<br>
-思路不难。重点是学习python的语言表达。
-```
+思路不难。重点是学习python的语言表达.
+
+```python
 def buddyStrings(self, A, B):
     if len(A) != len(B): return False
     if A == B:
@@ -23,12 +32,11 @@ def buddyStrings(self, A, B):
                 pairs.append((a, b))
             if len(pairs) >= 3: return False
         return len(pairs) == 2 and pairs[0] == pairs[1][::-1]
-		```
 ```
-
 7/11 [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/description/)<br>
 题意：给出一个由(,)构成的串，找到最长的合法串。<br>
 第一道hard题目。。纯粹看答案咯。。<br>
+
 ```
 public int longestValidParentheses(String s) {
     int len = s.length();
@@ -88,7 +96,7 @@ def subdomainVisits(self, cpdomains):
             ans[".".join(frags[i:])] += count
 
     return ["{} {}".format(ct, dom) for dom, ct in ans.items()]
-	# return ["{} {}".format(ans[c], c) for c in ans]
+    # return ["{} {}".format(ans[c], c) for c in ans]
 ```
 
 [343. Integer Break](https://leetcode.com/problems/integer-break/description/)<br>
@@ -486,3 +494,6 @@ class Solution {
 简单的return (A+A).contains(B)，但复杂度是N2。其实有N的，要用到大数哈希了。[solution](https://leetcode.com/problems/rotate-string/solution/)
 
 []()
+```
+
+```
