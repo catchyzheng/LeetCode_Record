@@ -1,5 +1,36 @@
+8/19 [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/description/)
+
+题意：给定一系列区间，求合并后的区间序列。
+
+先按照左端排序，然后每次读取一个新区间，就和结果区间序列最后一个区间元素相比较。或者记录左右端点，依次更新。
+
+```python
+def merge(self, intervals):
+        """
+        :type intervals: List[Interval]
+        :rtype: List[Interval]
+        """
+        intervals = sorted(intervals,key = lambda inter:inter.start)
+        result = []
+        
+        for inter in intervals:
+            if not result: result.append(inter)
+            else:
+                if inter.start <= result[-1].end:
+                    if inter.end > result[-1].end:
+                        result[-1].end = inter.end
+                else:
+                    result.append(inter)
+        return result
+```
+
+8/19 [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/)
+
+好难的。。
+
 7/15 [868. Binary Gap](https://leetcode.com/problems/binary-gap/description/)<br>
 题意：给定一个数N，若其二进制表示中有超过1个的1，那么返回最长的1之间的间隔。否则返回0.
+
 ```
 boolean [] vis = new boolean[(int)(Math.log(N)/Math.log(2)+2)];
 ```
