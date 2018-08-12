@@ -1,8 +1,25 @@
+8/11 [236. 交换奇偶二进制位](https://www.lintcode.com/problem/swap-bits/note/90970)<br>
+
+给定一个数，返回将其二进制表示中奇偶位交换的结果。12位交换，34位交换。5的返回10.
+
+思路：分别清零，然后合并。
+
+```python
+    def swapOddEvenBits(self, x):
+        # write your code here
+        a = (x & 0xaaaaaaaa) >> 1 # clear odd bit
+        b = (x & 0x55555555) << 1 # clear even bit
+        return a | b
+```
+
+
+
 5/25 [389. Find the Difference](https://leetcode.com/problems/find-the-difference/description/)<br>
 这题。。其实是不允许使用任何java容器的，“XXX is not declared in this scope.”<br>
 日后自己想一想，怎么做才是最快的？<Br>
 其实有个隐含情况，那就是加的字母曾经出现在原字符串中。<br>
 这时候你还会想用set吗。
+
 ```
 public char findTheDifference(String s, String t) {
     int a=0;
