@@ -1,6 +1,39 @@
+8/13 []()
+
+（本题不是自己做的）题意：给出构成一个图的一组边，找到the last edge，使得当去掉这条边后，剩下的图是一棵树。
+
+方法1：dfs。依次读取边，读过的边组成图。每当读取新的边(u, v)时，就在已知的图中dfs，看能否找到从u到v的通路。如果能行，就返回此边作为结果。
+
+```python
+class Solution(object):
+    def findRedundantConnection(self, edges):
+        graph = collections.defaultdict(set)
+
+        def dfs(source, target):
+            if source not in seen:
+                seen.add(source)
+                if source == target: return True
+                return any(dfs(nei, target) for nei in graph[source])#只要有true，就返回true
+
+        for u, v in edges:
+            seen = set()
+            if u in graph and v in graph and dfs(u, v):
+                return u, v
+            graph[u].add(v)
+            graph[v].add(u)
+```
+
+方法2：并查集。
+
+
+
 8/12 [547. Friend Circles](https://leetcode.com/problems/friend-circles/description/)
 
-题意：一群朋友0-n，有些是直接朋友，有些是间接朋友。现在定义朋友圈为，圈中所有人互相都是直接或者间接朋友。实际上就是找多少块联通分量。
+题意：一群朋友0-n，有些是直接朋友，有些是间接朋友。现在定义朋友圈为，圈中所有人互相都是直接或者间接朋友，问这群朋友中有多少个“朋友圈”。
+
+实际上就是找多少块联通分量。
+
+方法1：dfs。
 
 ```python
 class Solution(object):
@@ -26,7 +59,7 @@ class Solution(object):
                 self.dfs(M, j, vis)
 ```
 
-真是剽悍的java并查集模板。。。
+方法2：disjoint set union。真是剽悍的java并查集模板。。。
 
 ```java
 public class Solution {
