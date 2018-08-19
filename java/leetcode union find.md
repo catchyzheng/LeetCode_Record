@@ -1,4 +1,4 @@
-8/13 []()
+8/13 [684. Redundant Connection](https://leetcode.com/problems/redundant-connection/solution/)
 
 （本题不是自己做的）题意：给出构成一个图的一组边，找到the last edge，使得当去掉这条边后，剩下的图是一棵树。
 
