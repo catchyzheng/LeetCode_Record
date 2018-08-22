@@ -1,3 +1,45 @@
+8/20 [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
+
+题意：如题目所示，要求O(log(m+n))完成。
+
+代码如下，思路从lintcode推送获得。但还是不懂为什么递归的k参数要加一。。。
+
+```python
+class Solution(object):
+    def findMedianSortedArrays(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """
+        m, n = len(nums1), len(nums2)
+        if m==0 and n==0: return 0.0
+        if (m+n) % 2 == 1:
+            return self.kthlargest(nums1, nums2, (m+n)/2 + 1) * 1.0
+        else:
+            a = self.kthlargest(nums1, nums2, (m+n)/2)
+            b = self.kthlargest(nums1, nums2, (m+n)/2 + 1)
+            return (a+b)/2.0
+    
+    def kthlargest(self, nums1, nums2, k):
+        m, n = len(nums1), len(nums2)
+        if m==0: return nums2[k-1]
+        if n==0: return nums1[k-1]
+        if k == 1: return min(nums1[0], nums2[0])
+        mid = k/2
+        a, b = float("inf"), float("inf")
+        if m >= mid: 
+            a = nums1[mid-1]
+        if n>= mid:
+            b = nums2[mid-1]
+        if a>b:
+            return self.kthlargest(nums1, nums2[mid:], k - mid)
+        else:
+            return self.kthlargest(nums1[mid:], nums2, k - mid)
+```
+
+
+
 7/20 [72. Edit Distance](https://leetcode.com/problems/edit-distance/description)<br>
 
 题意：给定两个字符串S,T，可以进行修改，插入，删除字符操作。问至少要多少次操作才能让S变成T。

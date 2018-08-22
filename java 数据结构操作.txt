@@ -38,3 +38,6 @@ peek() //取出首值，不弹出。
 Deque<Integer> mDeque = new ArrayDeque<Integer>();
 相比queue，就是在每个操作后面可以加上First或者Last。
 
+Queue<> pq = new PriorityQueue<>()
+Pq.remove(obj) // 移除指定元素。
+

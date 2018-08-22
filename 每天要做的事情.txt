@@ -18,6 +18,12 @@ Ksum的题目和combination sum的题目有什么区别联系？？
 17. Letter Combinations of a Phone Number 还不会敲呢。。
 
 ----------------------------------------
+
+【刷题汇报】8/21 2题
+232. Implement Queue using Stacks
+225. Implement Stack using Queues
+4. Median of Two Sorted Arrays
+
 【刷题汇报】8/12 1题
 547. Friend Circles
 

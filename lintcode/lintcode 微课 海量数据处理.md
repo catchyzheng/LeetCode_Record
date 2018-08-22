@@ -10,6 +10,34 @@ StringTokenizer(), hasMoreTokens, nextToken
 
 private Comparator<Pair> PairComparator = new Comparator<Pair>()
 
+8/21 [642. Moving Average from Data Stream](https://www.lintcode.com/problem/moving-average-from-data-stream/description)
+
+```java
+public class MovingAverage {
+    Queue<Integer> qu;
+    int size;
+    long sum;
+    public MovingAverage(int size) {
+        // do intialization if necessary
+        qu = new ArrayDeque<>();
+        this.size = size; sum = 0;
+    }
+
+    public double next(int val) {
+        // write your code here
+        if(qu.size() == size){
+            sum -= qu.peek();
+            qu.poll();
+        }
+        qu.offer(val);
+        sum += val;
+        return sum*1.0/qu.size();
+    }
+}
+```
+
+
+
 7/30 [486. Merge K Sorted Arrays ](https://www.lintcode.com/problem/merge-k-sorted-arrays/description)<br>
 
 外排序。链表和数组大同小异，关键点都在于比较器的写法，以及最小堆的操作。python牛逼。。比较函数都省了。以下代码来自LeetCode解答。
