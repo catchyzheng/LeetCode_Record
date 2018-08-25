@@ -1,3 +1,54 @@
+8/25 [726. Number of Atoms](https://leetcode.com/problems/number-of-atoms/description/)
+
+题意：给出一个化学分子式，要求返回按照字母排序的所有原子元素的计数。
+
+妙啊，写了一个parser。
+
+```
+class Solution(object):
+    def countOfAtoms(self, formula):
+        def parse():
+            N = len(formula)
+            count = collections.Counter()
+            while (self.i < N and formula[self.i] != ')'):
+                if (formula[self.i] == '('):
+                    self.i += 1
+                    for name, v in parse().items():
+                        count[name] += v
+                else:
+                    i_start = self.i
+                    self.i += 1
+                    while (self.i < N and formula[self.i].islower()):
+                        self.i += 1
+                    name = formula[i_start: self.i]
+                    i_start = self.i
+                    while (self.i < N and formula[self.i].isdigit()):
+                        self.i += 1
+                    count[name] += int(formula[i_start: self.i] or 1)
+            self.i += 1
+            i_start = self.i
+            while (self.i < N and formula[self.i].isdigit()):
+                self.i += 1
+            if (i_start < self.i):
+                multiplicity = int(formula[i_start: self.i])
+                for name in count:
+                    count[name] *= multiplicity
+
+            return count
+
+        self.i = 0
+        ans = []
+        count = parse()
+        for name in sorted(count):
+            ans.append(name)
+            multiplicity = count[name]
+            if multiplicity > 1:
+                ans.append(str(multiplicity))
+        return "".join(ans)
+```
+
+
+
 8/20 [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
 
 题意：如题目所示，要求O(log(m+n))完成。

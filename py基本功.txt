@@ -1,0 +1,17 @@
+BFS
+优先队列 PriorityQueue()
+stack用法： 就是一个list。
+
+
+multilist = [[0 for col in range(5)] for row in range(3)]
+
+deque, Counter, OrderDict, defaultdict, 为什么有的大写有的小写。。无语
+
+https://docs.python.org/2/library/collections.html#collections.defaultdict
+
+
+
+
+for index, num in enumerate(nums):
+
+c[~i] = c[-1-i] = c[n-1-i]

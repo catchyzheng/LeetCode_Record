@@ -1,6 +1,69 @@
+8/25 [81. 数据流中位数](https://www.lintcode.com/problem/find-median-from-data-stream/description)
+
+好巧妙的方法。。。都不需要实时存放当前中位数用于和新来的数比较。
+
+```java
+PriorityQueue<Integer> min = new PriorityQueue();
+PriorityQueue<Integer> max = new PriorityQueue(1000, Collections.reverseOrder());
+//当JDK8的时候，可以直接写成，不再需要初始化容量
+//PriorityQueue<Integer> max = new PriorityQueue(Collections.reverseOrder());
+ 
+public void Insert(Integer num) {
+    max.offer(num);
+    min.offer(max.poll());
+    if (max.size() < min.size()) {
+        max.offer(min.poll());
+    }
+}
+ 
+public Double GetMedian() {
+    if (max.size() == min.size()) {
+        return (max.peek() + min.peek())/2.0;
+    }
+    return (double)max.peek();
+}
+
+```
+
+
+
+8/23 [958. 回文数据流](https://www.lintcode.com/problem/palindrome-data-stream/description)
+
+题意：每次读入一个字符，判断构成的字符串是不是回文。
+
+不是自己的代码。O(n)做法。哎。。
+
+```python
+class Solution:
+    """
+    @param s: The data stream
+    @return: Return the judgement stream
+    """
+    def getStream(self, s):
+        # Write your code here
+        count = collections.defaultdict(int)
+        ans = []
+        oddCount = 0
+        for i in range(len(s)):
+            count[s[i]] += 1
+            if count[s[i]] % 2 == 1:
+                oddCount += 1
+            else:
+                oddCount -= 1
+            if oddCount > 1:
+                ans.append(0)
+            else:
+                ans.append(1)
+        return ans
+```
+
+
+
 8/22 [960. First Unique Number in a Stream II](https://www.lintcode.com/problem/first-unique-number-in-a-stream-ii/description)
 
-不断读取数字，实时返回第一个独特数字。 
+不断读取数字，实时返回第一个独特数字。
+
+下面的，不是自己的代码。。思路不难但要学会用collections的容器。。[here](https://docs.python.org/2/library/collections.html#)  
 
 ```python
 class DataStream:
