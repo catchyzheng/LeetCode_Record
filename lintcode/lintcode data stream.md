@@ -2,6 +2,12 @@
 
 好巧妙的方法。。。都不需要实时存放当前中位数用于和新来的数比较。
 
+优先队列默认是最小堆。
+
+参考资料：[python堆和优先队列的使用](https://blog.csdn.net/liu2012huan/article/details/53264162)
+
+值得注意的是，python中的优先队列貌似没法重载比较器从而构造一个最大堆。若想要实现最大堆的相同功能，可以每次push元素的相反数，从而达到相同效果。亲测可行。
+
 ```java
 PriorityQueue<Integer> min = new PriorityQueue();
 PriorityQueue<Integer> max = new PriorityQueue(1000, Collections.reverseOrder());
@@ -29,7 +35,9 @@ public Double GetMedian() {
 
 8/23 [958. 回文数据流](https://www.lintcode.com/problem/palindrome-data-stream/description)
 
-题意：每次读入一个字符，判断构成的字符串是不是回文。
+题意：每次读入一个字符，判断构成的字符串能否组成回文串。
+
+注意：这里不是说生成的字符串是不是回文，而是问能否调整顺序成为回文。因此统计下奇数个的元素不要超过一种就行。
 
 不是自己的代码。O(n)做法。哎。。
 

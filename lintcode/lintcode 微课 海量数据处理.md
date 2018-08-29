@@ -2,13 +2,77 @@
 1 是否要精确
 2 离线在线。
 
-8/1 [577. 合并K个排序间隔列表 ](https://www.lintcode.com/problem/merge-k-sorted-interval-lists/description)<br> 还没做，日后看看。。。
+8/29(8/1) [577. 合并K个排序间隔列表 ](https://www.lintcode.com/problem/merge-k-sorted-interval-lists/description)<br>
+
+类似的思路，用一个优先队列。注意的地方，List取元素用get不是[]。任何容器取元素前注意判断是否为空。
+
+```java
+public class Solution {
+    /**
+     * @param intervals: the given k sorted interval lists
+     * @return:  the new sorted interval list
+     */
+    public class Pair {
+        Interval inter;
+        int id;
+        Pair(Interval inter, int id){
+            this.inter = inter; this.id = id;
+        }
+    }
+    private Comparator<Pair> Cmp = new Comparator<Pair>(){
+        public int compare(Pair a, Pair b){
+            return a.inter.start - b.inter.start;
+        }
+    };
+    public List<Interval> mergeKSortedIntervalLists(List<List<Interval>> intervals) {
+        // write your code here
+        Queue<Pair> pq = new PriorityQueue<Pair>(Cmp);
+        int len = intervals.size();
+        int [] pointers = new int[len];
+        for(int i = 0; i<len; ++i){
+            if(pointers[i] < intervals.get(i).size()) 
+                pq.offer(new Pair(intervals.get(i).get(pointers[i]++), i));
+        }
+        List<Interval> res = new ArrayList<Interval>();
+        
+        while(!pq.isEmpty()){
+            Pair top = pq.poll();
+            int i = top.id;
+            if(res.size() == 0){
+                res.add(top.inter);
+            }
+            else{
+                Interval last = res.get(res.size() - 1);
+                int left = last.start, right = last.end;
+                if(top.inter.start <= right){
+                    res.get(res.size() - 1).end = Math.max(top.inter.end, right);
+                }
+                else{
+                    res.add(top.inter);
+                }
+                
+            }
+            if(pointers[i] < intervals.get(i).size()) 
+                pq.offer(new Pair(intervals.get(i).get(pointers[i]++), i));
+        }
+        return res;
+    }
+}
+```
+
+
 
 容器排序：Collections.sort() 
 
 StringTokenizer(), hasMoreTokens, nextToken
 
-private Comparator<Pair> PairComparator = new Comparator<Pair>()
+private Comparator<Pair> PairComparator = new Comparator<Pair>(){ 
+
+​	public int compare(Pair a, Pair b){ 	}
+
+};
+
+java在使用类构造函数要加new，python不用。
 
 8/21 [642. Moving Average from Data Stream](https://www.lintcode.com/problem/moving-average-from-data-stream/description)
 
