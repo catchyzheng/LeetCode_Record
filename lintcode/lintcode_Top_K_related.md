@@ -1,7 +1,10 @@
+很久以前做的topk题目，现在已经基本都快速想到思路了。
+
 [471. Top K Frequent Words](http://www.lintcode.com/en/problem/top-k-frequent-words/)<br>
 找到一堆单词中出现次数前k多的单词，次数相同就按照字典序排。
 map存单词和次数。set用于排序，重写了比较函数。
 貌似没法边统计次数边排序？。。。耗时末16%。。。
+
 ```
 struct MyComp{
     bool operator()(const pair<string, int> &a, const pair<string, int> &b){

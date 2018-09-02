@@ -1,6 +1,10 @@
+8/31 review 
+
 8/1 [560. Friendship Service](https://www.lintcode.com/problem/friendship-service/description)<br>
 
-实现好友服务。example如下：
+实现好友服务。竟然是简单版。example如下：
+
+其实思路就是，维护两个map<int, Set<int>>， 分别存放一个人关注了什么人以及一个人被什么人关注。
 
 ```
 follow(1, 3)

@@ -1,8 +1,10 @@
+8.30 复习
+
 8/25 [81. 数据流中位数](https://www.lintcode.com/problem/find-median-from-data-stream/description)
 
 好巧妙的方法。。。都不需要实时存放当前中位数用于和新来的数比较。
 
-优先队列默认是最小堆。
+优先队列默认是最小堆。其实**本质目的**就是要让两个优先队列的队顶元素是中间的两个数（偶数个总数）或者中间数和后一个数（奇数个总数）。
 
 参考资料：[python堆和优先队列的使用](https://blog.csdn.net/liu2012huan/article/details/53264162)
 
@@ -89,7 +91,7 @@ class DataStream:
         if self.counter[num] > 1:
             return
 
-        if self.counter[num] == 0:
+        if self.counter[num] == 0: #修改此行，可以实现实时返回出现K次的数字。
             self.queue.append(num)
         self.counter[num] += 1
 
