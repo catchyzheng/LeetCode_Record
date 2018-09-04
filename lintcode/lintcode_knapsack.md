@@ -8,7 +8,7 @@
 
 给定一系列硬币的面值和数量，问1~n有多少数额能被组成？
 
-为什么啊。。没懂啊
+貌似多重背包。代码还没看懂。。。
 
 ```python
 def backPackVIII(self, n, value, amount):
@@ -32,8 +32,6 @@ def backPackVIII(self, n, value, amount):
 7/12 [798. 背包问题VII ](https://www.lintcode.com/problem/backpack-vii/description)
 
 题意：给定n元，以及一系列物品的价格price，重量weight，数量amounts，问最多能买多重。
-
- [here-798. Backpack VII-solution](https://www.jiuzhang.com/solution/backpack-vii/#tag-highlight)<br>
 
 多重背包问题。二维伪代码如下：
 
@@ -89,11 +87,11 @@ def backPackVII(self, n, prices, weight, amounts):
 
 
 
-[801. 背包问题X](https://www.lintcode.com/problem/backpack-x/description?_from=ladder)
+[801. 背包问题X](https://www.lintcode.com/problem/backpack-x/description?_from=ladder) 容易 
 
 有`n`元，商人总共有三种商品，它们的价格分别是150元,250元,350元，三种商品的数量可以认为是无限多的，购买完商品以后需要将剩下的钱给商人作为小费，求`最少`需要给商人多少小费。容易的不行。。
 
-[440. 背包问题 III](https://www.lintcode.com/problem/backpack-iii/description?_from=ladder)
+[440. 背包问题 III](https://www.lintcode.com/problem/backpack-iii/description?_from=ladder) 容易
 
 给定n种具有大小 `Ai` 和价值 `Vi` 的物品(`每个物品可以取用无限次`)和一个大小为 `m` 的一个背包, 你可以放入背包里的最大价值是多少?   **包不一定要放满。**那就正常初始化数组为0呀！
 
