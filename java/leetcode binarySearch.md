@@ -4,6 +4,9 @@
 2 low = mid+1;<br>
 3 int long的越界问题。<br>
 4 注意搜索空间是值范围还是下标范围。
+
+9.4 复习起点
+
 7/8 [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/discuss/72844/Two-Solutions-(with-explanation):-O(nlog(n)-and-O(n)-time-O(1)-space-without-changing-the-input-array)<br>
 
 Given an array *nums* containing *n* + 1 integers where each integer is between 1 and *n* (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
@@ -13,7 +16,7 @@ Given an array *nums* containing *n* + 1 integers where each integer is betw
 ```python
 def findDuplicate(self, nums):
     low = 1
-    high = len(nums)-1
+    high = len(nums)-1 # high = n
    	
     while low < high:
         mid = low+(high-low)/2
@@ -30,8 +33,8 @@ def findDuplicate(self, nums):
 
 6/27 [162. Find Peak Element](https://leetcode.com/problems/find-peak-element/description/)<br>
 题意：山峰元素都定义是，比相邻的元素都大。现在给定一个数组，可能存在多个山峰元素。找到一个并返回。<br>
-典型二分。但思路稍微要转换下。
-```
+二分的思路有点清奇。。思路稍微要转换下。
+```java
 public int findPeakElement(int[] nums) {
     int l = 0, r = nums.length - 1; // left, right
     while (l < r) {
@@ -44,13 +47,13 @@ public int findPeakElement(int[] nums) {
     return l;
 }
 ```
-每次取中位数假定为山峰，然后**判断mid和mid+1的大小**.之所以**不用判断i和i-1**，是因为在上一个i(i')的判断过程中，已经判断了i'和i'+1。只有当i'+1元素大于i'时，才能走到下一步i,因此只需往前+1判断。
+（看solution吧。。）每次取中位数假定为山峰，然后**判断mid和mid+1的大小**.之所以**不用判断i和i-1**，是因为在上一个i(i')的判断过程中，已经判断了i'和i'+1。只有当i'+1元素大于i'时，才能走到下一步i,因此只需往前+1判断。
 
 6/18 [367. Valid Perfect Square](https://leetcode.com/problems/valid-perfect-square/description/)<br>
 题意：判断一个数是否是完全平方。<br>
 把low high mid都改成long再试试看。通过了。<br>
 以及，试试low high 只对一个加减1看看。事实证明，只能对low加1。
-```
+```java
 public boolean isPerfectSquare(int num) {
     if(num==1) return true;
     long low = 1, high = num, mid;
@@ -64,6 +67,8 @@ public boolean isPerfectSquare(int num) {
     return can;
 }
 ```
+
+9/4 复习终点
 
 6/17 [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)<br>
 题意：一个升序的数组，左边部分元素整体平移了。12345变成45123.搜索指定元素返回下标，否则返回-1.<br>

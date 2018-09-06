@@ -56,3 +56,30 @@ class Solution:
         return result
 ```
 
+[3sum smaller](https://www.lintcode.com/problem/3sum-smaller/description)
+
+题意：找到所有满足a[i]+a[j]+a[k] < target，0<=i<j<k的三元组个数。
+
+```python
+    def threeSumSmaller(self, nums, target):
+        count = 0
+        if not nums or len(nums) < 3:
+            return count
+            
+        nums.sort()
+        for index in xrange(len(nums) - 2):
+            start = index + 1
+            end = len(nums) - 1
+            while start < end:
+                total = nums[index] + nums[start] + nums[end]
+                if total < target:
+                    # . . . . . . . . . . . . .
+                    # ^       ^         ^
+                    # start - index
+                    count = count + end - start # attention! 
+                    start = start + 1
+                else:
+                    end = end - 1
+        return count
+```
+

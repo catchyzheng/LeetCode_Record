@@ -10,6 +10,8 @@
 
 值得注意的是，python中的优先队列貌似没法重载比较器从而构造一个最大堆。若想要实现最大堆的相同功能，可以每次push元素的相反数，从而达到相同效果。亲测可行。
 
+此题可以推广至，寻找第n/m的数。
+
 ```java
 PriorityQueue<Integer> min = new PriorityQueue();
 PriorityQueue<Integer> max = new PriorityQueue(1000, Collections.reverseOrder());
