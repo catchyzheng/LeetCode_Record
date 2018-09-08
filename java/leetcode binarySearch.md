@@ -75,7 +75,7 @@ public boolean isPerfectSquare(int num) {
 
 二分法。但是总是忽略一些边界情况！！！
 不知道答案是怎么做的。
-```
+```java
 public int search(int[] nums, int target) {
     int len = nums.length;
     if(len==0) return -1;
@@ -99,13 +99,41 @@ public int search(int[] nums, int target) {
     }
 }
 ```
+discussion中的众多解法。基本想法很像的
+
+```python
+    def search(self, nums, target):
+        if not nums:
+            return -1
+
+        low, high = 0, len(nums) - 1
+
+        while low <= high:
+            mid = (low + high) / 2
+            if target == nums[mid]:
+                return mid
+
+            if nums[low] <= nums[mid]:
+                if nums[low] <= target <= nums[mid]:
+                    high = mid
+                else:
+                    low = mid + 1
+            else:
+                if nums[mid] <= target <= nums[high]:
+                    low = mid + 1
+                else:
+                    high = mid
+
+        return -1
+```
+
 1空数组没判断！2末尾要判断是否是low还是low+1！！<br>
 
 6/17 [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)<br>
 题意：寻找平移过的数组中的最小元素.<br>
 做题时候，先看看是否有空数组或者长度为1的特殊情况需要单独判断啊！！！<br>
 以下是我的做法：
-```
+```java
 public int findMin(int[] nums) {
     int low = 0, high = nums.length-1, mid;
     if(low==high) return nums[low];
@@ -119,13 +147,13 @@ public int findMin(int[] nums) {
             high = mid;
         }
     }
-    if(low==nums.length-1) return nums[low];
+    if(low==nums.length-1) return nums[low]; //interesting
     else return Math.min(nums[low], nums[low+1]);
 }
 ```
 以下是最高票答案的做法：<br>
-当num[low]比num[high]小的时候，直接返回low，因为在一定区间内，相对大小不改变。厉害啊。
-```
+**当num[low]比num[high]小的时候，直接返回low，因为在一定区间内，相对大小不改变**。厉害啊。
+```java
 public int findMin(int[] nums) {
     int low = 0, high = nums.length-1, mid;
     if(low==high) return nums[low];
@@ -147,7 +175,7 @@ public int findMin(int[] nums) {
 6/16 [240. Search a 2D Matrix II](https://leetcode.com/problems/search-a-2d-matrix-ii/description/)<br>
 题意：一个二维矩阵，每一行从左到右升序，每一列从上到下升序。在这个矩阵中寻找指定元素，返回下标，否则返回-1.<br>
 其实是答案的思路，但真的很棒。日后看看能否想起来？
-```
+```java
 public boolean searchMatrix(int[][] matrix, int target) {
     if(matrix == null || matrix.length < 1 || matrix[0].length <1) {
         return false;
@@ -168,9 +196,9 @@ public boolean searchMatrix(int[][] matrix, int target) {
 
 [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/description/)<br>
 题意：一个矩阵，每行从左到右升序，上一行最右的元素总小于下一行最左元素。搜索target值的元素，否则返回-1.<br>
-简单题。然鹅。。
+简单题。
 答案怎么做？
-```
+```java
 public boolean searchMatrix(int[][] matrix, int target) {
     int r = matrix.length;
     int c = (r==0 ? 0:matrix[0].length);
@@ -182,7 +210,7 @@ public boolean searchMatrix(int[][] matrix, int target) {
     return index<0 ? false : true;
 }
 ```
-```
+```java
 bool searchMatrix(vector<vector<int> > &matrix, int target) {
     int n = matrix.size();
     int m = matrix[0].size();
@@ -202,7 +230,7 @@ bool searchMatrix(vector<vector<int> > &matrix, int target) {
 6/16 [230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)<br>
 在一个BST中寻找第k大的元素。 还没想过看follow up如何解决。
 以下是二分dfs的方法。其实没看出和二分有啥关系。。就是一个dfs的做法啊。
-```
+```java
 public int kthSmallest(TreeNode root, int k) {
     int count = countNodes(root.left);
     if (k <= count) {
@@ -223,6 +251,8 @@ What if the BST is modified (insert/delete operations) often and you need to fin
 
 详细解答看[here](https://leetcode.com/problems/kth-smallest-element-in-a-bst/discuss/63660/3-ways-implemented-in-JAVA-(Python):-Binary-Search-in-order-iterative-and-recursive)<br>
 
+9/5 复习终点
+
 intersection of two arrays 2 
 follow up:<br>
 What if the given array is already sorted? How would you optimize your algorithm?<br>
@@ -233,12 +263,12 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
 给定一系列房子的一维位置和一系列火炉的位置，求要让火炉覆盖所有房子的最小半径。<br>
 简言之，要让所有等半径的圆覆盖所有点。
 <br>
-Arrays自带的binarySearch: <br>
+**Arrays自带的binarySearch:** <br>
 1、如果找到关键字，则返回关键字在数组中的位置，从0开始<br>
 2、如果没有找到关键字，返回负的插入点值.所谓插入点值就是第一个比关键字大的元素在数组中的位置索引，从1开始。<br>
 和答案思路一致，但是忘记了一个重要条件。
 别人家的代码总是没有让我失望过。。
-```
+```java
 public int findRadius(int[] houses, int[] heaters) {
     Arrays.sort(heaters);
     int result = Integer.MIN_VALUE;
@@ -246,7 +276,7 @@ public int findRadius(int[] houses, int[] heaters) {
     for (int house : houses) {
         int index = Arrays.binarySearch(heaters, house);
         if (index < 0) {
-    	index = -(index + 1); //return neg
+    	index = -(index + 1); //return neg注意这点
         }
         int dist1 = index - 1 >= 0 ? house - heaters[index - 1] : Integer.MAX_VALUE;
         int dist2 = index < heaters.length ? heaters[index] - house : Integer.MAX_VALUE;
@@ -262,7 +292,7 @@ public int findRadius(int[] houses, int[] heaters) {
 6/15 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)<br>
 在一个数组中寻找目标值。如果找不到，就寻找应该被插入的下标位置。<br>
 基本二分法。照着模板就行啦====
-```
+```java
 public int searchInsert(int[] nums, int target) {
     if(target<nums[0]) return 0;
     if(target>nums[nums.length-1]) return nums.length;
@@ -280,7 +310,7 @@ public int searchInsert(int[] nums, int target) {
 二分法找平方根。注意x是非负整数！！<br>
 6/15 [374. Guess Number Higher or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/description/)<br>
 常规二分。依然是对low = mid + 1。
-```
+```java
 public int guessNumber(int n) {
     int low = 1, high = n, mid;
     while(low<high){
@@ -335,7 +365,7 @@ public int firstBadVersion(int n) {
 计算两个集合的交集，包含重复元素。可以有二分和非二分的做法。<br>
 非二分做法：先对两集合分别排序。用两个下标指针，依次比较两个下标指向的元素的大小，元素小的指针自增1.如果相等，就加入ans数组中。<br>
 二分做法：对集合b的元素，依次在集合a中进行二分查找。<br>
-```
+```java
 public int[] intersect(int[] nums1, int[] nums2) {
     Arrays.sort(nums1);
     Arrays.sort(nums2);
@@ -358,26 +388,4 @@ public int[] intersect(int[] nums1, int[] nums2) {
 }
 ```
 
-5/30 [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)<br>
-超级简单的二分法练手。。
-```
-public int searchInsert(int[] nums, int target) {
-    int l=0, r=nums.length-1;
-    if(target>nums[r]) return r+1;
-    if(target<nums[l]) return 0;
-    int m;
-    while(l<r-1){
-        m=(l+r)/2;
-        if(nums[m]==target) return m;
-        else if(nums[m]>target){
-            r=m;
-        }
-        else l=m;
-    }
-    if(nums[l]==target) return l;
-    else return l+1;
-}
-```
-5/29 [240. Search a 2D Matrix II](https://leetcode.com/problems/search-a-2d-matrix-ii/description/)
-二分还是分治，或是兼而有之？
-我是先尝试收缩行列的各自上下界，然后直接遍历查找。。效率不高。日后看看discuss的方法
+9/6 复习end

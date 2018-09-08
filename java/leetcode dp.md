@@ -1,3 +1,5 @@
+9/8复习起点
+
 7/9复习起点<br>
 [91. Decode Ways](https://leetcode.com/problems/decode-ways/description/)<br>
 令A-Z对应1-26，现在给出一个数字构成的字符串，问有多少种解析成字母串的方法？
@@ -33,7 +35,7 @@ public int numDecodings(String s) {
 }
 ```
 
-[120. Triangle](https://leetcode.com/problems/triangle/description/)<br>
+[120. Triangle](https://leetcode.com/problems/triangle/description/)<br>recoded
 给定一个第n行有n个元素的三角形。问从顶端走到底部的最小路径和。<br>
 答案的解答。
 如何迭代。也就是如何构造子问题。很关键。
@@ -95,7 +97,7 @@ public int findTargetSumWays(int[] nums, int S) {
     return S > 1000 ? 0 : dp[nums.length - 1][S + 1000];
 }
 ```
-dp[i][j]表示，用i+1个数经过处理后，值等于j的方法数。<br>
+```dp[i][j]```表示，用i+1个数经过处理后，值等于j的方法数。<br>
 
 discussion还有转化为寻找子集和的思路。然而。。
 ```
@@ -357,10 +359,10 @@ public int maxProfit(int[] p) {
 ```
 [198. House Robber](https://leetcode.com/problems/house-robber/description/)<br>
 题意：一个正数组，可以取若干元素但不能取相邻元素，求能取的最大值。<br>
-自己的解法：动规ans[i]=max(ans[i-1], nums[i]+max(ans[i-2], ans[i-3]))， 虽然没错但代码比较繁琐，具体见[这里](https://leetcode.com/problems/house-robber/submissions/1)<br>
+自己的解法：动规```ans[i]=max(ans[i-1], nums[i]+max(ans[i-2], ans[i-3]))```， 虽然没错但代码比较繁琐，具体见[这里](https://leetcode.com/problems/house-robber/submissions/1)<br>
 别人家的代码！简洁明了，确实思路非常巧妙啊。<br>
 考虑奇偶性。
-```
+```java
 public int rob(int[] nums){
     int len = nums.length;
     int a=0, b=0;

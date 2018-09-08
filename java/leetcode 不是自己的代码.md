@@ -2,9 +2,9 @@
 
 题意：给出一个化学分子式，要求返回按照字母排序的所有原子元素的计数。
 
-妙啊，写了一个parser。
+妙啊，写了一个parser。hard
 
-```
+```python
 class Solution(object):
     def countOfAtoms(self, formula):
         def parse():
@@ -53,7 +53,7 @@ class Solution(object):
 
 题意：如题目所示，要求O(log(m+n))完成。
 
-代码如下，思路从lintcode推送获得。但还是不懂为什么递归的k参数要加一。。。
+代码如下，思路从lintcode推送获得。
 
 ```python
 class Solution(object):

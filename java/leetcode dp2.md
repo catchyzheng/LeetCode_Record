@@ -1,8 +1,14 @@
+9/6复习起点
+
 7/9复习：起点<br>
-7/7 [416. Partition Equal Subset Sum](https://leetcode.com/problems/longest-valid-parentheses/description/)<br>
+7/7 [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/description/)<br>recoded
+
 题意：给定一个非空的正整数组，问是否能够分成两块，使得和相同。<br>
 其实嘛。。很简单的动规模板题。看看你能不能回想起来用什么模板了。
-```
+
+01背包问题的变体。
+
+```java
 public boolean canPartition(int[] nums) {
     int len = nums.length;
     int total = 0;
@@ -18,11 +24,34 @@ public boolean canPartition(int[] nums) {
 }
 ```
 
+```python
+class Solution(object):
+    def canPartition(self, nums):
+        total = 0
+        for num in nums: total += num
+        if total%2 == 1: return False
+        n = len(nums)
+        dp = [False for _ in range(total/2 + 1)]
+        dp[0] = True
+        #for i in range(1, n+1): dp[i][0] = True
+        for j in range(1, total/2+1): dp[j] = False
+        
+        for num in nums:
+            for j in range(total/2, -1, -1):
+                if j >= num:
+                    dp[j] = dp[j] or dp[j - num]
+                    
+        return dp[total/2]
+```
+
+
+
 7/4 [376. Wiggle Subsequence](https://leetcode.com/problems/wiggle-subsequence/description/)<br>
 题意：给定一个序列，求最长的子序列，使得相邻元素的差呈正负交替。序列不一定要连续，但元素相对位置要相同。<br>
 解法，典型动规，用两个数组表示以当前下标结尾的最长子序列。
 妈的。。好多次WA。。。
-```
+
+```java
 public class Solution {
     public int wiggleMaxLength(int[] nums) {
         if (nums.length < 2)
@@ -40,10 +69,10 @@ public class Solution {
 ```
 特殊情况：【3，3，3，2，2，5，5】
 
-7/2 [368. Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset/description/)<br>
+7/2 [368. Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset/description/)<br>recoded
 题意：给定一序列不相同的正整数，求最大的子集，使得任意两个数字都是倍数关系。<br>
 
-```
+```java
 public List<Integer> largestDivisibleSubset(int[] nums) {
     int n = nums.length;
     int[] count = new int[n];
@@ -74,12 +103,12 @@ public List<Integer> largestDivisibleSubset(int[] nums) {
     return res;
 }
 ```
-思路不难动规，但1要输出路径，因此采用pre数组记录上一个下标。2
+思路不难动规，但1要输出路径，因此采用pre数组记录上一个下标。2这么精妙的代码绝对不是我一开始想到的！
 
 7/1 [139. Word Break](https://leetcode.com/problems/word-break/description/)<br>
 题意：给定一个长字符串s和一个集合dict的短串，问长串是否能由短串构成。短串可以使用无限次。<br>
 想想看，什么思想什么解法？
-```
+```java
 public boolean wordBreak(String s, Set<String> dict) {
     boolean[] f = new boolean[s.length() + 1];
     f[0] = true;
@@ -110,8 +139,7 @@ public boolean wordBreak(String s, Set<String> dict) {
 
 6/19 [514. Paint Fence](https://www.lintcode.com/problem/paint-fence/description)<br>
 lintcode：用k个颜色给n个并排的桩着色，最多只能连续两个同色。求方法个数。<br>
-```
-```
+
 [详细讲解链接](http://yuanhsh.iteye.com/blog/2219891)
 ![image](http://m.qpic.cn/psb?/V13hu9k31D6BsB/h2fPxNVtSg.4zygk0nvtca6QSIRL1sikkXl4ihg6f9s!/b/dFkAAAAAAAAA&bo=dgO5AQAAAAARF.0!&rf=viewer_4&t=5)
 p[i]为前i个柱子的总染色方法数，s[i]为第i根柱子和i-1颜色不一样的方法数，d[i]为第i根柱子和i-1颜色一样的方法数。<br>
@@ -159,7 +187,10 @@ public int maxProfit(int[] prices) {
 [322. Coin Change](https://leetcode.com/problems/coin-change/description/)<br>
 给定一序列硬币面值和一个目标值，求组成目标值需要的最少硬币个数。硬币可以拿无限个。<br>
 典型动规。。动规的方程不难想到。但边界条件的处理比较关键。
-```
+
+无限取硬币，是完全背包变体。
+
+```java
 public int coinChange(int[] coins, int amount) {
     if(amount == 0) return 0;
     int [] dp = new int[amount+1];
