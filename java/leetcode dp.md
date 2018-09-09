@@ -153,13 +153,13 @@ public int subsetSum(int[] nums, int s) {
 ？？并没有看懂。。
 7/9 复习标记。
 
-重要 [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)<br>
+重要 [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)<br>recoded
 如何遍历，从后往前还是从前往后也是一门学问。在没有函数辅助dp情况下，要保证每个状态转移方程等式右边的每个状态都是已经计算过的。
 
 [96. Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/description/)<br>
 给出n值，欲存储1-n，有多少种BST的结构。<br>
 动规。
-```
+```java
 int len; int [] dp;
 public int numTrees(int n) {
     if(n<=2) return n;
@@ -182,8 +182,29 @@ int dfs(int n){
 
 [740. Delete and Earn](https://leetcode.com/problems/delete-and-earn/description/)<br>
 给定一数组，每当删除一个元素num，可以加num分，但同时也会删除所有num-1和num+1。求最多能得到多少分。<br>
-典型动规。先统计出每种值的个数，找出最大最小值。然后dp。和那个house robber很像。
+
+没怎么看懂solution。。。
+
+```python
+class Solution(object):
+    def deleteAndEarn(self, nums):
+        count = collections.Counter(nums)
+        prev = None
+        avoid = using = 0
+        for k in sorted(count):
+            if k - 1 != prev:
+                avoid, using = max(avoid, using), k * count[k] + max(avoid, using)
+            else:
+                avoid, using = max(avoid, using), k * count[k] + avoid
+            prev = k
+        return max(avoid, using)
 ```
+
+
+
+典型动规。先统计出每种值的个数，找出最大最小值。然后dp。和那个house robber很像。
+
+```java
 public int deleteAndEarn(int[] nums) {
     int [] cnt = new int[10000+1];
     int len = nums.length;
@@ -222,23 +243,13 @@ public boolean PredictTheWinner(int[] nums) {
 [62. Unique Paths](https://leetcode.com/problems/unique-paths/description/)<br>
 入门级别动规。给定一个二维数组长宽，求从左上角走到右下角的路径种类个数。<br>
 最直观的二维DP想法很简单，但是为何能够优化到一维空间复杂度呢？值得琢磨。
-```
+```java
 int uniquePaths(int m, int n) {
     vector<vector<int> > path(m, vector<int> (n, 1));
     for (int i = 1; i < m; i++)
         for (int j = 1; j < n; j++)
             path[i][j] = path[i - 1][j] + path[i][j - 1];
     return path[m - 1][n - 1];
-}
-```
-```
-int uniquePaths(int m, int n) {
-    if (m > n) return uniquePaths(n, m);
-    vector<int> cur(m, 1);
-    for (int j = 1; j < n; j++)
-        for (int i = 1; i < m; i++)
-            cur[i] += cur[i - 1]; 
-    return cur[m - 1];
 }
 ```
 [357. Count Numbers with Unique Digits](https://leetcode.com/problems/count-numbers-with-unique-digits/description/)<br>
