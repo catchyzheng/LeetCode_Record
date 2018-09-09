@@ -106,8 +106,12 @@ public List<Integer> largestDivisibleSubset(int[] nums) {
 思路不难动规，但1要输出路径，因此采用pre数组记录上一个下标。2这么精妙的代码绝对不是我一开始想到的！
 
 7/1 [139. Word Break](https://leetcode.com/problems/word-break/description/)<br>
+
+Recoded. failed
+
 题意：给定一个长字符串s和一个集合dict的短串，问长串是否能由短串构成。短串可以使用无限次。<br>
 想想看，什么思想什么解法？
+
 ```java
 public boolean wordBreak(String s, Set<String> dict) {
     boolean[] f = new boolean[s.length() + 1];

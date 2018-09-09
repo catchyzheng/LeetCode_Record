@@ -39,7 +39,7 @@ public int numDecodings(String s) {
 给定一个第n行有n个元素的三角形。问从顶端走到底部的最小路径和。<br>
 答案的解答。
 如何迭代。也就是如何构造子问题。很关键。
-```
+```java
 public int minimumTotal(List<List<Integer>> triangle) {
     int[] dp = new int[triangle.size() + 1];
 	//
@@ -78,9 +78,43 @@ public int minimumTotal(List<List<Integer>> triangle) {
     return min_;
 }
 ```
+9/8 复习终点
+
 [494. Target Sum](https://leetcode.com/problems/target-sum/solution/)<br>
 给定一个数组，要在每个数前放个符号，然后求和。问有多少种方法可以让和等于指定值。<br>
-DP时候，从2D降到1D基本上都是有序迭代的维度，而且下标从小到大迭代。
+
+recursion with memoization比较好理解。也比较好实现。
+
+```java
+public class Solution {
+    int count = 0;
+    public int findTargetSumWays(int[] nums, int S) {
+        int[][] memo = new int[nums.length][2001];
+        for (int[] row: memo)
+            Arrays.fill(row, Integer.MIN_VALUE);
+        return calculate(nums, 0, 0, S, memo);
+    }
+    public int calculate(int[] nums, int i, int sum, int S, int[][] memo) {
+        if (i == nums.length) {
+            if (sum == S)
+                return 1;
+            else
+                return 0;
+        } else {
+            if (memo[i][sum + 1000] != Integer.MIN_VALUE) {
+                return memo[i][sum + 1000];
+            }
+            int add = calculate(nums, i + 1, sum + nums[i], S, memo);
+            int subtract = calculate(nums, i + 1, sum - nums[i], S, memo);
+            memo[i][sum + 1000] = add + subtract;
+            return memo[i][sum + 1000];
+        }
+    }
+}
+```
+
+(DP的不是很懂。。。)DP时候，从2D降到1D基本上都是有序迭代的维度，而且下标从小到大迭代。
+
 ```
 public int findTargetSumWays(int[] nums, int S) {
     int[][] dp = new int[nums.length][2001];
