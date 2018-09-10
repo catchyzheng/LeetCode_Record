@@ -266,44 +266,15 @@ public static int countNumbersWithUniqueDigits(int n) {
     return ans;
 }
 ```
+9/9 复习终点
+
 [392. isSubsequence](https://leetcode.com/problems/is-subsequence/description/)<br>
 
 判断s是否是t的子序列，不一定要连续。比如s="abc", t="abdfc", return true.
 
 常规的双指针做法确实比较慢。<br>
 follow up: 关于如果有大量数据需要比较的，该怎么做？讨论在[这里](https://leetcode.com/problems/is-subsequence/discuss/?orderBy=most_votes)<br>
-[java version](https://leetcode.com/problems/is-subsequence/discuss/87302/Binary-search-solution-for-follow-up-with-detailed-comments)：
 
-```
-// Follow-up: O(N) time for pre-processing, O(Mlog?) for each S.
-// Eg-1. s="abc", t="bahbgdca"
-// idx=[a={1,7}, b={0,3}, c={6}]
-//  i=0 ('a'): prev=1
-//  i=1 ('b'): prev=3
-//  i=2 ('c'): prev=6 (return true)
-// Eg-2. s="abc", t="bahgdcb"
-// idx=[a={1}, b={0,6}, c={5}]
-//  i=0 ('a'): prev=1
-//  i=1 ('b'): prev=6
-//  i=2 ('c'): prev=? (return false)
-public boolean isSubsequence(String s, String t) {
-    List<Integer>[] idx = new List[256]; // Just for clarity
-    for (int i = 0; i < t.length(); i++) {
-        if (idx[t.charAt(i)] == null)
-            idx[t.charAt(i)] = new ArrayList<>();
-        idx[t.charAt(i)].add(i);
-    }
-    int prev = 0;
-    for (int i = 0; i < s.length(); i++) {
-        if (idx[s.charAt(i)] == null) return false; // Note: char of S does NOT exist in T causing NPE
-        int j = Collections.binarySearch(idx[s.charAt(i)], prev);
-        if (j < 0) j = -j - 1;
-        if (j == idx[s.charAt(i)].size()) return false;
-        prev = idx[s.charAt(i)].get(j) + 1;
-    }
-    return true;
-}
-```
 [python version](https://leetcode.com/problems/is-subsequence/discuss/87264/Easy-to-understand-binary-search-solution):
 ```
 from collections import defaultdict
@@ -336,7 +307,7 @@ class Solution(object):
 总结：遍历T串找到每个字母对应的所有下标，用arraylist存，已经升序。之后定一个下界prev=0，对S从头遍历，每当找到在T中的下标后就设置prev为<下标+1>。
 
 [647. Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/solution/)<br>
-要知道n方的动规和枚举中心点怎么做？
+要知道n方的动规和枚举中心点怎么做？知道了。会了
 
 [338. Counting Bits](https://leetcode.com/problems/counting-bits/description/)<br>
 找到指定数的二进制表示中1的个数。

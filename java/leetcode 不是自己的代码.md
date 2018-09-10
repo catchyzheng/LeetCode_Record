@@ -523,7 +523,7 @@ public void moveZeroes(int[] nums) {
 [27. Remove Element](https://leetcode.com/problems/remove-element/description/)<br>
 题意，在原数组上移除所有指定值元素。<br>
 又一个双下标法。<br>
-```
+```JAVA
 public int removeElement(int[] nums, int val) {
     int i = 0;
     for (int j = 0; j < nums.length; j++) {
@@ -539,7 +539,7 @@ public int removeElement(int[] nums, int val) {
 双下标试试看。<br>
 
 [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/)<br>
-找到子序列的最大和。 <br>
+recoded. 找到子序列的最大和。 <br>
 解法：实际上是挺简单的DP，但你还是不会！看代码吧。
 ```
     private int[] sum;
@@ -557,9 +557,13 @@ public int removeElement(int[] nums, int val) {
 ```
 
 [697. Degree of an Array](https://leetcode.com/problems/degree-of-an-array/description/)<br>
+
+recoded
+
 题意：一个数组的度定义为出现次数最多的元素的出现次数。求最短子序列的长度，且子序列有相同度。<br>
 扫描，记录每个元素第一次出现和最后一次出现的下标，记为left和right，然后取度数最大且最短的就行。<br>
 以下是**别人家的代码**。。思路不难，主要是熟悉java语法。<br>
+
 ```
 class Solution {
     public int findShortestSubArray(int[] nums) {
@@ -586,7 +590,3 @@ class Solution {
 题意：判断一个字符串能不能通过字母平移得到另一个串。<br>
 简单的return (A+A).contains(B)，但复杂度是N2。其实有N的，要用到大数哈希了。[solution](https://leetcode.com/problems/rotate-string/solution/)
 
-[]()
-```
-
-```
