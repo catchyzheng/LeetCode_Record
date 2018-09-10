@@ -183,7 +183,7 @@ int dfs(int n){
 [740. Delete and Earn](https://leetcode.com/problems/delete-and-earn/description/)<br>
 给定一数组，每当删除一个元素num，可以加num分，但同时也会删除所有num-1和num+1。求最多能得到多少分。<br>
 
-没怎么看懂solution。。。
+solution妙啊！先排序一遍，然后从小到大遍历。用prev记录当前的上一个值。如果相邻，那么如果要用k，那就得使用avoid值，以避免使用了k-1.
 
 ```python
 class Solution(object):
@@ -200,9 +200,7 @@ class Solution(object):
         return max(avoid, using)
 ```
 
-
-
-典型动规。先统计出每种值的个数，找出最大最小值。然后dp。和那个house robber很像。
+自己的做法：典型动规。先统计出每种值的个数，找出最大最小值。然后dp。和那个house robber很像。
 
 ```java
 public int deleteAndEarn(int[] nums) {
@@ -225,12 +223,15 @@ public int deleteAndEarn(int[] nums) {
 
 [486. Predict the Winner](https://leetcode.com/problems/predict-the-winner/description/)<br>
 两人依次从一个数组两端取数字，一次取一个，A先取，最后总和最大者胜利。问理想状况下A会不会赢。<br>
-自己有动规，但是效率比较低。。看看别人的[here](https://leetcode.com/problems/predict-the-winner/solution/)<br>最后的目标是**判断ScoreA-ScoreB是否>=0，即if dp[0][len-1]>=0。**<br>
+自己有动规，但是效率比较低。。看看别人的[here](https://leetcode.com/problems/predict-the-winner/solution/)<br>最后的目标是```判断ScoreA-ScoreB是否>=0，即if dp[0][len-1]>=0```<br>
 确实，遍历的顺序有讲究。对于```dp[i][j]=max(nums[i]−dp[i+1][j],nums[j]−dp[i][j−1])```，i就要从大到小，j就要从小到大。
-```
+
+另一种思路：```f[i][j] = sum[i][j] - min(f[i+1][j], f[i][j-1])```,这里的f[i, j]表示的是从i到j先手能取到的最大面值。
+
+```java
 public boolean PredictTheWinner(int[] nums) {
-    int[][] dp = new int[nums.length + 1][nums.length];
-    for (int s = nums.length; s >= 0; s--) {
+    int[][] dp = new int[nums.length][nums.length];
+    for (int s = nums.length - 1; s >= 0; s--) {
         for (int e = s + 1; e < nums.length; e++) {
             int a = nums[s] - dp[s + 1][e];
             int b = nums[e] - dp[s][e - 1];
@@ -266,9 +267,13 @@ public static int countNumbersWithUniqueDigits(int n) {
 }
 ```
 [392. isSubsequence](https://leetcode.com/problems/is-subsequence/description/)<br>
+
+判断s是否是t的子序列，不一定要连续。比如s="abc", t="abdfc", return true.
+
 常规的双指针做法确实比较慢。<br>
 follow up: 关于如果有大量数据需要比较的，该怎么做？讨论在[这里](https://leetcode.com/problems/is-subsequence/discuss/?orderBy=most_votes)<br>
 [java version](https://leetcode.com/problems/is-subsequence/discuss/87302/Binary-search-solution-for-follow-up-with-detailed-comments)：
+
 ```
 // Follow-up: O(N) time for pre-processing, O(Mlog?) for each S.
 // Eg-1. s="abc", t="bahbgdca"
