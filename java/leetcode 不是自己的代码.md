@@ -503,10 +503,10 @@ public List<Integer> findDisappearedNumbers(int[] nums) {
 解法：从448的思路稍微改改就行。看看日后你能想到否？<br>
 
 [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)<br>
-题意：把一个数组中的所有0都移到末尾，同时保持其他元素的相对顺序。不能copy数组，只能在原数组上操作。<br>
+题意：把一个数组中的所有0都移到末尾，同时保持其他元素的相对顺序。inplace
 这个思路好棒啊，O(n)就行了。<br>
 双下标法，一个慢一个快。其中的精髓是要逆向思考，也就是说并不是对题目特定数操作，而是在非特定数才操作。比如这题就不是对0元素操作而是非0元素。<br>
-```
+```java
 public void moveZeroes(int[] nums) {
     int j = 0;
     for(int i = 0; i < nums.length; i++) {
@@ -514,15 +514,19 @@ public void moveZeroes(int[] nums) {
             int temp = nums[j];
             nums[j] = nums[i];
             nums[i] = temp;
+            // 如果是最后要返回结果数组的长度，那么上三行完全可以直接换成nums[j] = nums[i],最后返回j
             j++;
         }
     }
 }
 ```
 
+26 27 283 其实都是源于同个模板，都是在数组中inplace移除指定元素，最后返回数组长度。因为283 要求把0全部移到后面去，而不是说只返回前面某一段的结果数组，因此要交换元素而不能直接赋值。
+
 [27. Remove Element](https://leetcode.com/problems/remove-element/description/)<br>
-题意，在原数组上移除所有指定值元素。<br>
-又一个双下标法。<br>
+题意，在原数组上移除所有指定值元素。in place<br>
+又一个双下标法。easy还不会！<br>
+
 ```JAVA
 public int removeElement(int[] nums, int val) {
     int i = 0;
@@ -536,12 +540,59 @@ public int removeElement(int[] nums, int val) {
 }
 ```
 [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)<br>
-双下标试试看。<br>
+recoded。在排序列表中移除重复元素， inplace。返回结果的长度。<br>
+
+注意空数组！
+
+```python
+class Solution(object):
+    def removeDuplicates(self, nums):
+        if not nums: return 0
+        i = 0
+        for j in range(1, len(nums)):
+            if nums[j] != nums[i]:
+                nums[i+1] = nums[j]
+                i += 1
+                
+        return i+1
+```
+
+[80. Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/)
+
+唉。。
+
+[O(N) time and O(1) solution when duplicates are allowed at most K times](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/discuss/27970/Share-my-O(N)-time-and-O(1)-solution-when-duplicates-are-allowed-at-most-K-times)
+
+```c++
+int removeDuplicates(int A[], int n, int k) {
+            if (n <= k) return n;
+
+            int i = 1, j = 1;
+            int cnt = 1;
+            while (j < n) {
+                if (A[j] != A[j-1]) {
+                    cnt = 1;
+                    A[i++] = A[j];
+                }
+                else {
+                    if (cnt < k) {
+                        A[i++] = A[j];
+                        cnt++;
+                    }
+                }
+                ++j;
+            }
+            return i;
+}
+```
+
+
 
 [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/description/)<br>
 recoded. 找到子序列的最大和。 <br>
 解法：实际上是挺简单的DP，但你还是不会！看代码吧。
-```
+
+```java
     private int[] sum;
     public int maxSubArray(int[] nums) {
         if(nums.length==0) return 0;
@@ -589,4 +640,12 @@ class Solution {
 [796. Rotate String](https://leetcode.com/problems/rotate-string/description/)<br>
 题意：判断一个字符串能不能通过字母平移得到另一个串。<br>
 简单的return (A+A).contains(B)，但复杂度是N2。其实有N的，要用到大数哈希了。[solution](https://leetcode.com/problems/rotate-string/solution/)
+
+```python
+class Solution(object):
+    def rotateString(self, A, B):
+        return len(A) == len(B) and B in A+A
+```
+
+
 

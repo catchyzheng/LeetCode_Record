@@ -186,6 +186,9 @@ class Solution {
 
 [543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/description/)<br>
 找出树的直径：两个叶子的最大距离为直径。
+
+The diameter of a binary tree is the length of the **longest** path between any two nodes in a tree. This path may or may not pass through the root.
+
 ```
 class Solution {
     int longest=0;
@@ -304,7 +307,7 @@ public TreeNode invertTree(TreeNode root) {
     return new_root;
 }
 ```
-```
+```python
 def invertTree(self, root):
     if not root: return None
     new_root = TreeNode(root.val)
@@ -317,7 +320,7 @@ def invertTree(self, root):
 题意：给定一棵树，对所有元素，都加上比它大的元素。求最后树的模样。<br>
 现在的正确思路：先右子树，然后中间，然后左子树。利用的就是二叉搜索树右子树所有元素都比树根大的结构。可以在遍历过程中从大到小遍历整棵树。因此用一个变量sum记录遍历过程的局部累加和，然后到了根节点加上sum就行。
 我的dfs写法。
-```
+```java
 int sum=0;
 public TreeNode convertBST(TreeNode root) {
     if(root!=null) dfs(root);
@@ -367,7 +370,7 @@ class Solution {
     }
 }
 ```
-```
+```python
 def maxDepth(self, root):
     if not root:
         return 0
@@ -431,7 +434,7 @@ class Solution {
 }
 ```
 以下，是讨论区的python解答。
-```
+```python
 def isBalanced(self, root):
     """
     :type root: TreeNode
@@ -446,7 +449,7 @@ def dfs(self, root):
     curBal = abs(ltree - rtree) <=1
     return 1 + max(rtree, ltree), leftBal and rightBal and curBal
 ```
-```
+```python
     def isBalanced(self, root):
         if not root:
             return True
