@@ -15,3 +15,5 @@ https://docs.python.org/2/library/collections.html#collections.defaultdict
 for index, num in enumerate(nums):
 
 c[~i] = c[-1-i] = c[n-1-i]
+
+input(), raw_input(): 前者可以返回表达式的结果，后者只是返回字符串（去掉结尾换行符）
