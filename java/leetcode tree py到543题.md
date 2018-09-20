@@ -298,7 +298,7 @@ return ;
 [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)<br>
 对每个树节点，交换左右分支。。。
 这个题的想法有点和其他tree题不太一样啊。
-```
+```java
 public TreeNode invertTree(TreeNode root) {
     if(root == null) return null;
     TreeNode new_root = new TreeNode(root.val);
@@ -308,12 +308,13 @@ public TreeNode invertTree(TreeNode root) {
 }
 ```
 ```python
-def invertTree(self, root):
-    if not root: return None
-    new_root = TreeNode(root.val)
-    new_root.left = self.invertTree(root.right)
-    new_root.right = self.invertTree(root.left)
-    return new_root
+    #in place method 
+    def invertTree(self, root):
+        if not root: return None
+        tmp = root.left
+        root.left = self.invertTree(root.right)
+        root.right = self.invertTree(tmp)
+        return root
 ```
 
 [538. Convert BST to Greater Tree](https://leetcode.com/problems/convert-bst-to-greater-tree/description/)<br>

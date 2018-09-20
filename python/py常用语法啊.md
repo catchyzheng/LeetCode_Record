@@ -1,6 +1,6 @@
-heapq.heapify()
+heapq.heapify(h)
 
-heapq.pop(heap)
+heapq.pop(h)
 
-heapq.push()
+heapq.push(h, item)
 
