@@ -1,0 +1,1 @@
+[详细解答和证明](http://www.cnblogs.com/TenosDoIt/p/3364139.html)
