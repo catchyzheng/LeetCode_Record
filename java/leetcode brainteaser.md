@@ -1,4 +1,4 @@
-6/23 [202. Happy Number](https://leetcode.com/problems/happy-number/discuss/56917/My-solution-in-C(-O(1)-space-and-no-magic-math-property-involved-))<br>
+6/23 [202. Happy Number](https://leetcode.com/problems/happy-number/discuss/56917/My-solution-in-C(-O(1)-space-and-no-magic-math-property-involved-)<br>
 题意：给定一个数，每次将各个数位平方后求和。问是否最后能到达1。
 下面是很妙的做法：从寻找带环链表的思路启发。一个快指针每次走两步，慢指针每次一步。<br>
 java version
@@ -23,13 +23,13 @@ bool isHappy(int n) {
 }
 ```
 py version
-```
+```python
 def isHappy(self, n):
     if n<=0:
         return False
     slow,fast=n,n
     while fast!=1:
-        slow=sum([int(i) ** 2 for i in str(slow)])
+        slow=sum([int(i) ** 2 for i in str(slow)]) #this can be defined as a func
         fast=sum([int(i) ** 2 for i in str(fast)])
         fast=sum([int(i) ** 2 for i in str(fast)])
         if slow==fast and fast!=1:
