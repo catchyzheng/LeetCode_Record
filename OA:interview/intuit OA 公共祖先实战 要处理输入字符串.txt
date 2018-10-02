@@ -1,15 +1,13 @@
 import sys
 
+#节点值不连续，因此要用字典id_去储存，避免浪费无用节点编号的空间。
+
 def shareAncestor(id_pair, pairs):
   # IMPLEMENTATION GOES HERE
   node = []
   id_ = {}
   max_ = 0
-  '''
-  tmp1, tmp2 = int(id_pair[0]), int(id_pair[1])
-  if tmp1 > max_: max_ = tmp1
-  if tmp2 > max_: max_ = tmp2
-  '''
+  
   for pair in pairs:
     pair[0], pair[1] = int(pair[0]), int(pair[1])
     if pair[0] not in node:

@@ -1,0 +1,36 @@
+Find the number and coordinate of all rectangle. 
+
+        m = [["1","0","0","0","0"],
+             ["1","0","1","1","1"],
+             ["1","0","1","1","1"],
+             ["1","0","0","0","0"],
+             ['1','0','1','1','0']]
+        r = len(m)
+        c = len(m[0])
+
+        def dfs(m, row, col, visit, cor):
+            if row<0 or row>=r or col<0 or col>=c or visit[row][col] or m[row][col]!='1':
+                return 
+            visit[row][col] = True
+            dirs = [[-1,0], [1,0], [0,1],[0,-1]]
+            cor[0] = min(cor[0], row)
+            cor[1] = min(cor[1], col)
+            cor[2] = max(cor[2], row)
+            cor[3] = max(cor[3], col)
+            for dir in dirs:
+                x = row+dir[0]; y = col+dir[1]
+                dfs(m, x, y, visit, cor)
+        
+        list = []
+        visit = [[False for j in range(c)] for i in range(r)]
+        for i in range(r):
+            for j in range(c):
+                if m[i][j]=='1' and not visit[i][j]:
+                    coordinate = [i,j,i,j]
+                    dfs(m, i,j,visit,coordinate)
+                    list.append(coordinate)
+        print 'length', len(list)
+        for ele in list:
+            for e in ele:
+                print e, 
+            print ''

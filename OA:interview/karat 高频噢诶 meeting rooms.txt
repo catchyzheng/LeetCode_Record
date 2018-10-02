@@ -1,0 +1,49 @@
+meeting room 1：
+给定一系列会议区间，判断区间是否互不重合。
+按照先start后end排序，判断有没有重合部分就行。
+
+meeting room 2:
+找到所需的最小的会议室数量。
+用一个key值从小到大的map，每次读入一个区间（s, e）, map[s] += 1, map[e] -= 1
+之后遍历map里的所有值，累加。因为存在正负，因此要判断过程中的最大值。
+
+Meeting room follow up:
+询问一个区间，判断是否能与现有区间不重合。
+利用上面的map。
+对区间左右端点，分别查找在map.keys()数组中所在位置。判断所在位置是否相同，以及其前一个key是否map[key]小于0.
+（右端点减1）
+    def minMeetingRooms(self, intervals):
+        # Write your code here
+        def Cmp(self, other):
+            if self.start != other.start: return cmp(self.start, other.start)
+            else: return cmp(self.end, other.end)
+        
+        
+        intervals.sort(cmp = Cmp)
+        mark = collections.defaultdict(int)
+        list = []
+        for interval in intervals:
+            mark[interval.start] += 1
+            mark[interval.end] -= 1
+            if interval.start not in list: list.append(interval.start)
+            if interval.end not in list: list.append(interval.end)
+        
+        list.sort()
+        # whether new interval can be inserted
+        query = [20, 30-1]
+        
+        pos = list.index(query[0]) if query[0] in list else bisect.bisect(list, query[0])-1
+        qos = list.index(query[1]) if query[1] in list else bisect.bisect(list, query[1])-1
+        print 'pos', pos, 'qos', qos
+        if pos == qos and mark[list[pos]] < 0 and mark[list[qos]] < 0:
+            print pos, qos, mark[list[pos]], mark[list[qos]], 'yes!', True
+        
+	# find how many rooms needed at least
+        sum = 0
+        max_ = 0
+        for ele in list:
+            print ele, mark[ele]
+            sum += mark[ele]
+            if max_ < sum: max_ = sum
+            
+        print 'max:', max_
