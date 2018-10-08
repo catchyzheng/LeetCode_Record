@@ -1,3 +1,36 @@
+10.8 [156. Merge Intervals](https://www.lintcode.com/problem/merge-intervals/description?_from=ladder&&fromId=23)
+
+重点在排序！记住这个python3 的通用自定义排序写法，sorted， key。
+
+如果是元组排序，可以参看[这个链接](https://docs.python.org/3/howto/sorting.html)
+
+使用itemgetter和attrgetter直接指定列号或者属性，按优先级排序。
+
+```python
+class Solution:
+    """
+    @param intervals: interval list.
+    @return: A new interval list.
+    """
+    def merge(self, intervals):
+        # write your code here
+        def compare(elem):
+            return elem.start
+            
+        res = []
+        intervals = sorted(intervals, key = compare)
+        
+        for inter in intervals:
+            if len(res) == 0: res.append(inter)
+            else:
+                if inter.start <= res[-1].end:
+                    res[-1].end = max(res[-1].end, inter.end)
+                else:
+                    res.append(inter)
+        return res
+
+```
+
 10.8 [551. Nested List Weight Sum](https://www.lintcode.com/problem/nested-list-weight-sum/description?_from=ladder&&fromId=23)
 
 Given a nested list of integers, return the sum of all integers in the list weighted by their depth. Each element is either an integer, or a list -- whose elements may also be integers or other lists.
