@@ -1,6 +1,29 @@
+10.8 [30. Insert Interval ](https://www.lintcode.com/problem/insert-interval/description?_from=ladder&&fromId=23)
+
+惊呆了。。leet上面hard的题竟然在这里是easy。
+
+但，下面这个代码的思路是真的巧妙！代码量少而且很巧妙啊。
+
+```python
+class Solution(object):
+    def insert(self, intervals, newInterval):
+        l, r, s, e = [], [], newInterval.start, newInterval.end
+        for ele in intervals:
+            if ele.end < s:
+                l += ele,
+            elif ele.start > e:
+                r += ele,
+            else:
+                s = min(s, ele.start)
+                e = max(e, ele.end)
+        return l + [Interval(s, e)] + r
+```
+
+
+
 10.8 [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
 
-短小精悍的代码。。值得学习
+别人家的短小精悍的代码。。值得学习
 
 ```python
 def levelOrder(self, root):
@@ -15,10 +38,6 @@ def levelOrder(self, root):
         level = [leaf for leaf in temp if leaf]
     return ans
 ```
-
-
-
-
 
 10.8 [165. Merge Two Sorted Lists ]()
 
