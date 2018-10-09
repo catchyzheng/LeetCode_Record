@@ -1,3 +1,29 @@
+10.8 [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
+
+短小精悍的代码。。值得学习
+
+```python
+def levelOrder(self, root):
+    if not root:
+        return []
+    ans, level = [], [root]
+    while level:
+        ans.append([node.val for node in level])
+        temp = []
+        for node in level:
+            temp.extend([node.left, node.right])
+        level = [leaf for leaf in temp if leaf]
+    return ans
+```
+
+
+
+
+
+10.8 [165. Merge Two Sorted Lists ]()
+
+注意判空。
+
 10.8 [156. Merge Intervals](https://www.lintcode.com/problem/merge-intervals/description?_from=ladder&&fromId=23)
 
 重点在排序！记住这个python3 的通用自定义排序写法，sorted， key。
