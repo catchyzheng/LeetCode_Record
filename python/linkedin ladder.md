@@ -1,3 +1,88 @@
+10.10 [364. Nested List Weight Sum II ](https://leetcode.com/problems/nested-list-weight-sum-ii/description/)  庆祝购买99元包年leetcode学生会员！
+
+根节点权重为max_depth， 然后第i层节点权重max_depth - i （i从0开始）。求加权和。
+
+和lintcode版本最大区别在于，这里传入函数的参数nestedList并不是一个NestedInteger实例，而是个list。list里面的元素才是NestedInteger。因此先要手动遍历一遍。
+
+```python
+class Solution:
+    def depthSumInverse(self, nestedList):
+        """
+        :type nestedList: List[NestedInteger]
+        :rtype: int
+        """
+        deep = 0
+        max_deep = 0
+        def dfs(nlist):
+            if nlist.isInteger(): return 1
+            tmp_max = 0
+            for ele in nlist.getList():
+                tmp = 1 + dfs(ele)
+                tmp_max = max(tmp, tmp_max)
+            return tmp_max
+        
+        sum = 0
+        def cal(depth, nlist):
+            tmp_sum = 0
+            if nlist.isInteger():
+                return (max_deep - depth) * nlist.getInteger()
+            
+            for ele in nlist.getList():
+                tmp_sum += cal(depth + 1, ele)
+            return tmp_sum
+        
+        for list_ele in nestedList:
+            max_deep = max(max_deep, dfs(list_ele))
+        
+        for list_ele in nestedList:
+            sum += cal(0, list_ele)
+        
+        return sum
+```
+
+
+
+以下为lintcode。
+
+10.9 [94. Binary Tree Maximum Path Sum](https://www.lintcode.com/problem/binary-tree-maximum-path-sum/description)
+
+累死我了。。。还超时30分钟。。medium。
+
+注意：可以是一个节点，可以从任意节点开始结束。
+
+```python
+class Solution:
+    """
+    @param root: The root of binary tree.
+    @return: An integer
+    """
+    max_ = float('-inf')
+    def maxPathSum(self, root):
+        # write your code here
+        if not root: return 0
+        def dfs(node):
+            if node is None: return 0
+            sum_ = 0
+            if self.max_ < node.val: self.max_ = node.val
+            left = right = 0
+            if node.left is not None: left = dfs(node.left)
+            if node.right is not None: right = dfs(node.right)
+            
+            sum_ = node.val + (left if left > 0 else 0 ) + (right if right > 0 else 0)
+            if self.max_ < sum_: self.max_ = sum_
+            if left < 0 and right < 0:
+                return node.val
+            else: 
+            return node.val + (left if left > right else right)
+        ans = dfs(root)
+        
+        return self.max_
+```
+
+如果左右子树都路径和小于0， 那就不如直接返回节点本身了。
+
+
+
 10.8 [30. Insert Interval ](https://www.lintcode.com/problem/insert-interval/description?_from=ladder&&fromId=23)
 
 惊呆了。。leet上面hard的题竟然在这里是easy。
