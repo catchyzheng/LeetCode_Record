@@ -4,6 +4,8 @@
 
 和lintcode版本最大区别在于，这里传入函数的参数nestedList并不是一个NestedInteger实例，而是个list。list里面的元素才是NestedInteger。因此先要手动遍历一遍。
 
+discuss里超级牛逼的思路，不用递归不用乘法。。[here](https://leetcode.com/problems/nested-list-weight-sum-ii/discuss/83641/No-depth-variable-no-multiplication)
+
 ```python
 class Solution:
     def depthSumInverse(self, nestedList):
