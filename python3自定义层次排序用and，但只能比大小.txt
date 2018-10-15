@@ -1,0 +1,5 @@
+intervals = sorted(intervals, key = lambda x: x.start and x.end)
+
+
+自定义key函数 custom_key， 看这里。
+https://blog.csdn.net/jason_cuijiahui/article/details/72771596
