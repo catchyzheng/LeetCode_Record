@@ -1,3 +1,71 @@
+10.20 [170. Two Sum III - Data structure design](https://leetcode.com/problems/two-sum-iii-data-structure-design/description/)
+
+tradeoff between quick add and quick find. 
+
+
+
+10.20 [244. Shortest Word Distance II](https://leetcode.com/problems/shortest-word-distance-ii/description/)
+
+Design a class which receives a list of words in the constructor, and implements a method that takes two words *word1* and *word2* and return the shortest distance between these two words in the list. Your method will be called ***repeatedly*** many times with different parameters. 
+
+**Example:**
+Assume that words = `["practice", "makes", "perfect", "coding", "makes"]`.
+
+```
+Input: word1 = “coding”, word2 = “practice”
+Output: 3
+Input: word1 = "makes", word2 = "coding"
+Output: 1
+```
+
+**Note:**
+You may assume that *word1* **does not equal to** *word2*, and *word1* and *word2* are both in the list.
+
+坑点：不要妄想所有工作在init中做完。
+
+```python
+import collections
+class WordDistance:
+    vector = collections.defaultdict(list)
+    #hashmap = dict()
+    def __init__(self, words):
+        """
+        :type words: List[str]
+        """
+        self.vector.clear()
+        for i in range(len(words)):
+            self.vector[words[i]].append(i)
+
+    def shortest(self, word1, word2):
+        """
+        :type word1: str
+        :type word2: str
+        :rtype: int
+        """
+        p, q = 0, 0
+        min_dist = float('inf')
+        while p < len(self.vector[word1]) and q < len(self.vector[word2]):
+            if self.vector[word1][p] <= self.vector[word2][q]:
+                min_dist = min(min_dist, self.vector[word2][q] - self.vector[word1][p])
+                p += 1
+            else:
+                min_dist = min(min_dist, self.vector[word1][p] - self.vector[word2][q])
+                q += 1
+        return min_dist
+    
+    '''
+    v = collections.defaultdict(list)
+    v[4].append('fuck')
+    v[2].append('ass')
+    for k in v.keys():
+        print(k, v[k])    
+    '''
+```
+
+思路不难， 就是记录下每个单词的所有出现位置index存为列表。然后每次要查询时候，就双指针遍历两列表。每次移动在words中index更小的下标指针。
+
+
+
 10.10 [364. Nested List Weight Sum II ](https://leetcode.com/problems/nested-list-weight-sum-ii/description/)  庆祝购买99元包年leetcode学生会员！
 
 根节点权重为max_depth， 然后第i层节点权重max_depth - i （i从0开始）。求加权和。
@@ -44,7 +112,7 @@ class Solution:
 
 
 
-以下为lintcode。
+**以下为lintcode。**
 
 10.9 [94. Binary Tree Maximum Path Sum](https://www.lintcode.com/problem/binary-tree-maximum-path-sum/description)
 

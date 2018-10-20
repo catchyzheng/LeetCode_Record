@@ -10,7 +10,9 @@ def merge(self, intervals):
         :type intervals: List[Interval]
         :rtype: List[Interval]
         """
-        intervals = sorted(intervals,key = lambda inter:inter.start)
+        intervals = sorted(intervals,key = lambda inter:inter.start and inter.end)
+        for ele in intervals:
+            print(ele.start, " ", ele.end)
         result = []
         
         for inter in intervals:
