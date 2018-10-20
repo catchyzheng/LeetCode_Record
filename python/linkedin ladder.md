@@ -1,3 +1,47 @@
+10.20 [272. Closest Binary Search Tree Value II](https://leetcode.com/problems/closest-binary-search-tree-value-ii/description/)
+
+给定一个value，找到BST中最近的K个值。
+
+10.20 [270. Closest Binary Search Tree Value](https://leetcode.com/problems/closest-binary-search-tree-value/description/)（这只是简化版本。寻找K个才是难）
+
+给定一个value，找到BST中最近的值。
+
+转换成列表然后二分很容易想到。但如果不能转换二分，只能在树中查找呢？
+
+```python
+class Solution:
+    def closestValue(self, root, target):
+        """
+        :type root: TreeNode
+        :type target: float
+        :rtype: int
+        """
+        
+        if not root: return None
+        
+        minDist = float('+inf')
+        res = None
+        
+        while root:
+            dist = abs(root.val - target)
+            if dist < minDist:
+                minDist = dist
+                res = root.val
+            
+            if target > root.val:
+                root = root.right
+            elif target < root.val:
+                root = root.left
+            else:
+                break            
+            
+        return res
+```
+
+方法是，如果value比当前node的值大，那就和右节点继续比较。如果小，就和左节点。否则直接返回。
+
+
+
 10.20 [170. Two Sum III - Data structure design](https://leetcode.com/problems/two-sum-iii-data-structure-design/description/)
 
 tradeoff between quick add and quick find. 
