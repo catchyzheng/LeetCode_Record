@@ -2,6 +2,12 @@
 
 给定一个value，找到BST中最近的K个值。
 
+其实，如果可以新建数组的话， 那和270很像。inorder遍历生成有序列表后bisect.bisect找到要插入的位置，然后双指针往前往后遍历找到k个。
+
+但，如果不给新建，而且是平衡树时候，要求logn复杂度，那就得想新办法了。。。
+
+听说有最优解？[here](https://leetcode.com/problems/closest-binary-search-tree-value-ii/discuss/70503/O(logN)-Java-Solution-with-two-stacks-following-hint?page=1)
+
 10.20 [270. Closest Binary Search Tree Value](https://leetcode.com/problems/closest-binary-search-tree-value/description/)（这只是简化版本。寻找K个才是难）
 
 给定一个value，找到BST中最近的值。
