@@ -1,9 +1,16 @@
 [C++ template for ALL Combination Problem Set](https://leetcode.com/problems/combination-sum-iv/discuss/85120/C++-template-for-ALL-Combination-Problem-Set)<br>
 
+
+
+10.28 [401. Binary Watch](https://leetcode.com/problems/binary-watch/description/)
+
+dont know why cannot pass test.....
+
 6/29 [77. Combinations]()给定n和k，返回1-n中所有k个不同数的组合。<br》
 是一个类似的题目。<br>
 6/29 [216. Combination Sum III](https://leetcode.com/problems/combination-sum-iii/description/)<br>
 从1-9中找出k个不相同的数，使得和为n。
+
 ```
 List<List<Integer>> res = new  ArrayList<List<Integer>>();
 int len;
