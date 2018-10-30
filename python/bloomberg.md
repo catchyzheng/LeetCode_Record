@@ -1,3 +1,59 @@
+
+
+
+
+10.28 [235. Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/)
+
+
+
+10.28 [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/)
+
+找最近公共祖先。自己可以算自己的祖先。 注意是找最近不是最远。
+
+用了好多临时变量的空间。。
+
+自己的基本想法就是构建一个parent数组，由子女指向父母。然后从p往上遍历直到root。 q开始往上遍历，如果出现在p路径上就返回。
+
+discuss貌似有个很巧妙的递归方法。
+
+```python
+from collections import defaultdict
+class Solution:
+    def lowestCommonAncestor(self, root, p, q):
+        """
+        :type root: TreeNode
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: TreeNode
+        """
+        if root is None: return None
+        hmap = defaultdict(TreeNode)
+        hmap[root] = root
+        self.dfs(hmap, root, root)
+        
+        lst_p = [p]
+        while p.val != hmap[p].val:
+            lst_p.append(hmap[p])
+            p = hmap[p]
+        if q in lst_p: return q
+        lst_q = [q]
+        while q.val != hmap[q].val:
+            if hmap[q] in lst_p: return hmap[q]
+            lst_q.append(hmap[q])
+            q = hmap[q]
+        
+        
+    def dfs(self, hmap, node, parent):
+        hmap[node] = parent
+        parent = node
+        if node.left is not None: self.dfs(hmap, node.left, parent)
+        if node.right is not None: self.dfs(hmap, node.right, parent)
+        return
+        
+```
+
+
+
 First question: Initially I was given a number that I should consider as terminating number. Given a continuous stream of numbers, write a function that returns the first unique number whenever terminating number is reached. Interviewer wanted an answer that was in O(1) when a terminating number is reached, so basically preprocessing was required.
 Through this question, my knowledge on how process works, I mean what is heap. stack, global variables, local variables was also checked. i was also asked how hash map works, its time complexity, how it is calculated, I was also asked in detail about linked list and array and also about iterator dereference.
 
@@ -51,107 +107,6 @@ class Solution:
 1 空链表 2 长度不一样 3 1+99
 
 
-
-10.28 []
-
-given a maze, 0 is ground, 1 is wall, -1 is treasure. You need to find how many treasure can be reached.
-
-1是墙。就是一个dfs找所有可达-1.
-
-```python
-class Solution(object):
-    def hasPath(self):
-    	maze = [[ 0, 0,-1, 0, 0],\
-                [ 1, 1, 0, 0, 1],\
-                [ 0, 1,-1, 0,-1],\
-                [-1, 1, 0, 0, 1],\
-                [-1, 1,-1, 0, 0]]
-        
-        m = len(maze); n = len(maze[0])
-        visit = [[0 for _ in range(n)] for __ in range(m)]
-        start = [0, 0]
-        self.cnt = 0
-        treasure = []
-        def dfs(maze, sx, sy):
-            dirs = [[0,1], [0,-1], [1,0], [-1,0]]
-            
-            for d in dirs:
-                x = sx+d[0]; y = sy + d[1]
-                if x>=0 and x<m and y>=0 and y<n and maze[x][y]!=1 and visit[x][y]==0:
-                    visit[x][y] = 1
-                    if maze[x][y]==-1: 
-                        self.cnt += 1
-                        treasure.append([x, y])
-                    dfs(maze, x, y)
-        visit[start[0]][start[1]] = 1
-        dfs(maze, start[0], start[1])
-        
-        print(self.cnt)
-```
-
-
-
-10.27 [505. The Maze II](https://leetcode.com/problems/the-maze-ii/description/)
-
-this is not from bloomberg but it is good to put here. 提醒自己多熟悉图和路径相关的题目。
-
-给定一个矩阵，0表示空地1表示墙。给定球的位置和洞口位置，都在空地上。球会沿着一个方向一直滚直到遇到墙或者边界。问**最短路径是多少，并输出**。maze3是问依次输出球滚动的方向。大不了每次计算两个相邻路径点之间的相对位置，然后返回方向。
-
-还没看dijstra算法怎么做的。。。。
-
-```python
-class Solution(object):
-    def shortestDistance(self, maze, start, dest):
-        """
-        :type maze: List[List[int]]
-        :type start: List[int]
-        :type destination: List[int]
-        :rtype: int
-        """
-        m = len(maze)
-        n = len(maze[0])
-        dist = [[float('inf') for _ in range(n)] for __ in range(m)]
-        dist[start[0]][start[1]] = 0
-        pre = [[ [-1, -1] for _ in range(n)] for __ in range(m)]
-        action = [[ '0' for _ in range(n)] for __ in range(m)]
-        self.dfs(maze, start, dist, pre, action)
-        for i in range(m):
-            for j in range(n):
-                print dist[i][j],
-            print ''
-        if dist[dest[0]][dest[1]] == float('inf'):
-            return -1
-        else: 
-            xx, yy = dest[0], dest[1]
-            print [xx, yy]
-            while [xx, yy] != start:
-                # print the path
-                print pre[xx][yy]
-                [xx, yy] = pre[xx][yy]
-                # should not xx = pre[xx][yy][0]; yy = pre[xx][yy][1] !!!
-            return dist[dest[0]][dest[1]]
-        
-    def dfs(self, maze, start, dist, pre, action):
-        dirs = [[-1,0], [1,0], [0, -1], [0,1]]
-        hmap = ['u', 'd', 'r', 'l']
-        i = 0
-        for d in dirs:
-            i += 1
-            x = start[0] + d[0]
-            y = start[1] + d[1]
-            cnt = 0
-            # while means each time the ball move continuely until reach wall. if means each time move one step.
-            while x>=0 and x<len(maze) and y>=0 and y<len(maze[0]) and maze[x][y]!=1:
-                x += d[0]; y += d[1]
-                cnt += 1
-            if dist[x-d[0]][y-d[1]] > dist[start[0]][start[1]] + cnt:
-                dist[x-d[0]][y-d[1]] = dist[start[0]][start[1]] + cnt
-                pre[x-d[0]][y-d[1]] = [start[0], start[1]]
-                action[x-d[0]][y-d[1]] = hmap[i%4]
-                #print pre[x-d[0]][y-d[1]]
-                self.dfs(maze, [x-d[0], y-d[1]], dist, pre, action)
-        
-```
 
 
 

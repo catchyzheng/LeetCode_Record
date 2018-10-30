@@ -1,3 +1,65 @@
+10.29 [267. Palindrome Permutation II]
+
+```python
+class Solution:
+    def generatePalindromes(self, s):
+        """
+        :type s: str
+        :rtype: List[str]
+        """
+        res = []
+        final = []
+        l = len(s)
+        dic = {}
+        for c in s:
+            if c in dic: dic[c] += 1
+            else: dic[c] = 1
+        
+        odd = []; cnt = 0
+        part = []
+        for k in dic:
+            if dic[k] % 2 == 1: 
+                odd.append(k); cnt += 1
+            else:
+                for i in range(int(dic[k]/2)): part.append(k)
+                
+        if cnt > 1: return []
+        
+
+        if len(odd) > 0: 
+            for i in range(int(dic[odd[0]]/2)): 
+                part.append(odd[0])
+        
+        print(''.join(part))
+        ss = ''.join(part)
+        visit = [False for _ in range(len(ss))]
+        def dfs(index, ss):
+            if index == len(ss):
+                half1 = ''.join(res)
+                half2 = ''
+                for i in range(len(res)-1, -1, -1):
+                    half2 += half1[i]
+                if len(odd) > 0:
+                    final.append(half1+odd[0]+half2)
+                else:
+                    final.append(half1+half2)
+                return
+            for i in range(len(ss)):
+                if visit[i] or i > 0 and ss[i]==ss[i-1] and not visit[i-1]:
+                    continue
+                res.append(ss[i])
+                visit[i] = True
+                dfs(index+1, ss)
+                res.pop(); visit[i] = False
+            return
+        
+        dfs(0, ss)
+        return final
+        
+```
+
+
+
 10.28 [47. Permutations II](https://leetcode.com/problems/permutations-ii/description/)
 
 give a list that contains duplicates, return all its permutation. 
