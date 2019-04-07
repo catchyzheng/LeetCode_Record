@@ -60,7 +60,9 @@ class Solution(object):
         dist[start[0]][start[1]] = 0
         pre = [[ [-1, -1] for _ in range(n)] for __ in range(m)]
         action = [[ '0' for _ in range(n)] for __ in range(m)]
+        
         self.dfs(maze, start, dist, pre, action)
+        
         for i in range(m):
             for j in range(n):
                 print dist[i][j],
@@ -80,9 +82,9 @@ class Solution(object):
     def dfs(self, maze, start, dist, pre, action):
         dirs = [[-1,0], [1,0], [0, -1], [0,1]]
         #hmap = ['u', 'd', 'r', 'l']
-        i = 0
+        #i = 0
         for d in dirs:
-            i += 1
+            #i += 1
             x = start[0] + d[0]
             y = start[1] + d[1]
             cnt = 0
@@ -98,5 +100,45 @@ class Solution(object):
                 #print pre[x-d[0]][y-d[1]]
                 self.dfs(maze, [x-d[0], y-d[1]], dist, pre, action)
         
+```
+
+[Dijstra](https://leetcode.com/problems/the-maze-ii/solution/)
+
+```java
+public class Solution {
+    public int shortestDistance(int[][] maze, int[] start, int[] dest) {
+        int[][] distance = new int[maze.length][maze[0].length];
+        for (int[] row: distance)
+            Arrays.fill(row, Integer.MAX_VALUE);
+        distance[start[0]][start[1]] = 0;
+        dijkstra(maze, start, distance);
+        return distance[dest[0]][dest[1]] == Integer.MAX_VALUE ? -1 : distance[dest[0]][dest[1]];
+    }
+
+    public void dijkstra(int[][] maze, int[] start, int[][] distance) {
+        int[][] dirs={{0,1},{0,-1},{-1,0},{1,0}};
+        PriorityQueue < int[] > queue = new PriorityQueue < > ((a, b) -> a[2] - b[2]);
+        queue.offer(new int[]{start[0],start[1],0});
+        while (!queue.isEmpty()) {
+            int[] s = queue.poll();
+            if(distance[s[0]][s[1]] < s[2]) //the old record for distance, should abandon
+                continue;
+            for (int[] dir: dirs) {
+                int x = s[0] + dir[0];
+                int y = s[1] + dir[1];
+                int count = 0;
+                while (x >= 0 && y >= 0 && x < maze.length && y < maze[0].length && maze[x][y] == 0) {
+                    x += dir[0];
+                    y += dir[1];
+                    count++;
+                }
+                if (distance[s[0]][s[1]] + count < distance[x - dir[0]][y - dir[1]]) {
+                    distance[x - dir[0]][y - dir[1]] = distance[s[0]][s[1]] + count;
+                    queue.offer(new int[]{x - dir[0], y - dir[1], distance[x - dir[0]][y - dir[1]]});
+                }
+            }
+        }
+    }
+}
 ```
 

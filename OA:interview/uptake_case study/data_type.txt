@@ -1,0 +1,6 @@
+Index([u'date', u'source', u'title', u'state', u'zip', u'mailcode',
+       u'has_chapter', u'dob', u'noexch', u'recinhse',
+       ...
+       u'responded', u'hphone_d', u'rfa_2r', u'rfa_2f', u'rfa_2a', u'mdmaud_r',
+       u'mdmaud_f', u'mdmaud_a', u'cluster2', u'geocode2'],
+      dtype='object', length=418)

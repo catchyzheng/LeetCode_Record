@@ -1,3 +1,13 @@
+[310. Minimum Height Trees](https://leetcode.com/problems/minimum-height-trees/description/)
+
+给定一个无根树，要求找到所有根节点，使得形成的树高度最小。
+
+妙啊。。这个解答。。。
+
+https://leetcode.com/problems/minimum-height-trees/discuss/76055/Share-some-thoughts
+
+直接变成topo sort.
+
 8/25 [726. Number of Atoms](https://leetcode.com/problems/number-of-atoms/description/)
 
 题意：给出一个化学分子式，要求返回按照字母排序的所有原子元素的计数。
@@ -250,7 +260,7 @@ k[2] = min( k[1]x2, k[0]x3, k[0]x5). 等等. 注意，对于6这类数，应该�
 [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/description/)<br>
 寻找乘积最大的子序列。
 下面是投票最多的解法。很巧妙。
-```
+```java
 int maxProduct(int A[], int n) {
     // store the result that is the max we have found so far
     int r = A[0];
